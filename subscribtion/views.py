@@ -60,7 +60,7 @@ def subscribe_email(request):
         
         return JsonResponse({
             'success': True, 
-            'message': 'Başarıyla abone oldunuz! Sinova Group gelişmelerinden haberdar olacaksınız.'
+            'message': 'You have successfully subscribed! You will be informed about Sinova Group developments.'
         })
         
     except json.JSONDecodeError:
