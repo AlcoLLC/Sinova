@@ -38,7 +38,8 @@
   line-height: 50px;
   letter-spacing: 1px;
   color: #141D43;
-  margin-bottom: 30px;
+  transition: all 0.5s ease;
+
 }
 
 .section-header .section-title {
@@ -132,6 +133,38 @@ header {
   background-image: url("../../images/header.png");
   background-size: cover;
 }
+
+.page-header {
+  width: 100%;
+  height: 410px;
+  background-image: url("../../images/page-header.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 50px;
+}
+
+.page-header .header-content {
+  width: 30%;
+  text-align: center;
+  background-color: #060E33C7;
+  color: #fff;
+  padding: 15px;
+}
+
+
+.page-header .header-content .section-title {
+  text-align: center;
+  color: #fff;
+}
+
+.page-header .header-content p {
+  color: #fff;
+}
+
 
 
 /* GAllery */
@@ -302,16 +335,19 @@ header {
   flex: 1;
   text-align: center;
   transition: all 0.5s ease;
+  border-bottom: 4px solid #141D43;
+
 }
 
 .news-section .tab:hover {
   background-color: #FF3333;
+  border-color: #FF3333;
 }
 
 .news-section .tab.active {
   background-color: transparent;
   color: #FF3333;
-  border-bottom: 4px solid #FF3333;
+  border-color: #FF3333;
 }
 
 .news-content .tab-content {
@@ -334,7 +370,7 @@ header {
 
 
 .news-sinova-content:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   padding: 20px;
   box-shadow: 0px 2px 6.5px 0px #00000030;
 }
@@ -519,7 +555,7 @@ header {
 }
 
 .section-2 .center-icon i {
-    transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
 
@@ -611,6 +647,11 @@ header {
   gap: 30px;
 }
 
+.subscribe-section .section-title {
+  margin-bottom: 30px;
+}
+
+
 
 .subscribe-section .subscribe-components .left-content {
   width: 45%;
@@ -686,7 +727,7 @@ header {
   border-color: #FF3333;
 }
 
-.subscribe-section .subscribe-section input[type="checkbox"]:checked::after {
+.subscribe-section input[type="checkbox"]:checked::after {
   content: "✓";
   position: absolute;
   top: 50%;
@@ -863,8 +904,8 @@ footer .sinova-logo {
 
 .footer-main .contact-us button {
   border: none;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background-color: #FF3333;
   display: flex;
   align-items: center;

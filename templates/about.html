@@ -1,0 +1,51 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+<header class="page-header">
+    <div class="header-content">
+        <h2 class="section-title">{% trans "About us" %}</h2>
+        <p class="section-description">{% blocktrans %} Sinova Group operates across finance, logistics, technology, and
+            manufacturing – empowering sustainable growth. {% endblocktrans %}</p>
+    </div>
+</header>
+
+
+
+<div class="about-tabs container">
+    <div class="tab" data-tab="our-history">
+        <h2 class="section-title">Our History</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="vission-mission">
+        <h2 class="section-title">Vision, Mission & Values</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="policies">
+        <h2 class="section-title">Policies</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+
+</div>
+
+
+
+<section class="sinova-production ">
+    <div class="container">
+        <div class="production-section ">
+            <div class="section-background"></div>
+            <div class="play-button" id="playButton">
+                <i>►</i>
+            </div>
+            <div class="video-container" id="videoContainer">
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/7NdBMqxDMrE?rel=0&showinfo=0&modestbranding=1"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
