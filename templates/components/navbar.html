@@ -1,1 +1,70 @@
 {% load static %} {% load i18n %}
+
+
+
+<nav>
+    <div class="navbar">
+        <div class="nav-top container">
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo">
+                        <span>{% trans 'Head office' %}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="{% static 'images/search-icon.svg' %}" alt="Sinova Logo">
+                        <span>{% trans 'Search' %}</span>
+                    </a>
+                </li>
+                <li>
+                    EN
+                </li>
+            </ul>
+        </div>
+        <div class="sinova-logo">
+            <img  src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
+        </div>
+        <div class="nav-bottom">
+            <ul>
+                <li>
+                    <a href="">
+                        <span>{% trans 'About us' %}</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span>{% trans 'Businesses' %}</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span>{% trans 'Investor Relations' %}</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span>{% trans 'Sustainability' %}</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="">
+                        <span>{% trans 'Media Center' %}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span>{% trans 'Contact' %}</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
