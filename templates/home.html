@@ -1,274 +1,281 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 
-<header>
-</header>
-
+<header></header>
 
 <!-- GALLERY SECTION -->
-
 <section class="gallery-section">
-    <div class="swiper labSwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="{% static 'images/gallery1.png' %}" alt="" />
-            </div>
-            <div class="swiper-slide">
-                <img src="{% static 'images/gallery2.jpg' %}" alt="" />
-            </div>
-            <div class="swiper-slide">
-                <img src="{% static 'images/gallery3.jpg' %}" alt="" />
-            </div>
-        </div>
-        <div class="swiper-button-next"><i class="fa-solid fa-caret-right"></i></div>
-        <div class="swiper-button-prev"><i class="fa-solid fa-caret-left"></i></div>
+  <div class="swiper labSwiper">
+    <div class="swiper-wrapper">
+      {% for image in gallery_images %}
+      <div class="swiper-slide">
+        <img
+          src="{{ image.image.url }}"
+          alt="{{ image.gallery.iframe_video_text }}"
+        />
+      </div>
+      {% empty %} {% endfor %}
     </div>
+    <div class="swiper-button-next">
+      <i class="fa-solid fa-caret-right"></i>
+    </div>
+    <div class="swiper-button-prev"><i class="fa-solid fa-caret-left"></i></div>
+  </div>
 </section>
-
 
 <!-- NEWS TABS SECTION -->
-
 <section class="news-section container">
-    <div class="section-header">
-        <h2 class="section-title">{% trans "News" %}</h2>
+  <div class="section-header">
+    <h2 class="section-title">{% trans "News" %}</h2>
+  </div>
+
+  <div class="news-tabs">
+    <div class="tab active" data-tab="news-sinova">
+      {% trans "What's new" %}
+    </div>
+    <div class="tab" data-tab="news-releases">{% trans "News releases" %}</div>
+    <div class="tab" data-tab="announcements">{% trans "Announcements" %}</div>
+  </div>
+
+  <div class="news-content">
+    <!-- What's new -->
+    <div class="tab-content active" id="news-sinova">
+      {% for news in news_new %}
+      <div class="news-sinova-content">
+        <a href="{{ news.get_absolute_url }}">
+          <p class="news-date">
+            {{ news.date|date:"M d, Y" }} {% if news.new %}<span
+              >{% trans "New" %}</span
+            >{% endif %}
+          </p>
+          <p class="section-description">{{ news.title }}</p>
+        </a>
+      </div>
+      {% empty %}
+      <div class="news-sinova-content">
+        <p class="section-description">{% trans "No news available" %}</p>
+      </div>
+      {% endfor %}
     </div>
 
-    <div class="news-tabs">
-        <div class="tab active" data-tab="news-sinova">{% trans "What’s new" %}</div>
-        <div class="tab" data-tab="news-releases">{% trans "News releases" %}</div>
-        <div class="tab" data-tab="announcements">{% trans "Announcements" %}</div>
+    <!-- News releases -->
+    <div class="tab-content" id="news-releases">
+      {% for news in news_releases %}
+      <div class="news-sinova-content">
+        <a href="{{ news.get_absolute_url }}">
+          <p class="news-date">
+            {{ news.date|date:"M d, Y" }} {% if news.new %}<span
+              >{% trans "New" %}</span
+            >{% endif %}
+          </p>
+          <p class="section-description">{{ news.title }}</p>
+        </a>
+      </div>
+      {% empty %}
+      <div class="news-sinova-content">
+        <p class="section-description">
+          {% trans "No news releases available" %}
+        </p>
+      </div>
+      {% endfor %}
     </div>
 
-    <div class="news-content">
-        <!-- What’s new -->
-        <div class="tab-content active" id="news-sinova">
-            <div class="news-sinova-content">
-                <a href="">
-                    <p class="news-date">
-                        May 31, 2025 <span>{% trans "New" %}</span>
-                    </p>
-                    <p class="section-description">
-                        ALCO at Caspian Oil & Gas – For the First Time!
-                    </p>
-                </a>
-            </div>
-
-            <div class="news-sinova-content">
-                <a href="">
-                    <p class="news-date">
-                        May 31, 2025 <span>{% trans "New" %}</span>
-                    </p>
-                    <p class="section-description">
-                        ALCO at Caspian Oil & Gas – For the First Time!
-                    </p>
-                </a>
-            </div>
-
-        </div>
-
-        <!-- News releases -->
-        <div class="tab-content" id="news-releases">
-            <div class="news-sinova-content">
-                <a href="">
-                    <p class="news-date">
-                        May 31, 2025 <span>{% trans "New" %}</span>
-                    </p>
-                    <p class="section-description">
-                        ALCO at Caspian Oil & Gas – For the First Time!
-                    </p>
-                </a>
-            </div>
-
-        </div>
-
-        <!-- Announcements -->
-        <div class="tab-content" id="announcements">
-
-            <div class="news-sinova-content">
-                <a href="">
-                    <p class="news-date">
-                        May 31, 2025 <span>{% trans "New" %}</span>
-                    </p>
-                    <p class="section-description">
-                        ALCO at Caspian Oil & Gas – For the First Time!
-                    </p>
-                </a>
-            </div>
-
-        </div>
-
-
+    <!-- Announcements -->
+    <div class="tab-content" id="announcements">
+      {% for news in news_announcements %}
+      <div class="news-sinova-content">
+        <a href="{{ news.get_absolute_url }}">
+          <p class="news-date">
+            {{ news.date|date:"M d, Y" }} {% if news.new %}<span
+              >{% trans "New" %}</span
+            >{% endif %}
+          </p>
+          <p class="section-description">{{ news.title }}</p>
+        </a>
+      </div>
+      {% empty %}
+      <div class="news-sinova-content">
+        <p class="section-description">
+          {% trans "No announcements available" %}
+        </p>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 
-    <button class="news-button">
-        <a href="">{% trans "News list" %} <i class="fa-solid fa-arrow-right-long"></i> </a>
-    </button>
+  <button class="news-button">
+    <a href="{% url 'news:news_list' %}"
+      >{% trans "News list" %} <i class="fa-solid fa-arrow-right-long"></i>
+    </a>
+  </button>
 </section>
-
-
 
 <!-- COMPANY SECTION -->
-
 <section class="sections-container">
-    <!-- Section 1 -->
-    <div class="section-item section-1">
-        <div class="section-background"></div>
+  {% for content in home_contents %}
+  <!-- Section {{ forloop.counter }} -->
+  <div class="section-item section-{{ forloop.counter }}">
+    <div
+      class="section-background"
+      style="background-image: url('{{ content.image.url }}');"
+    ></div>
 
-        <div class="before-content">
-            <div class="before-text">
-                <h2 class="section-title">{% trans "Company" %}</h2>
-                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
-                    through strategic investment, innovation, and industrial excellence.</p>
-                <a href="#" class="section-link">
-                    {% trans "About us" %}
-                    <i class="fas fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="after-content">
-            <div class="after-text">
-                <h2 class="section-title">About us</h2>
-                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
-                    through strategic investment, innovation, and industrial excellence.</p>
-                <a href="#" class="section-link">
-                    Learn more
-                    <i class="fas fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="center-icon">
-            <i class="fas fa-caret-right"></i>
-        </div>
+    <div class="before-content">
+      <div class="before-text">
+        <h2 class="section-title">{{ content.title }}</h2>
+        <p class="section-description">{{ content.description }}</p>
+        {% if content.url %}
+        <a href="{{ content.url }}" class="section-link">
+          {% trans "Learn more" %}
+          <i class="fas fa-arrow-right-long"></i>
+        </a>
+        {% endif %}
+      </div>
     </div>
 
-    <!-- Section 2 -->
-    <div class="section-item section-2">
-        <div class="section-background"></div>
-
-        <div class="before-content">
-            <div class="before-text">
-                <h2 class="section-title">{% trans "Sustainability" %}</h2>
-                <p class="section-description">We are committed to delivering solutions that align with global
-                    environmental standards and customer needs.</p>
-                <a href="#" class="section-link">
-                    {% trans "Learn more" %}
-                    <i class="fas fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="after-content">
-            <div class="after-text">
-                <h2 class="section-title">{% trans "About us" %}</h2>
-                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
-                    through strategic investment, innovation, and industrial excellence.</p>
-                <a href="#" class="section-link">
-                    {% trans "About us" %}
-                    <i class="fas fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="center-icon">
-            <i class="fas fa-caret-right"></i>
-        </div>
+    <div class="after-content">
+      <div class="after-text">
+        <h2 class="section-title">{{ content.subtitle }}</h2>
+        <p class="section-description">{{ content.subdescription }}</p>
+        {% if content.url %}
+        <a href="{{ content.url }}" class="section-link">
+          {% trans "Learn more" %}
+          <i class="fas fa-arrow-right-long"></i>
+        </a>
+        {% endif %}
+      </div>
     </div>
 
-    <!-- Section 3 -->
-    <div class="section-item section-3">
-        <div class="section-background"></div>
-
-        <div class="before-content">
-            <div class="before-text">
-                <h2 class="section-title">{% trans "Investor relations" %}</h2>
-                <p class="section-description">Explore Sinova's financial strength and long-term vision. Reports,
-                    disclosures, governance updates and shareholder resources.</p>
-                <a href="#" class="section-link">
-                   {% trans "About us" %}
-                    <i class="fas fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="after-content">
-            <div class="after-text">
-                <h2 class="section-title">About us</h2>
-                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
-                    through strategic investment, innovation, and industrial excellence.</p>
-                <a href="#" class="section-link">
-                    {% trans "Learn more" %}
-                    <i class="fas fa-arrow-right-long"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="center-icon">
-            <i class="fas fa-caret-right"></i>
-        </div>
+    <div class="center-icon">
+      <i class="fas fa-caret-right"></i>
     </div>
+  </div>
+  {% empty %} {% endfor %}
 </section>
-
 
 <!-- PICK UP SECTION -->
+<section class="pick-up-section">
+  <div class="section-header">
+    <h2 class="section-title">{% trans "Pick up" %}</h2>
+  </div>
 
-<section class="pick-up-section ">
-    <div class="section-header">
-        <h2 class="section-title">{% trans "Pick up" %}</h2>
-    </div>
-
-    <div class="pick-up-components container">
-        <a href="" class="pick-up-content">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <p class="pick-up-description">{% trans "Corporate profile" %}</p>
-        </a>
-        <a href="" class="pick-up-content">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <p class="pick-up-description">{% trans "Our projects" %}</p>
-        </a>
-        <a href="" class="pick-up-content">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <p class="pick-up-description">{% trans "Sinova at a glance" %}</p>
-        </a>
-    </div>
+  <div class="pick-up-components container">
+    {% for pickup in pickup_items %}
+    <a
+      href="{% if pickup.url %}{{ pickup.url }}{% else %}#{% endif %}"
+      class="pick-up-content"
+    >
+      <img src="{{ pickup.image.url }}" alt="{{ pickup.title }}" />
+      <p class="pick-up-description">{{ pickup.title }}</p>
+    </a>
+    {% empty %} {% endfor %}
+  </div>
 </section>
-
 
 <!--SUBSCRIBE SECTION -->
 {% include 'components/gallery.html' %}
 
-
-
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const centerIcons = document.querySelectorAll('.center-icon');
+  document.addEventListener("DOMContentLoaded", function () {
+    const centerIcons = document.querySelectorAll(".center-icon");
 
-        centerIcons.forEach((icon) => {
-            const afterContent = icon.parentElement.querySelector('.after-content');
-            let hoverTimeout;
+    centerIcons.forEach((icon) => {
+      const afterContent = icon.parentElement.querySelector(".after-content");
+      let hoverTimeout;
 
-            icon.addEventListener('mouseenter', function () {
-                clearTimeout(hoverTimeout);
-                afterContent.classList.add('active');
-            });
+      icon.addEventListener("mouseenter", function () {
+        clearTimeout(hoverTimeout);
+        afterContent.classList.add("active");
+      });
 
-            icon.addEventListener('mouseleave', function () {
-                hoverTimeout = setTimeout(() => {
-                    afterContent.classList.remove('active');
-                }, 100);
-            });
+      icon.addEventListener("mouseleave", function () {
+        hoverTimeout = setTimeout(() => {
+          afterContent.classList.remove("active");
+        }, 100);
+      });
 
-            afterContent.addEventListener('mouseenter', function () {
-                clearTimeout(hoverTimeout);
-                afterContent.classList.add('active');
-            });
+      afterContent.addEventListener("mouseenter", function () {
+        clearTimeout(hoverTimeout);
+        afterContent.classList.add("active");
+      });
 
-            afterContent.addEventListener('mouseleave', function () {
-                afterContent.classList.remove('active');
-            });
-        });
+      afterContent.addEventListener("mouseleave", function () {
+        afterContent.classList.remove("active");
+      });
+    });
+  });
+
+  // GALLERY SECTION
+  document.addEventListener("DOMContentLoaded", function () {
+    const swiperGallery = new Swiper(".gallery-section .labSwiper", {
+      slidesPerView: 2.5,
+      centeredSlides: true,
+      spaceBetween: 20,
+      loop: true,
+      speed: 800,
+      navigation: {
+        nextEl: ".gallery-section .swiper-button-next",
+        prevEl: ".gallery-section .swiper-button-prev",
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.3,
+          spaceBetween: 15,
+        },
+        640: {
+          slidesPerView: 1.8,
+          spaceBetween: 15,
+        },
+        1024: {
+          slidesPerView: 2.2,
+          spaceBetween: 20,
+        },
+      },
+      on: {
+        init: function () {
+          updateSlideScaling();
+        },
+        slideChange: function () {
+          updateSlideScaling();
+        },
+      },
     });
 
+    function updateSlideScaling() {
+      const slides = document.querySelectorAll(
+        ".gallery-section .swiper-slide"
+      );
+
+      slides.forEach((slide) => {
+        slide.classList.remove("active-slide");
+      });
+
+      setTimeout(() => {
+        const activeSlide = document.querySelector(
+          ".gallery-section .swiper-slide-active"
+        );
+        if (activeSlide) {
+          activeSlide.classList.add("active-slide");
+        }
+      }, 50);
+    }
+  });
+
+  // TABS SECTION
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tab");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        tabs.forEach((t) => t.classList.remove("active"));
+        this.classList.add("active");
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+        });
+        const tabId = this.getAttribute("data-tab");
+        document.getElementById(tabId).classList.add("active");
+      });
+    });
+  });
 </script>
 
 {% endblock %}
