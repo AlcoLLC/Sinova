@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class About(models.Model):
     iframe_video = models.URLField(
         max_length=200,)

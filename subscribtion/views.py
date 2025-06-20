@@ -9,7 +9,7 @@ from .models import EmailSubscription
 import json
 
 def subscription_form(request):
-    return render(request, 'subscription/form.html')
+    return render(request, 'components/gallery.html')
 
 @require_http_methods(["POST"])
 def subscribe_email(request):
@@ -26,7 +26,6 @@ def subscribe_email(request):
                 'message': 'Email adresi gereklidir.'
             }, status=400)
         
-        # Email validasyonu
         try:
             validate_email(email)
         except ValidationError:
