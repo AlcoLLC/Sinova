@@ -63,7 +63,13 @@ INSTALLED_APPS = [
 
     # apps
 
-    'home'
+    'home',
+    'about',
+    'businesses',
+    'investorRelations',
+    'news',
+    'gallery',
+    'subscribtion',
 ]
 
 MIDDLEWARE = [
