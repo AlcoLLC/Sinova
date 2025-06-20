@@ -1,1 +1,274 @@
-{% load static %} {% load i18n %} {% block content %} {% endblock %}
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+<header>
+</header>
+
+
+<!-- GALLERY SECTION -->
+
+<section class="gallery-section">
+    <div class="swiper labSwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="{% static 'images/gallery1.png' %}" alt="" />
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'images/gallery2.jpg' %}" alt="" />
+            </div>
+            <div class="swiper-slide">
+                <img src="{% static 'images/gallery3.jpg' %}" alt="" />
+            </div>
+        </div>
+        <div class="swiper-button-next"><i class="fa-solid fa-caret-right"></i></div>
+        <div class="swiper-button-prev"><i class="fa-solid fa-caret-left"></i></div>
+    </div>
+</section>
+
+
+<!-- NEWS TABS SECTION -->
+
+<section class="news-section container">
+    <div class="section-header">
+        <h2 class="section-title">{% trans "News" %}</h2>
+    </div>
+
+    <div class="news-tabs">
+        <div class="tab active" data-tab="news-sinova">{% trans "What’s new" %}</div>
+        <div class="tab" data-tab="news-releases">{% trans "News releases" %}</div>
+        <div class="tab" data-tab="announcements">{% trans "Announcements" %}</div>
+    </div>
+
+    <div class="news-content">
+        <!-- What’s new -->
+        <div class="tab-content active" id="news-sinova">
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- News releases -->
+        <div class="tab-content" id="news-releases">
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Announcements -->
+        <div class="tab-content" id="announcements">
+
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <button class="news-button">
+        <a href="">{% trans "News list" %} <i class="fa-solid fa-arrow-right-long"></i> </a>
+    </button>
+</section>
+
+
+
+<!-- COMPANY SECTION -->
+
+<section class="sections-container">
+    <!-- Section 1 -->
+    <div class="section-item section-1">
+        <div class="section-background"></div>
+
+        <div class="before-content">
+            <div class="before-text">
+                <h2 class="section-title">{% trans "Company" %}</h2>
+                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
+                    through strategic investment, innovation, and industrial excellence.</p>
+                <a href="#" class="section-link">
+                    {% trans "About us" %}
+                    <i class="fas fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="after-content">
+            <div class="after-text">
+                <h2 class="section-title">About us</h2>
+                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
+                    through strategic investment, innovation, and industrial excellence.</p>
+                <a href="#" class="section-link">
+                    Learn more
+                    <i class="fas fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="center-icon">
+            <i class="fas fa-caret-right"></i>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section-item section-2">
+        <div class="section-background"></div>
+
+        <div class="before-content">
+            <div class="before-text">
+                <h2 class="section-title">{% trans "Sustainability" %}</h2>
+                <p class="section-description">We are committed to delivering solutions that align with global
+                    environmental standards and customer needs.</p>
+                <a href="#" class="section-link">
+                    {% trans "Learn more" %}
+                    <i class="fas fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="after-content">
+            <div class="after-text">
+                <h2 class="section-title">{% trans "About us" %}</h2>
+                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
+                    through strategic investment, innovation, and industrial excellence.</p>
+                <a href="#" class="section-link">
+                    {% trans "About us" %}
+                    <i class="fas fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="center-icon">
+            <i class="fas fa-caret-right"></i>
+        </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="section-item section-3">
+        <div class="section-background"></div>
+
+        <div class="before-content">
+            <div class="before-text">
+                <h2 class="section-title">{% trans "Investor relations" %}</h2>
+                <p class="section-description">Explore Sinova's financial strength and long-term vision. Reports,
+                    disclosures, governance updates and shareholder resources.</p>
+                <a href="#" class="section-link">
+                   {% trans "About us" %}
+                    <i class="fas fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="after-content">
+            <div class="after-text">
+                <h2 class="section-title">About us</h2>
+                <p class="section-description">Sinova is a multi-sector holding company committed to shaping the future
+                    through strategic investment, innovation, and industrial excellence.</p>
+                <a href="#" class="section-link">
+                    {% trans "Learn more" %}
+                    <i class="fas fa-arrow-right-long"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="center-icon">
+            <i class="fas fa-caret-right"></i>
+        </div>
+    </div>
+</section>
+
+
+<!-- PICK UP SECTION -->
+
+<section class="pick-up-section ">
+    <div class="section-header">
+        <h2 class="section-title">{% trans "Pick up" %}</h2>
+    </div>
+
+    <div class="pick-up-components container">
+        <a href="" class="pick-up-content">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <p class="pick-up-description">{% trans "Corporate profile" %}</p>
+        </a>
+        <a href="" class="pick-up-content">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <p class="pick-up-description">{% trans "Our projects" %}</p>
+        </a>
+        <a href="" class="pick-up-content">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <p class="pick-up-description">{% trans "Sinova at a glance" %}</p>
+        </a>
+    </div>
+</section>
+
+
+<!--SUBSCRIBE SECTION -->
+{% include 'components/gallery.html' %}
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const centerIcons = document.querySelectorAll('.center-icon');
+
+        centerIcons.forEach((icon) => {
+            const afterContent = icon.parentElement.querySelector('.after-content');
+            let hoverTimeout;
+
+            icon.addEventListener('mouseenter', function () {
+                clearTimeout(hoverTimeout);
+                afterContent.classList.add('active');
+            });
+
+            icon.addEventListener('mouseleave', function () {
+                hoverTimeout = setTimeout(() => {
+                    afterContent.classList.remove('active');
+                }, 100);
+            });
+
+            afterContent.addEventListener('mouseenter', function () {
+                clearTimeout(hoverTimeout);
+                afterContent.classList.add('active');
+            });
+
+            afterContent.addEventListener('mouseleave', function () {
+                afterContent.classList.remove('active');
+            });
+        });
+    });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+
+{% load static %} {% load i18n %}
+
+<section class="subscribe-section container">
+    <div class="section-header">
+        <h2 class="section-title">{% trans "Gallery" %}</h2>
+    </div>
+
+    <div class="subscribe-components">
+        <div class="left-content">
+            <h2 class="section-title">{% trans "Stay informed" %}</h2>
+            <p class="section-description">{% blocktrans %} Subscribe to our e-bulletin to follow all developments
+                about Sinova Group. {% endblocktrans %} </p>
+
+            <form action="">
+                <div class="form-row">
+                    <input type="email">
+                    <button type="submit" class="send-btn">{% trans "Send" %}</button>
+                </div>
+                <label for="checkbox">
+                    <div class="checkbox-container">
+                        <input type="checkbox" name="checkbox" id="checkbox" required>
+                    </div>
+                    <p class="section-description">
+                        {% blocktrans %} Within the scope of the Bulletin Membership Information Text, I accept that my
+                        identity and contact data will be processed by Sinova Group for the purpose of promoting its
+                        services, providing information about events and news, and that it will be shared with third
+                        parties from whom we receive services, and that commercial electronic messages such as
+                        advertisements, promotions and information will be sent to my e-mail address..
+                        {% endblocktrans %}
+                    </p>
+                </label>
+            </form>
+
+        </div>
+
+        <div class="right-content">
+
+            <div class="images-left">
+                <img src="{% static 'images/gallery1.png' %}" alt="">
+                <img src="{% static 'images/gallery2.jpg' %}" alt="">
+                <img src="{% static 'images/gallery3.jpg' %}" alt="">
+            </div>
+            <div class="image-right">
+                <img src="{% static 'images/gallery3.jpg' %}" alt="">
+                <img src="{% static 'images/gallery1.png' %}" alt="">
+                <img src="{% static 'images/gallery2.jpg' %}" alt="">
+                <img src="{% static 'images/gallery1.png' %}" alt="">
+            </div>
+        </div>
+
+    </div>
+</section>

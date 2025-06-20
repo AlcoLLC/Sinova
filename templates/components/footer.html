@@ -1,1 +1,57 @@
 {% load static %} {% load i18n %}
+
+
+<footer>
+
+    <div class="footer-top ">
+        <h3>Related pages</h3>
+        <div class="pages middle-container">
+            <a href="">{% trans "About us" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="">{% trans "Businesses" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="">{% trans "Sustainability" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="">{% trans "Investor relations" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+            <a href="">{% trans "Contact us" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+    </div>
+    <div class="footer-center middle-container ">
+            <img class="sinova-logo" src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
+        <div class="footer-main">
+            <div class="follow-us">
+                <h3 class="footer-title">{% trans "Follow us" %}</h3>
+                <p class="footer-desc">{% blocktrans %} Follow us on our social media accounts for up-to-date news
+                    regarding
+                    the Sinova Group. {% endblocktrans %} </p>
+                <div class="sosial">
+                    <a href=""><img src="{% static 'images/whatsapp.svg' %}" alt=""></a>
+                    <a href=""><img src="{% static 'images/youtube.svg' %}" alt=""></a>
+                    <a href=""><img src="{% static 'images/linkedin.svg' %}" alt=""></a>
+                    <a href=""><img src="{% static 'images/instagram.svg' %}" alt=""></a>
+                </div>
+            </div>
+
+            <div class="contact-us">
+                <div>
+                    <h3 class="footer-title">{% trans "Contact with us" %}</h3>
+                    <p class="footer-desc">{% blocktrans %} Place Saint François 12 bis, 1003, Lausanne
+                        Switzerland {% endblocktrans %} </p>
+                    <div class="contacts">
+                        <a href="">{% trans "Phone number" %}</a>
+                        <a href="">{% trans "Email address" %}</a>
+                    </div>
+                </div>
+                <button>
+                    <i class="fa-solid fa-caret-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom middle-container">
+        <p class="footer-desc">{% blocktrans %} © 2025 SINOVA GROUP. All rights reserved. {% endblocktrans %}</p>
+        <div>
+            <p class="footer-desc">{% trans "Terms of use" %}</p>
+            <p class="footer-desc">{% trans "Privacy Policy" %}</p>
+        </div>
+    </div>
+
+</footer>
