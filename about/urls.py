@@ -4,7 +4,7 @@ from . import views
 app_name = 'about'
 
 urlpatterns = [
-    path('', views.about_detail, name='about'),
+    path('about/', views.about_detail, name='about'),
     
 
     # path('#history', views.AboutView.as_view(), name='history'),

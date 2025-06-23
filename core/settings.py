@@ -70,6 +70,8 @@ INSTALLED_APPS = [
     'news',
     'gallery',
     'subscribtion',
+    'sustainability',
+    'contact'
 ]
 
 MIDDLEWARE = [
