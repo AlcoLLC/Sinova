@@ -1,0 +1,187 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+<header class="page-header">
+    <div class="header-content">
+        <h2 class="section-title">{% trans "Businesses" %}</h2>
+        <p class="section-description">{% blocktrans %} Explore the scope of SINOVA’s diversified operations across
+            strategic industries. {% endblocktrans %}</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="businesses-section-header ">
+        <p>
+            {% blocktrans %}
+            Sinova Group operates through four core Business Groups, each representing a vital pillar of
+            our global growth strategy. Each Group functions independently with deep sectoral expertise, and together
+            they
+            create powerful synergies that deliver holistic, cross-industry solutions to customers worldwide.
+            {% endblocktrans %}
+        </p>
+    </div>
+
+</div>
+
+
+<div class="clickable-tabs container">
+    <div class="tab" data-tab="finance-investment">
+        <h2 class="section-title">Finance & Investment</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="technology">
+        <h2 class="section-title">Technology</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="trade">
+        <h2 class="section-title">Trade</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="logistics">
+        <h2 class="section-title">Logistics</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="manufacturing">
+        <h2 class="section-title">Manufacturing</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="image-container">
+        <img src="{% static 'images/gallery1.png' %}" alt="Businesses Image">
+    </div>
+</div>
+
+
+<section class="businesses section-finance-investment container" id="finance-investment">
+    <div class="section-header ">
+        <h2 class="section-title">{% trans "Finance & Investment" %}</h2>
+        <p class="section-description">description</p>
+    </div>
+
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Excellence
+        </h4>
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Unity
+        </h4>
+    </div>
+
+    <div class="two-images reverse">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    </div>
+
+</section>
+
+
+<section class="businesses section-technology container" id="technology">
+    <div class="section-header ">
+        <h2 class="section-title">{% trans "Technology" %}</h2>
+        <p class="section-description">description</p>
+    </div>
+
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Digital transformation projects
+        </h4>
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Software and IT solutions
+        </h4>
+    </div>
+
+    <div class="two-images ">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    </div>
+
+</section>
+
+<section class="businesses section-trade container" id="trade">
+    <div class="section-header ">
+        <h2 class="section-title">{% trans "Trade" %}</h2>
+        <p class="section-description">description</p>
+    </div>
+
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Excellence
+        </h4>
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Unity
+        </h4>
+    </div>
+
+    <div class="two-images reverse">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    </div>
+
+</section>
+
+
+<section class="businesses section-logistics container" id="logistics">
+    <div class="section-header ">
+        <h2 class="section-title">{% trans "Logistics" %}</h2>
+        <p class="section-description">description</p>
+    </div>
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Digital transformation projects
+        </h4>
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Software and IT solutions
+        </h4>
+    </div>
+
+    <div class="two-images ">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    </div>
+</section>
+
+<section class="businesses section-trade container" id="manufacturing">
+    <div class="section-header ">
+        <h2 class="section-title">{% trans "Manufacturing" %}</h2>
+        <p class="section-description">description</p>
+    </div>
+
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Excellence
+        </h4>
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Unity
+        </h4>
+    </div>
+
+    <div class="two-images reverse">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    </div>
+
+</section>
+
+
+<!--SUBSCRIBE SECTION -->
+{% include 'components/gallery.html' %}
+
+
+
+{% endblock %}
