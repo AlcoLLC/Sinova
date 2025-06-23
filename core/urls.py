@@ -28,12 +28,13 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include('home.urls')),
-    path('about/', include('about.urls')),
+    path('', include('about.urls')),
     path('', include('businesses.urls')),
     path('', include('investorRelations.urls')),
     path('', include('news.urls')),
     path('', include('gallery.urls')), 
     path('', include('subscribtion.urls')),
+    path('', include('sustainability.urls')),
     
     prefix_default_language=False 
 
