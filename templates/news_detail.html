@@ -1,0 +1,31 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+
+<div class="breadcrumb-container">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/home">{% trans "Home page" %} </a>
+            <a href="/news">{% trans "News" %} </a>
+            <span> | ALCO at Caspian Oil & Gas – For the First Time! </span>
+        </div>
+    </div>
+</div>
+
+
+<section class="news-details-section container">
+    <p class="news-date">May 31, 2025</p>
+
+    <h2 class="section-title">ALCO at Caspian Oil & Gas – For the First Time!</h2>
+
+    <div class="two-images">
+        <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
+    </div>
+
+    <p class="section-description">
+        news description
+    </p>
+
+</section>
+
+{% endblock %}

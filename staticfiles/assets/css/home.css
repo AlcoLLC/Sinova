@@ -24,7 +24,7 @@
   list-style: none;
   font-size: 16px;
   font-family: "TT Norms Pro Normal", sans-serif;
-  
+
 }
 
 .container {
@@ -59,7 +59,7 @@
 /* NAV  */
 nav {
   width: 100%;
-  height: 145px;
+  height: 150px;
   background-color: #fff;
   padding: 15px;
 }
@@ -312,8 +312,8 @@ header {
 /* News section */
 
 .news-section {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 50px auto;
+  padding-top: 50px;
 }
 
 .news-section .news-tabs {
@@ -366,17 +366,34 @@ header {
 
 .news-sinova-content {
   padding: 20px 0;
-  transition: all 0.3s ease;
   border-bottom: 1px solid #AFAFAF;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.9s ease, padding 0.3s ease, box-shadow 0.3s ease;
 }
 
+.news-sinova-content.hidden {
+  display: none;
+}
+
+.news-sinova-content.preparing {
+  display: block;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.news-sinova-content.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
 
 .news-sinova-content:hover {
   transform: scale(1.01);
   padding: 20px;
   box-shadow: 0px 2px 6.5px 0px #00000030;
+  transition: all 0.3s ease;
 }
-
 
 
 .news-sinova-content .news-date {
@@ -904,7 +921,7 @@ footer .sinova-logo {
   width: 70%;
 }
 
-.footer-main .contact-us button {
+.scroll-top-btn {
   border: none;
   width: 70px;
   height: 70px;
@@ -917,12 +934,11 @@ footer .sinova-logo {
   transition: background-color 0.3s ease;
 }
 
-.footer-main .contact-us button:hover {
+.scroll-top-btn:hover {
   background-color: #e02e2e;
-  ;
 }
 
-.footer-main .contact-us button i {
+.scroll-top-btn i {
   font-size: 20px;
   color: #fff;
 }

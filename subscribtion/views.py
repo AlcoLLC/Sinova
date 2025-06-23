@@ -9,7 +9,7 @@ from .models import EmailSubscription
 import json
 
 def subscription_form(request):
-    return render(request, 'components/gallery.html')
+    return render(request, 'components/subscribe.html')
 
 @require_http_methods(["POST"])
 def subscribe_email(request):
