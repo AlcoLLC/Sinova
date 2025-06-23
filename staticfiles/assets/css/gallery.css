@@ -1,0 +1,10 @@
+.breadcrumb-container {
+    width: 100%;
+    background-color: #fff;
+}
+
+
+.breadcrumb{
+    display: flex;
+    
+}
