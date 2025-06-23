@@ -1,13 +1,6 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
 
-<header class="page-header">
-    <div class="header-content">
-        <h2 class="section-title">{% trans "About us" %}</h2>
-        <p class="section-description">{% blocktrans %} Sinova Group operates across finance, logistics, technology, and
-            manufacturing – empowering sustainable growth. {% endblocktrans %}</p>
-    </div>
-</header>
-
+{% include 'components/page-header.html' %}
 
 
 <div class="about-tabs container">

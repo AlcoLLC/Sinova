@@ -1,0 +1,91 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+{% include 'components/page-header.html' %}
+
+<div class="clickable-tabs container">
+    <div class="tab" data-tab="report-result">
+        <h2 class="section-title">Reports, Results & Presentations</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="announcements">
+        <h2 class="section-title">Announcements & Publications</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+    <div class="tab" data-tab="corporate">
+        <h2 class="section-title">Corporate Governance</h2>
+        <button><i class="fa-solid fa-arrow-down-long"></i></button>
+    </div>
+
+</div>
+
+<section class="investor-relations  container" id="report-result">
+    <div class="image-container">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+    </div>
+
+    <div class="section-header ">
+        <h2 class="section-title">Reports, Results & Presentations</h2>
+        <p class="section-description">description</p>
+    </div>
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Venture capital initiatives
+        </h4>
+    </div>
+</section>
+
+
+<section class="investor-relations  container" id="announcements">
+
+    <div class="image-container">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+    </div>
+
+    <div class="section-header ">
+        <h2 class="section-title">Announcements & Publications</h2>
+        <p class="section-description">description</p>
+    </div>
+
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Digital transformation projects
+        </h4>
+    </div>
+
+
+</section>
+
+
+<section class="investor-relations  container" id="corporate">
+
+    <div class="image-container">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+    </div>
+
+    <div class="section-header ">
+        <h2 class="section-title">Corporate Governance</h2>
+        <p class="section-description">description</p>
+    </div>
+
+
+    <div class="text-container">
+        <h4 class="section-subtitle">
+            <i class="fa-solid fa-circle"></i>
+            Global sourcing and cross-border procurement of raw materials and finished goods
+        </h4>
+    </div>
+
+
+</section>
+
+
+<!--SUBSCRIBE SECTION -->
+{% include 'components/gallery.html' %}
+
+
+
+{% endblock %}

@@ -1,12 +1,7 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
 
-<header class="page-header">
-    <div class="header-content">
-        <h2 class="section-title">{% trans "Businesses" %}</h2>
-        <p class="section-description">{% blocktrans %} Explore the scope of SINOVA’s diversified operations across
-            strategic industries. {% endblocktrans %}</p>
-    </div>
-</header>
+{% include 'components/page-header.html' %}
+
 
 <div class="container">
     <div class="businesses-section-header ">
@@ -46,14 +41,11 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="image-container">
-        <img src="{% static 'images/gallery1.png' %}" alt="Businesses Image">
+<section class="businesses container" id="finance-investment">
+    <div class="two-images">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
     </div>
-</div>
 
-
-<section class="businesses section-finance-investment container" id="finance-investment">
     <div class="section-header ">
         <h2 class="section-title">{% trans "Finance & Investment" %}</h2>
         <p class="section-description">description</p>
@@ -70,16 +62,15 @@
             Unity
         </h4>
     </div>
+</section>
+
+<section class="businesses  container" id="technology">
 
     <div class="two-images reverse">
         <img src="{% static 'images/gallery1.png' %}" alt="">
         <img src="{% static 'images/gallery2.jpg' %}" alt="">
     </div>
 
-</section>
-
-
-<section class="businesses section-technology container" id="technology">
     <div class="section-header ">
         <h2 class="section-title">{% trans "Technology" %}</h2>
         <p class="section-description">description</p>
@@ -97,14 +88,15 @@
         </h4>
     </div>
 
+</section>
+
+<section class="businesses  container" id="trade">
+
     <div class="two-images ">
         <img src="{% static 'images/gallery1.png' %}" alt="">
         <img src="{% static 'images/gallery2.jpg' %}" alt="">
     </div>
 
-</section>
-
-<section class="businesses section-trade container" id="trade">
     <div class="section-header ">
         <h2 class="section-title">{% trans "Trade" %}</h2>
         <p class="section-description">description</p>
@@ -122,61 +114,10 @@
         </h4>
     </div>
 
-    <div class="two-images reverse">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="">
-    </div>
+
 
 </section>
 
-
-<section class="businesses section-logistics container" id="logistics">
-    <div class="section-header ">
-        <h2 class="section-title">{% trans "Logistics" %}</h2>
-        <p class="section-description">description</p>
-    </div>
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Digital transformation projects
-        </h4>
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Software and IT solutions
-        </h4>
-    </div>
-
-    <div class="two-images ">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="">
-    </div>
-</section>
-
-<section class="businesses section-trade container" id="manufacturing">
-    <div class="section-header ">
-        <h2 class="section-title">{% trans "Manufacturing" %}</h2>
-        <p class="section-description">description</p>
-    </div>
-
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Excellence
-        </h4>
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Unity
-        </h4>
-    </div>
-
-    <div class="two-images reverse">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="">
-    </div>
-
-</section>
 
 
 <!--SUBSCRIBE SECTION -->
