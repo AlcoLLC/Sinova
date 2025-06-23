@@ -33,3 +33,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const showMoreButton = document.getElementById('showMoreButton');
+  const allRows = document.querySelectorAll('.image-row');
+  const initialRowsToShow = 4;
+  let currentVisibleRows = initialRowsToShow;
+
+  if (allRows.length <= initialRowsToShow) {
+    showMoreButton.classList.add('hidden');
+  } else {
+    for (let i = initialRowsToShow; i < allRows.length; i++) {
+      allRows[i].style.display = 'none';
+    }
+  }
+
+  showMoreButton.addEventListener('click', function () {
+    if (currentVisibleRows < allRows.length) {
+      const nextRow = allRows[currentVisibleRows];
+      nextRow.style.display = 'flex';
+      nextRow.classList.add('fade-in');
+      currentVisibleRows++;
+
+      if (currentVisibleRows >= allRows.length) {
+        showMoreButton.classList.add('hidden');
+      }
+    }
+  });
+});

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+
+<div class="breadcrumb-container">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/home">{% trans "Home page" %} </a>
+            <span> | {% trans "Media center" %} </span>
+        </div>
+    </div>
+</div>
+
+
+<section class="sinova-production ">
+    <div class="container">
+        <div class="production-section ">
+            <div class="section-background"></div>
+            <div class="play-button" id="playButton">
+                <i>►</i>
+            </div>
+            <div class="video-container" id="videoContainer">
+                <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/7NdBMqxDMrE?rel=0&showinfo=0&modestbranding=1"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="production-subtitle">
+            <p>{% trans "Our corporate profile movie" %}</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="sinova-media-center container">
+    <div class="media-center-images">
+
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+
+        <div class="image-row">
+            <img src="{% static 'images/gallery1.png' %}" alt="">
+            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        </div>
+
+    </div>
+
+    <button class="show-more" id="showMoreButton">
+        {% trans "SHOW MORE" %}
+    </button>
+
+</section>
+
+
+
+{% endblock %}

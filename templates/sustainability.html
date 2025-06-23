@@ -1,0 +1,45 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+{% include 'components/page-header.html' %}
+
+<div class="sustainability-section container">
+    <div class="section-header">
+        <p class="section-description"> sustainability description</p>
+    </div>
+
+    <div class="image-text-content">
+        <img src="{% static 'images/mission.png' %}" alt="">
+
+        <div class="text-content">
+            <!-- <h3 class="section-subtitle">
+                Environmental Responsibility
+            </h3> -->
+            <p class="section-description">
+                description
+            </p>
+        </div>
+
+    </div>
+
+    <div class="image-container">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+    </div>
+
+    <div class="section-header">
+        <p class="section-description"> sustainability description 2</p>
+    </div>
+
+    <div class="two-images reverse">
+        <img src="{% static 'images/gallery1.png' %}" alt="">
+        <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    </div>
+</div>
+
+
+
+<!--SUBSCRIBE SECTION -->
+{% include 'components/subscribe.html' %}
+
+
+
+{% endblock %}

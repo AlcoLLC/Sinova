@@ -1,0 +1,115 @@
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+
+
+<div class="breadcrumb-container">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/home">{% trans "Home page" %} </a>
+            <span> | {% trans "News" %} </span>
+        </div>
+    </div>
+</div>
+
+
+<div class="news-header-image">
+    <img src="{% static 'images/gallery1.png' %}" alt="">
+</div>
+
+<section class="news-section container">
+    <div class="section-header">
+        <h2 class="section-title">{% trans "All articles" %}</h2>
+    </div>
+
+    <div class="news-tabs">
+        <div class="tab active" data-tab="news-sinova">
+            {% trans "What's new" %}
+        </div>
+        <div class="tab" data-tab="news-releases">{% trans "News releases" %}</div>
+        <div class="tab" data-tab="announcements">{% trans "Announcements" %}</div>
+    </div>
+
+    <div class="news-content">
+        <!-- What’s new -->
+        <div class="tab-content active" id="news-sinova">
+
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- News releases -->
+        <div class="tab-content" id="news-releases">
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Announcements -->
+        <div class="tab-content" id="announcements">
+
+            <div class="news-sinova-content">
+                <a href="">
+                    <p class="news-date">
+                        May 31, 2025 <span>{% trans "New" %}</span>
+                    </p>
+                    <p class="section-description">
+                        ALCO at Caspian Oil & Gas – For the First Time!
+                    </p>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="news-btns">
+        <button class="show-more" id="showMoreNewsButton">
+            {% trans "SHOW MORE" %}
+        </button>
+        <button class="scroll-top-btn" id="scrollTopButton">
+            <i class="fa-solid fa-caret-up"></i>
+        </button>
+    </div>
+</section>
+
+
+
+{% endblock %}
