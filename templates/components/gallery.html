@@ -1,247 +1,36 @@
-{% load static %} {% load i18n %}
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
 
-<section class="subscribe-section container">
-  <div class="section-header">
-    <h2 class="section-title">{% trans "Gallery" %}</h2>
-  </div>
-
-  <!-- Notification Container -->
-  <div id="notification" class="notification hidden">
-    <div class="notification-content">
-      <span id="notification-message"></span>
-      <button id="notification-close" class="notification-close">
-        &times;
-      </button>
+<div class="breadcrumb-container">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/home">{% trans "Home page" %} </a>
+      <span class="current-page"> | {% trans "Media center" %} </span>
     </div>
   </div>
+</div>
 
-  <div class="subscribe-components">
-    <div class="left-content">
-      <h2 class="section-title">{% trans "Stay informed" %}</h2>
-      <p class="section-description">
-        {% blocktrans %} Subscribe to our e-bulletin to follow all developments
-        about Sinova Group. {% endblocktrans %}
-      </p>
 
-      <form
-        id="subscribeForm"
-        method="post"
-        action="{% url 'subscription:subscribe' %}"
-      >
-        {% csrf_token %}
-        <div class="form-row">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="{% trans 'Your email address' %}"
-            required
-          />
-          <button type="submit" class="send-btn">{% trans "Send" %}</button>
-        </div>
-        <label for="checkbox">
-          <div class="checkbox-container">
-            <input type="checkbox" name="checkbox" id="checkbox" required />
-          </div>
-          <p class="section-description">
-            {% blocktrans %} Within the scope of the Bulletin Membership
-            Information Text, I accept that my identity and contact data will be
-            processed by Sinova Group for the purpose of promoting its services,
-            providing information about events and news, and that it will be
-            shared with third parties from whom we receive services, and that
-            commercial electronic messages such as advertisements, promotions
-            and information will be sent to my e-mail address..
-            {%endblocktrans%}
-          </p>
-        </label>
-      </form>
-    </div>
+<section class="sinova-media-center container">
+  <div class="media-center-images">
+    
+    <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
+    <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
+    <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
+    <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
+    <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
+    <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
+    <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
+    <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
 
-    <div class="right-content">
-      <div class="images-left">
-        {% for image in gallery_images|slice:":3" %}
-        <img
-          src="{{ image.image.url }}"
-          alt="{{ image.gallery.iframe_video_text }}"
-        />
-        {% empty %} {% endfor %}
-      </div>
-      <div class="image-right">
-        {% for image in gallery_images|slice:"3:7" %}
-        <img
-          src="{{ image.image.url }}"
-          alt="{{ image.gallery.iframe_video_text }}"
-        />
-        {% empty %} {% endfor %}
-      </div>
-    </div>
   </div>
 </section>
 
-<style>
-  /* Notification Styles */
-  .notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    min-width: 300px;
-    max-width: 400px;
-    padding: 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    opacity: 0;
-  }
 
-  .notification.show {
-    transform: translateX(0);
-    opacity: 1;
-  }
 
-  .notification.success {
-    background-color: #d4edda;
-    border-left: 4px solid #28a745;
-    color: #155724;
-  }
 
-  .notification.error {
-    background-color: #f8d7da;
-    border-left: 4px solid #dc3545;
-    color: #721c24;
-  }
+<!--SUBSCRIBE SECTION -->
+{% include 'components/gallery.html' %}
 
-  .notification.warning {
-    background-color: #fff3cd;
-    border-left: 4px solid #ffc107;
-    color: #856404;
-  }
 
-  .notification-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 20px;
-  }
 
-  .notification-close {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    margin-left: 15px;
-    color: inherit;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-  }
-
-  .notification-close:hover {
-    opacity: 1;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .notification {
-      top: 10px;
-      right: 10px;
-      left: 10px;
-      min-width: auto;
-      max-width: none;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("subscribeForm");
-    const notification = document.getElementById("notification");
-    const notificationMessage = document.getElementById("notification-message");
-    const notificationClose = document.getElementById("notification-close");
-
-    // Function to show notification
-    function showNotification(message, type = "success") {
-      // Remove existing classes
-      notification.classList.remove("success", "error", "warning", "hidden");
-
-      // Add new type class
-      notification.classList.add(type);
-
-      // Set message
-      notificationMessage.textContent = message;
-
-      // Show notification
-      notification.classList.remove("hidden");
-      setTimeout(() => {
-        notification.classList.add("show");
-      }, 10);
-
-      // Auto hide after 5 seconds
-      setTimeout(() => {
-        hideNotification();
-      }, 5000);
-    }
-
-    // Function to hide notification
-    function hideNotification() {
-      notification.classList.remove("show");
-      setTimeout(() => {
-        notification.classList.add("hidden");
-      }, 300);
-    }
-
-    // Close button event
-    notificationClose.addEventListener("click", hideNotification);
-
-    // Form submission
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      const checkbox = document.getElementById("checkbox").checked;
-
-      if (!checkbox) {
-        showNotification(
-          '{% trans "Please accept the terms and conditions" %}',
-          "warning"
-        );
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("email", email);
-      formData.append(
-        "csrfmiddlewaretoken",
-        document.querySelector("[name=csrfmiddlewaretoken]").value
-      );
-
-      fetch('{% url "subscription:subscribe" %}', {
-        method: "POST",
-        body: formData,
-        headers: {
-          "X-Requested-With": "XMLHttpRequest",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.success) {
-            showNotification(data.message, "success");
-            form.reset();
-          } else {
-            showNotification(data.message, "error");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          showNotification(
-            '{% trans "An error occurred. Please try again." %}',
-            "error"
-          );
-        });
-    });
-  });
-</script>
+{% endblock %}
