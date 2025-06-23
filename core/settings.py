@@ -49,6 +49,20 @@ else:
     }
 
 
+CORS_ALLOWED_ORIGINS = [
+    'http://65.108.93.160',
+    "https://65.108.93.160",
+    'http://65.108.93.160:200',
+    "https://65.108.93.160:200"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://65.108.93.160',
+    "https://65.108.93.160",
+    'http://65.108.93.160:200',
+    "https://65.108.93.160:200"
+]
+
 
 # Application definition
 
