@@ -107,7 +107,7 @@
     margin-left: 5px;
 }
 
-.production-section .play-button:hover  {
+.production-section .play-button:hover {
     transform: translate(-50%, -50%) scale(1.05);
 }
 
@@ -263,4 +263,109 @@
         width: 100px;
         height: 100px;
     }
+}
+
+
+
+.section-our-history {
+    margin: 50px auto;
+    padding: 50px 0;
+}
+
+.section-our-history .section-description {
+    text-align: center;
+}
+
+.section-our-history .two-images {
+    width: 100%;
+    height: 380px;
+    display: flex;
+    gap: 20px;
+    margin: 50px auto;
+}
+
+.section-our-history .two-images.reverse {
+    flex-direction: row-reverse;
+}
+
+.section-our-history .two-images img:nth-child(1) {
+    width: 65%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-our-history .two-images img:nth-child(2) {
+    width: 35%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-subtitle {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: -1%;
+    color: #141D43;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-container .section-subtitle {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.section-subtitle i {
+    font-size: 6px;
+}
+
+.section-vision-mission {
+    margin: 50px auto;
+    padding-top: 50px ;
+}
+
+.section-vision-mission .vision-mission-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    gap: 20px;
+    height: auto;
+}
+
+.section-vision-mission .vision-mission-content.reverse {
+    flex-direction: row-reverse;
+    border-top: 1px solid #AFAFAF;
+    border-bottom: 1px solid #AFAFAF;
+}
+
+.section-vision-mission .vision-mission-content img {
+    width: 25%;
+    height: 100%;
+}
+
+.section-vision-mission .vision-mission-content .text-content {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section-vision-mission .image-container {
+    width: 100%;
+    height: 380px;
+    margin: 50px auto;
+}
+
+.section-vision-mission .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-policies {
+    padding: 50px 0;
 }
