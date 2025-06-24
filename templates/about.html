@@ -1,169 +1,161 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
-
 {% include 'components/page-header.html' %}
 
-
 <div class="clickable-tabs container">
-    <div class="tab" data-tab="our-history">
-        <h2 class="section-title">Our History</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="vission-mission">
-        <h2 class="section-title">Vision, Mission & Values</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="policies">
-        <h2 class="section-title">Policies</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-
+  <div class="tab" data-tab="our-history">
+    <h2 class="section-title">Our History</h2>
+    <button><i class="fa-solid fa-arrow-down-long"></i></button>
+  </div>
+  <div class="tab" data-tab="vission-mission">
+    <h2 class="section-title">Vision, Mission & Values</h2>
+    <button><i class="fa-solid fa-arrow-down-long"></i></button>
+  </div>
+  <div class="tab" data-tab="policies">
+    <h2 class="section-title">Policies</h2>
+    <button><i class="fa-solid fa-arrow-down-long"></i></button>
+  </div>
 </div>
 
+<section class="sinova-production">
+  <div class="container">
+    {% if about.iframe_video_image %}
 
+    <div
+      class="production-section"
+      style="background-image: url('{{ about.iframe_video_image.url }}');"
+    >
+      <div class="section-background"></div>
 
-<section class="sinova-production ">
-    <div class="container">
-        <div class="production-section ">
-            <div class="section-background"></div>
-            <div class="play-button" id="playButton">
-                <i>►</i>
-            </div>
-            <div class="video-container" id="videoContainer">
-                <iframe width="560" height="315"
-                    src="https://www.youtube.com/embed/7NdBMqxDMrE?rel=0&showinfo=0&modestbranding=1"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="production-subtitle">
-            <p>{% trans "Our corporate profile movie" %}</p>
-        </div>
+      <div class="play-button" id="playButton">
+        <i>►</i>
+      </div>
+      <div class="video-container" id="videoContainer">
+        {% if about.iframe_video %}
+        <iframe
+          width="560"
+          height="315"
+          src="{{ about.iframe_video }}"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        {% else %} {% endif %}
+      </div>
     </div>
+    {% else %} {% endif %}
+    <div class="production-subtitle">
+      {% if about.iframe_video_text %}
+      <p>{{ about.iframe_video_text }}</p>
+      {% else %} {% endif %}
+    </div>
+  </div>
 </section>
-
 
 <section class="section-our-history container" id="our-history">
-    <div class="section-header ">
-        <h2 class="section-title">{% trans "Our History" %}</h2>
-        <p class="section-description">Sinova Group is a global enterprise, headquartered in Switzerland, comprising
-            companies across several verticals. The Group was established by bringing together companies with 15 years
-            of experience in investment, technology, logistics, and manufacturing under a single umbrella.</p>
-    </div>
+  <div class="section-header">
+    {% if about.our_history_title %}
+    <h2 class="section-title">{{ about.our_history_title }}</h2>
+    {% else %} {% endif %} {% if about.our_history_content_one %}
+    <p class="section-description">{{ about.our_history_content_one|safe }}</p>
+    {% else %} {% endif %}
+  </div>
 
-    <div class="two-images">
-        <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
-    </div>
+  <div class="two-images">
+    {% if about.our_history_image_one %}
+    <img src="{{ about.our_history_image_one.url }}" alt="History Image 1" />
+    {% else %} {% endif %} {% if about.our_history_image_two %}
+    <img src="{{ about.our_history_image_two.url }}" alt="History Image 2" />
+    {% else %} {% endif %}
+  </div>
 
-    <p class="section-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet dolores itaque
-        deserunt, distinctio saepe ullam consectetur molestias neque assumenda iste incidunt natus dolorum mollitia sunt
-        ipsa explicabo quo. Voluptas, omnis!
-    </p>
+  {% if about.our_history_content_two %}
+  <p class="section-description">{{ about.our_history_content_two|safe }}</p>
+  {% else %} {% endif %}
 
-
-    <div class="two-images reverse">
-        <img src="{% static 'images/gallery1.png' %}" alt="History Image 3">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 4">
-    </div>
+  <div class="two-images reverse">
+    {% if about.our_history_image_three %}
+    <img src="{{ about.our_history_image_three.url }}" alt="History Image 3" />
+    {% else %} {% endif %} {% if about.our_history_image_four %}
+    <img src="{{ about.our_history_image_four.url }}" alt="History Image 4" />
+    {% else %} {% endif %}
+  </div>
 </section>
 
-
 <section class="section-vision-mission container" id="vission-mission">
-    <div class="section-header">
-        <h2 class="section-title">{% trans "Mission, Vision & Values" %}</h2>
+  <div class="section-header">
+    <h2 class="section-title">{% trans "Mission, Vision & Values" %}</h2>
+  </div>
+
+  <div class="image-text-content">
+    {% if about.value_image %}
+    <img src="{{ about.our_mission_image.url }}" alt="Mission Image " />
+    {% else %} {% endif %}
+    <div class="text-content">
+      <h3 class="section-subtitle">{% trans "Our mission" %}</h3>
+      {% if about.our_mission %}
+      <p class="section-description">{{ about.our_mission|safe }}</p>
+      {% else %} {% endif %}
     </div>
+  </div>
 
-    <div class="image-text-content">
-        <img src="{% static 'images/mission.png' %}" alt="Mission Image ">
-
-        <div class="text-content">
-            <h3 class="section-subtitle">
-                {% trans "Our mission" %}
-            </h3>
-            <p class="section-description">
-                Deliver innovative experiences to our customers through creative products and service excellence.
-                Contribute meaningfully to the sustainable development of society.
-                Uphold sincerity and trust in all our business conduct.
-
-            </p>
-        </div>
-
+  <div class="image-text-content reverse">
+    {% if about.value_image %}
+    <img src="{{ about.our_vision_image.url }}" alt="Vision Image " />
+    {% else %} {% endif %}
+    <div class="text-content">
+      <h3 class="section-subtitle">{% trans "Our vision" %}</h3>
+      {% if about.our_vision %}
+      <p class="section-description">{{ about.our_vision|safe }}</p>
+      {% else %} {% endif %}
     </div>
+  </div>
 
-
-    <div class="image-text-content reverse">
-        <img src="{% static 'images/mission.png' %}" alt="Mission Image ">
-
-        <div class="text-content">
-            <h3 class="section-subtitle">
-                {% trans "Our vision" %}
-            </h3>
-            <p class="section-description">
-                Deliver innovative experiences to our customers through creative products and service excellence.
-                Contribute meaningfully to the sustainable development of society.
-                Uphold sincerity and trust in all our business conduct.
-
-            </p>
-        </div>
-
-    </div>
-
-    <div class="image-text-content ">
-        <img src="{% static 'images/mission.png' %}" alt="Mission Image ">
-        <div class="text-content">
-            <h3 class="section-subtitle">
-                {% trans "Our values" %}
-            </h3>
-            <p class="section-description">
-                Deliver innovative experiences to our customers through creative products and service excellence.
-                Contribute meaningfully to the sustainable development of society.
-                Uphold sincerity and trust in all our business conduct.
-
-            </p>
-        </div>
-    </div>
-
-    <div class="text-container">
+  <div class="image-text-content">
+    {% if about.value_image %}
+    <img src="{{ about.value_image.url }}" alt="Values Image " />
+    {% else %} {% endif %}
+    <div class="text-content">
+      <h3 class="section-subtitle">{% trans "Our values" %}</h3>
+      <div class="text-container">
+        {% for value in values %}
         <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Excellence
+          <i class="fa-solid fa-circle"></i>
+          {{ value.title }}
         </h4>
-        <p class="section-description">
-            We are driven by a passion for the highest standards in quality, constantly promoting merit-based
-            achievements.
-        </p>
-
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Unity
-        </h4>
-        <p class="section-description">
-            We are driven by a passion for the highest standards in quality, constantly promoting merit-based
-            achievements.
-        </p>
+        <p class="section-description">{{ value.description|safe }}</p>
+        {% empty %} {% endfor %}
+      </div>
     </div>
+  </div>
 
-    <div class="image-container">
-        <img src="{% static 'images/gallery1.png' %}" alt="Mission Vision Image">
-    </div>
+  <div class="text-container">
+    {% for value in values %}
+    <h4 class="section-subtitle">
+      <i class="fa-solid fa-circle"></i>
+      {{ value.title }}
+    </h4>
+    <p class="section-description">{{ value.description|safe }}</p>
+    {% empty %} {% endfor %}
+  </div>
 
+  <div class="image-container">
+    {% if about.value_image %}
+    <img src="{{ about.end_image.url }}" alt="Mission Vision Image" />
+    {% else %} {% endif %}
+  </div>
 </section>
 
 <section class="section-policies container" id="policies">
-    <div class="section-header">
-        <h2 class="section-title"> {% trans "Policies" %}
-        </h2>
+  <div class="section-header">
+    <h2 class="section-title">{% trans "Policies" %}</h2>
 
-        <p class="section-description">
-            policies description
-        </p>
-    </div>
+    {% if about.policies_description %}
+    <p class="section-description">{{ about.policies_description|safe }}</p>
+    {% else %} {% endif %}
+  </div>
 </section>
 
 <!--SUBSCRIBE SECTION -->
-{% include 'components/subscribe.html' %}
-
-
-
-{% endblock %}
+{% include 'components/subscribe.html' %} {% endblock %}

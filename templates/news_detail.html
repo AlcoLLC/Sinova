@@ -1,31 +1,31 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
 
-
 <div class="breadcrumb-container">
-    <div class="container">
-        <div class="breadcrumb">
-            <a href="/home">{% trans "Home page" %} </a>
-            <a href="/news">{% trans "News" %} </a>
-            <span> | ALCO at Caspian Oil & Gas – For the First Time! </span>
-        </div>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="/home">{% trans "Home page" %} </a>
+      <a href="/news">{% trans "News" %} </a>
+      <span> {{ news.title }} </span>
     </div>
+  </div>
 </div>
 
-
 <section class="news-details-section container">
-    <p class="news-date">May 31, 2025</p>
+  <p class="news-date">{{ news.date|date:"F d, Y" }}</p>
 
-    <h2 class="section-title">ALCO at Caspian Oil & Gas – For the First Time!</h2>
+  <h2 class="section-title">{{ news.title }}</h2>
 
-    <div class="two-images">
-        <img src="{% static 'images/gallery1.png' %}" alt="History Image 1">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="History Image 2">
-    </div>
+  {% if news.main_image or news.secondary_image %}
+  <div class="two-images">
+    {% if news.main_image %}
+    <img src="{{ news.main_image.url }}" alt="History Image 1" />
+    {% endif %} {% if news.secondary_image %}
+    <img src="{{ news.secondary_image.url }}" alt="History Image 2" />
+    {% endif %}
+  </div>
+  {% endif %}
 
-    <p class="section-description">
-        news description
-    </p>
-
+  <p class="section-description">{{ news.content }}</p>
 </section>
 
 {% endblock %}

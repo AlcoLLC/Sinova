@@ -1,128 +1,46 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
-
 {% include 'components/page-header.html' %}
 
-
 <div class="container">
-    <div class="businesses-section-header ">
-        <p>
-            {% blocktrans %}
-            Sinova Group operates through four core Business Groups, each representing a vital pillar of
-            our global growth strategy. Each Group functions independently with deep sectoral expertise, and together
-            they
-            create powerful synergies that deliver holistic, cross-industry solutions to customers worldwide.
-            {% endblocktrans %}
-        </p>
-    </div>
-
+  <div class="businesses-section-header">
+    <p>{% blocktrans %} business_header_text {% endblocktrans %}</p>
+  </div>
 </div>
-
 
 <div class="clickable-tabs container">
-    <div class="tab" data-tab="finance-investment">
-        <h2 class="section-title">Finance & Investment</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="technology">
-        <h2 class="section-title">Technology</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="trade">
-        <h2 class="section-title">Trade</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="logistics">
-        <h2 class="section-title">Logistics</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="manufacturing">
-        <h2 class="section-title">Manufacturing</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
+  {% for category in categories %}
+  <div class="tab" data-tab="{{ category.slug }}">
+    <h2 class="section-title">{{ category.title }}</h2>
+    <button><i class="fa-solid fa-arrow-down-long"></i></button>
+  </div>
+  {% endfor %}
 </div>
 
-<section class="businesses container" id="finance-investment">
-    <div class="two-images">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-    </div>
+{% for category in categories %}
+<section class="businesses container" id="{{ category.slug }}">
+  <div class="two-images {% cycle '' 'reverse' %}">
+    {% if category.main_image %}
+    <img src="{{ category.main_image.url }}" alt="{{ category.title }}" />
+    {% endif %} {% if category.secondary_image %}
+    <img src="{{ category.secondary_image.url }}" alt="{{ category.title }}" />
+    {% endif %}
+  </div>
 
-    <div class="section-header ">
-        <h2 class="section-title">{% trans "Finance & Investment" %}</h2>
-        <p class="section-description">description</p>
-    </div>
+  <div class="section-header">
+    <h2 class="section-title">{{ category.title }}</h2>
+    <p class="section-description">{{ category.description }}</p>
+  </div>
 
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Excellence
-        </h4>
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Unity
-        </h4>
-    </div>
+  <div class="text-container">
+    {% for feature in category.features.all %}
+    <h4 class="section-subtitle">
+      <i class="fa-solid fa-circle"></i>
+      {{ feature.title }}
+    </h4>
+    {% endfor %}
+  </div>
 </section>
-
-<section class="businesses  container" id="technology">
-
-    <div class="two-images reverse">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="">
-    </div>
-
-    <div class="section-header ">
-        <h2 class="section-title">{% trans "Technology" %}</h2>
-        <p class="section-description">description</p>
-    </div>
-
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Digital transformation projects
-        </h4>
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Software and IT solutions
-        </h4>
-    </div>
-
-</section>
-
-<section class="businesses  container" id="trade">
-
-    <div class="two-images ">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-        <img src="{% static 'images/gallery2.jpg' %}" alt="">
-    </div>
-
-    <div class="section-header ">
-        <h2 class="section-title">{% trans "Trade" %}</h2>
-        <p class="section-description">description</p>
-    </div>
-
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Excellence
-        </h4>
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Unity
-        </h4>
-    </div>
-
-
-
-</section>
-
-
+{% endfor %}
 
 <!--SUBSCRIBE SECTION -->
-{% include 'components/subscribe.html' %}
-
-
-
-{% endblock %}
+{% include 'components/subscribe.html' %} {% endblock %}

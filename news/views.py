@@ -4,37 +4,37 @@ from django.db.models import Q
 from .models import News
 
 def news_list(request):
-    news_queryset = News.objects.filter(is_active=True)
+    # "What's new" için tüm haberleri çek (5 ile sınırlama)
+    news_new = News.objects.filter(
+        is_active=True, 
+        new=True
+    ).order_by('order', '-date')
     
-    filter_type = request.GET.get('filter', 'all')
-    if filter_type == 'new':
-        news_queryset = news_queryset.filter(new=True)
-    elif filter_type == 'announcements':
-        news_queryset = news_queryset.filter(announcements=True)
-    elif filter_type == 'news':
-        news_queryset = news_queryset.filter(new=False, announcements=False)
-
+    # Eğer new=True olan haberler 5'ten azsa, geriye kalanları new=False olanlardan tamamla
+    if news_new.count() < 5:
+        remaining_count = 5 - news_new.count()
+        additional_news = News.objects.filter(
+            is_active=True,
+            new=False
+        ).order_by('order', '-date')[:remaining_count]
+        
+        news_new = list(news_new) + list(additional_news)
     
-    year = request.GET.get('year')
-    if year:
-        news_queryset = news_queryset.filter(date__year=year)
+    # Diğer kategoriler için tüm haberleri çek (sınırsız)
+    news_releases = News.objects.filter(
+        is_active=True, 
+        release=True
+    ).order_by('order', '-date')
     
-    month = request.GET.get('month')
-    if month:
-        news_queryset = news_queryset.filter(date__month=month)
-    
-    paginator = Paginator(news_queryset, 10) 
-    page_number = request.GET.get('page')
-    news_list = paginator.get_page(page_number)
-    
-    available_years = News.objects.filter(is_active=True).dates('date', 'year', order='DESC')
+    news_announcements = News.objects.filter(
+        is_active=True, 
+        announcement=True
+    ).order_by('order', '-date')
     
     context = {
-        'news_list': news_list,
-        'filter_type': filter_type,
-        'available_years': available_years,
-        'selected_year': year,
-        'selected_month': month,
+        'news_new': news_new,
+        'news_releases': news_releases,
+        'news_announcements': news_announcements,
     }
     
     return render(request, 'news.html', context)

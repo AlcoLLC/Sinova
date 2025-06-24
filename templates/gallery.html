@@ -1,6 +1,5 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
 
-
 <div class="breadcrumb-container">
     <div class="container">
         <div class="breadcrumb">
@@ -10,74 +9,177 @@
     </div>
 </div>
 
-
-<section class="sinova-production ">
+<section class="sinova-production">
     <div class="container">
-        <div class="production-section ">
+        <div class="production-section">
             <div class="section-background"></div>
             <div class="play-button" id="playButton">
                 <i>►</i>
             </div>
             <div class="video-container" id="videoContainer">
+                {% if gallery.iframe_video %}
+                <iframe width="560" height="315"
+                    src="{{ gallery.iframe_video }}"
+                    title="{{ gallery.iframe_video_text }}" 
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {% else %}
                 <iframe width="560" height="315"
                     src="https://www.youtube.com/embed/7NdBMqxDMrE?rel=0&showinfo=0&modestbranding=1"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {% endif %}
             </div>
         </div>
         <div class="production-subtitle">
-            <p>{% trans "Our corporate profile movie" %}</p>
+            <p>
+                {% if gallery.iframe_video_text %}
+                    {{ gallery.iframe_video_text }}
+                {% else %}
+                    {% trans "Our corporate profile movie" %}
+                {% endif %}
+            </p>
         </div>
     </div>
 </section>
 
-
 <section class="sinova-media-center container">
-    <div class="media-center-images">
-
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+    <div class="media-center-images" id="galleryContainer">
+        {% for image in page_obj %}
+        <div class="image-row" {% if forloop.counter > 6 %}style="display: none;"{% endif %}>
+            <img src="{{ image.image.url }}" alt="{{ gallery.iframe_video_text }}" loading="lazy">
         </div>
-
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
+        {% empty %}
+        <div class="no-images">
+            <p>{% trans "No images available" %}</p>
         </div>
-
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
-        </div>
-
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
-        </div>
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
-        </div>
-
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
-        </div>
-
-        <div class="image-row">
-            <img src="{% static 'images/gallery1.png' %}" alt="">
-            <img src="{% static 'images/gallery2.jpg' %}" alt="">
-        </div>
-
+        {% endfor %}
     </div>
 
+    {% if page_obj|length > 6 %}
     <button class="show-more" id="showMoreButton">
         {% trans "SHOW MORE" %}
     </button>
+    {% endif %}
 
+    <!-- Pagination for AJAX loading -->
+    <div class="pagination-info" style="display: none;">
+        <span id="currentPage">1</span>
+        <span id="hasNext">{% if page_obj.has_next %}true{% else %}false{% endif %}</span>
+        <span id="nextPageUrl">{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}</span>
+    </div>
 </section>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const showMoreButton = document.getElementById("showMoreButton");
+    const galleryContainer = document.getElementById("galleryContainer");
+    const allRows = document.querySelectorAll(".image-row");
+    const imagesPerLoad = 6;
+    let currentVisibleImages = Math.min(imagesPerLoad, allRows.length);
+    let currentPage = parseInt(document.getElementById("currentPage").textContent);
+    let hasNext = document.getElementById("hasNext").textContent === 'true';
 
+    if (!showMoreButton) return;
+
+    // Initial setup - show first 6 images
+    showImages(currentVisibleImages);
+
+    showMoreButton.addEventListener("click", function () {
+        // If we have more images on current page, show them
+        if (currentVisibleImages < allRows.length) {
+            const nextBatch = Math.min(currentVisibleImages + imagesPerLoad, allRows.length);
+            showImages(nextBatch);
+            currentVisibleImages = nextBatch;
+            
+            // If we've shown all images on this page and there are more pages
+            if (currentVisibleImages >= allRows.length && hasNext) {
+                loadMoreImages();
+            }
+        } else if (hasNext) {
+            // Load more images from next page
+            loadMoreImages();
+        }
+        
+        // Hide button if no more content
+        if (currentVisibleImages >= allRows.length && !hasNext) {
+            showMoreButton.style.display = 'none';
+        }
+    });
+
+    function showImages(count) {
+        for (let i = 0; i < count && i < allRows.length; i++) {
+            allRows[i].style.display = "flex";
+            allRows[i].classList.add("fade-in");
+        }
+    }
+
+    function loadMoreImages() {
+        if (!hasNext) return;
+        
+        showMoreButton.textContent = '{% trans "Loading..." %}';
+        showMoreButton.disabled = true;
+        
+        // Get next page URL
+        const nextPageUrl = document.getElementById("nextPageUrl").textContent;
+        
+        fetch(nextPageUrl, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Add new images to container
+            data.images.forEach((image, index) => {
+                const imageRow = document.createElement('div');
+                imageRow.className = 'image-row';
+                if (index >= imagesPerLoad) {
+                    imageRow.style.display = 'none';
+                }
+                imageRow.innerHTML = `<img src="${image.url}" alt="${image.alt}" loading="lazy">`;
+                galleryContainer.appendChild(imageRow);
+            });
+            
+            // Update pagination info
+            currentPage = data.current_page;
+            hasNext = data.has_next;
+            document.getElementById("currentPage").textContent = currentPage;
+            document.getElementById("hasNext").textContent = hasNext ? 'true' : 'false';
+            document.getElementById("nextPageUrl").textContent = data.next_page_url || '';
+            
+            // Update allRows reference
+            const newAllRows = document.querySelectorAll(".image-row");
+            const newVisibleCount = currentVisibleImages + Math.min(imagesPerLoad, data.images.length);
+            
+            // Show new batch of images
+            for (let i = currentVisibleImages; i < newVisibleCount; i++) {
+                if (newAllRows[i]) {
+                    newAllRows[i].style.display = "flex";
+                    newAllRows[i].classList.add("fade-in");
+                }
+            }
+            
+            currentVisibleImages = newVisibleCount;
+            
+            // Reset button
+            showMoreButton.textContent = '{% trans "SHOW MORE" %}';
+            showMoreButton.disabled = false;
+            
+            // Hide button if no more content
+            if (!hasNext && currentVisibleImages >= newAllRows.length) {
+                showMoreButton.style.display = 'none';
+            }
+        })
+        .catch(error => {
+            console.error('Error loading more images:', error);
+            showMoreButton.textContent = '{% trans "SHOW MORE" %}';
+            showMoreButton.disabled = false;
+        });
+    }
+});
+</script>
 
 {% endblock %}
