@@ -1,91 +1,46 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
-
 {% include 'components/page-header.html' %}
 
 <div class="clickable-tabs container">
-    <div class="tab" data-tab="report-result">
-        <h2 class="section-title">Reports, Results & Presentations</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="announcements">
-        <h2 class="section-title">Announcements & Publications</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-    <div class="tab" data-tab="corporate">
-        <h2 class="section-title">Corporate Governance</h2>
-        <button><i class="fa-solid fa-arrow-down-long"></i></button>
-    </div>
-
+  {% for category in categories %}
+  <div class="tab" data-tab="category-{{ category.id }}">
+    <h2 class="section-title">{{ category.title }}</h2>
+    <button><i class="fa-solid fa-arrow-down-long"></i></button>
+  </div>
+  {% endfor %}
 </div>
 
-<section class="investor-relations  container" id="report-result">
-    <div class="image-container">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-    </div>
+{% for category in categories %}
+<section class="investor-relations container" id="category-{{ category.id }}">
+  <div class="image-container">
+    {% if category.main_image %}
+    <img src="{{ category.main_image.url }}" alt="{{ category.title }}" />
+    {% else %}
+    {% endif %}
+  </div>
 
-    <div class="section-header ">
-        <h2 class="section-title">Reports, Results & Presentations</h2>
-        <p class="section-description">description</p>
-    </div>
+  <div class="section-header">
+    <h2 class="section-title">{{ category.title }}</h2>
+    <p class="section-description">{{ category.description }}</p>
+  </div>
 
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Venture capital initiatives
-        </h4>
-    </div>
+  <div class="text-container">
+    {% for feature in category.features.all %}
+    <h4 class="section-subtitle">
+      <i class="fa-solid fa-circle"></i>
+      {{ feature.title }}
+    </h4>
+    {% empty %} {% endfor %}
+  </div>
 </section>
-
-
-<section class="investor-relations  container" id="announcements">
-
-    <div class="image-container">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-    </div>
-
-    <div class="section-header ">
-        <h2 class="section-title">Announcements & Publications</h2>
-        <p class="section-description">description</p>
-    </div>
-
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Digital transformation projects
-        </h4>
-    </div>
-
-
+{% empty %}
+<section class="investor-relations container">
+  <div class="section-header">
+    <h2 class="section-title">Category Not Found</h2>
+    <p class="section-description">There is no active category.</p>
+  </div>
 </section>
+{% endfor %}
 
-
-<section class="investor-relations  container" id="corporate">
-
-    <div class="image-container">
-        <img src="{% static 'images/gallery1.png' %}" alt="">
-    </div>
-
-    <div class="section-header ">
-        <h2 class="section-title">Corporate Governance</h2>
-        <p class="section-description">description</p>
-    </div>
-
-
-    <div class="text-container">
-        <h4 class="section-subtitle">
-            <i class="fa-solid fa-circle"></i>
-            Global sourcing and cross-border procurement of raw materials and finished goods
-        </h4>
-    </div>
-
-
-</section>
-
-
-<!--SUBSCRIBE SECTION -->
-{% include 'components/subscribe.html' %}
-
-
-
-{% endblock %}
+<!-- SUBSCRIBE SECTION -->
+{% include 'components/subscribe.html' %} {% endblock %}

@@ -22,10 +22,6 @@ class SustainabilityAdmin(admin.ModelAdmin):
         ('Sub Content', {
             'fields': ('subcontent', 'image_subcontent')
         }),
-        ('Pictures', {
-            'fields': ('image_one', 'image_two', 'image_three'),
-            'classes': ('collapse',)
-        }),
         ('Status', {
             'fields': ('is_active',)
         }),
@@ -52,6 +48,10 @@ class SubtainabilityContentAdmin(admin.ModelAdmin):
         }),
         ('Status', {
             'fields': ('is_active',)
+        }),
+         ('Pictures', {
+            'fields': ('image_one', 'image_two'),
+                        'classes': ('collapse',)
         }),
         ('Dates', {
             'fields': ('created_at', 'updated_at'),

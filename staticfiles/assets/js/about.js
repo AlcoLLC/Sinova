@@ -15,21 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Enhanced tab navigation with URL parameters
 document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".clickable-tabs .tab");
   const sections = document.querySelectorAll(
     '[id="our-history"], [id="vission-mission"], [id="policies"]'
   );
 
-  // Function to update URL without page reload
   function updateURL(tabId) {
     const url = new URL(window.location);
     url.searchParams.set("tab", tabId);
     window.history.pushState({ tab: tabId }, "", url);
   }
 
-  // Function to scroll to section and update active tab
   function scrollToSection(targetId) {
     const targetElement = document.getElementById(targetId);
 
@@ -39,19 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
         block: "start",
       });
 
-      // Update active tab
       tabs.forEach((t) => t.classList.remove("active"));
       const activeTab = document.querySelector(`[data-tab="${targetId}"]`);
       if (activeTab) {
         activeTab.classList.add("active");
       }
 
-      // Update URL
       updateURL(targetId);
     }
   }
 
-  // Tab click handlers
   tabs.forEach((tab) => {
     tab.addEventListener("click", function () {
       const targetId = this.getAttribute("data-tab");
@@ -59,20 +53,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Check URL parameter on page load
   function checkURLParameter() {
     const urlParams = new URLSearchParams(window.location.search);
     const tabParam = urlParams.get("tab");
 
     if (tabParam) {
-      // Small delay to ensure page is fully loaded
       setTimeout(() => {
         scrollToSection(tabParam);
       }, 100);
     }
   }
 
-  // Handle browser back/forward buttons
   window.addEventListener("popstate", function (event) {
     if (event.state && event.state.tab) {
       const targetElement = document.getElementById(event.state.tab);
@@ -82,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
           block: "start",
         });
 
-        // Update active tab without updating URL (already in history)
         tabs.forEach((t) => t.classList.remove("active"));
         const activeTab = document.querySelector(
           `[data-tab="${event.state.tab}"]`
@@ -94,10 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Intersection Observer to update URL when scrolling
   const observerOptions = {
     root: null,
-    rootMargin: "-20% 0px -70% 0px", // Trigger when section is 20% from top
+    rootMargin: "-20% 0px -70% 0px", 
     threshold: 0,
   };
 
@@ -106,14 +95,12 @@ document.addEventListener("DOMContentLoaded", function () {
       if (entry.isIntersecting) {
         const sectionId = entry.target.id;
 
-        // Update active tab
         tabs.forEach((t) => t.classList.remove("active"));
         const activeTab = document.querySelector(`[data-tab="${sectionId}"]`);
         if (activeTab) {
           activeTab.classList.add("active");
         }
 
-        // Update URL only if not already set
         const urlParams = new URLSearchParams(window.location.search);
         const currentTab = urlParams.get("tab");
         if (currentTab !== sectionId) {
@@ -123,13 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, observerOptions);
 
-  // Observe all sections
   sections.forEach((section) => {
     observer.observe(section);
   });
 
-  // Check URL parameter on initial load
   checkURLParameter();
 });
 
-// Show more functionality (unchanged)
