@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
-DEBUG = os.getenv('DEBUG', 'true').lower() == 'true'
+DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
 ALLOWED_HOSTS = ['*']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
