@@ -15,7 +15,7 @@ class Sustainability(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return self.title
+        return self.maincontent[:50] + '...' if len(self.maincontent) > 50 else self.maincontent
     
 class SubtainabilityContent(models.Model):
     sustainability = models.ForeignKey(Sustainability, on_delete=models.CASCADE, related_name='sub_contents', verbose_name='Sustainability')
@@ -34,3 +34,4 @@ class SubtainabilityContent(models.Model):
 
     def __str__(self):
         return self.title
+    

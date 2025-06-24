@@ -1,124 +1,155 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
-
 {% include 'components/page-header.html' %}
 
-
 <section class="contact-section container">
-    <div class="contact-content">
-        <div class="contact-text">
-            <p class="section-subtitle">{% trans 'Sinova headquarters' %}</p>
-            <div>
-                <span>{% trans 'Address' %}</span>
-                <p class="section-description">{% trans 'Sinova head office: ' %}</p>
-                <p class="section-description">
-                    {% blocktrans %}
-                    Vali Mammadov Street 1/3, Old City, Baku, Azerbaijan, AZ1000
-                    {% endblocktrans %}
+  <div class="contact-content">
+    <div class="contact-text">
+      <p class="section-subtitle">{% trans 'Sinova headquarters' %}</p>
+      <div>
+        <span>{% trans 'Address' %}</span>
+        <p class="section-description">{% trans 'Sinova head office: ' %}</p>
+        <p class="section-description">{{ contact_info.address }}</p>
+      </div>
+      <a href="{{ contact_info.location }}">
+        <span>{% trans 'Location' %}</span>
+        <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
+      </a>
+      <div>
+        <span>{% trans 'Phone number' %}</span>
+        <p class="section-description">{{ contact_info.phone_number }}</p>
+      </div>
 
-                </p>
-            </div>
-            <a href="">
-                <span>{% trans 'Location' %}</span>
-                <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo">
-            </a>
-            <div>
-                <span>{% trans 'Phone number' %}</span>
-                <p class="section-description">{% trans "+994 50 222 06 07" %} </p>
-            </div>
-
-
-            <div>
-                <span>{% trans 'E-mail adress' %}</span>
-                <p class="section-description">{% trans "info@sinova.com" %} </p>
-            </div>
-
-
-        </div>
-        <div class="contact-image">
-            <img src="{% static 'images/gallery1.png' %}" alt="Contact Image">
-        </div>
+      <div>
+        <span>{% trans 'E-mail adress' %}</span>
+        <p class="section-description">{{ contact_info.email }}</p>
+      </div>
     </div>
-
+    <div class="contact-image">
+      <img src="{{ contact_info.image.url }}" alt="Contact Image" />
+    </div>
+  </div>
 </section>
-
-
-
 
 <section class="sinova-contact-form container">
-    <div class="form-content">
-        <!-- {% if messages %}
-        <div class="form-messages">
-            {% for message in messages %}
-            {# Mesajın tipinə görə (error, success) uyğun class əlavə edirik #}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">
-                {{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %} -->
-
-        <h2 class="section-subtitle">{% trans "Contact form" %}</h2>
-        <p class="section-description">
-            {% blocktrans %}
-            Do you need a specific solution or are you interested in a partnership?
-            {% endblocktrans %}<br />
-            {% trans "Please contact us here." %}
-        </p>
-
-        <form action="" method="POST">
-            {% csrf_token %}
-
-
-            <div class="form-group">
-                <input type="text" id="company" name="company" class="form-control" placeholder="Company name*"
-                    required />
-            </div>
-
-            <div class="form-group">
-                <textarea id="question" name="question" class="form-control"
-                    placeholder="Your question, wish and/or clarification*" required></textarea>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First name*"
-                        required />
-                </div>
-
-                <div class="form-group">
-                    <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last name*"
-                        required />
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email adress*"
-                        required />
-                </div>
-
-                <div class="form-group">
-                    <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone number*"
-                        required />
-                </div>
-            </div>
-
-            <!-- <div class="form-group recaptcha-container">
-                <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onRecaptchaSuccess"
-                    data-expired-callback="onRecaptchaExpired" data-error-callback="onRecaptchaError">
-                </div>
-            </div> -->
-
-            <button type="submit" class="btn-send">
-                Send
-                <!-- {{ form_labels.send_button }} -->
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
-        </form>
+  <!-- Notification Container -->
+  <div id="notification" class="notification hidden">
+    <div class="notification-content">
+      <span id="notification-message"></span>
+      <button id="notification-close" class="notification-close">
+        &times;
+      </button>
     </div>
+  </div>
+
+  <div class="form-content">
+    <h2 class="section-subtitle">{% trans "Contact form" %}</h2>
+    <p class="section-description">
+      {% blocktrans %} Do you need a specific solution or are you interested in
+      a partnership? Please contact us here.{% endblocktrans %}
+    </p>
+
+    <form id="contactForm" action="" method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <input
+          type="text"
+          id="company"
+          name="company_name"
+          class="form-control"
+          placeholder="Company name*"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <textarea
+          id="question"
+          name="message"
+          class="form-control"
+          placeholder="Your question, wish and/or clarification*"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input
+            type="text"
+            id="firstName"
+            name="first_name"
+            class="form-control"
+            placeholder="First name*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            id="lastName"
+            name="last_name"
+            class="form-control"
+            placeholder="Last name*"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Email address*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="tel"
+            id="phone"
+            name="phone_number"
+            class="form-control"
+            placeholder="Phone number*"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group recaptcha-container">
+        <div
+          class="g-recaptcha"
+          data-sitekey="{{ recaptcha_site_key }}"
+          data-callback="onRecaptchaSuccess"
+          data-expired-callback="onRecaptchaExpired"
+          data-error-callback="onRecaptchaError"
+        ></div>
+      </div>
+
+      <button type="submit" class="btn-send">
+        Send
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
 </section>
 
-
-
-
 {% endblock %}
+
+<script>
+  {% if messages %}
+    document.addEventListener("DOMContentLoaded", function() {
+      {% for message in messages %}
+        let messageType = "{{ message.tags }}";
+        if (messageType === "info") messageType = "success";
+        if (window.showNotification) {
+          window.showNotification("{{ message|escapejs }}", messageType);
+        }
+      {% endfor %}
+    });
+  {% endif %}
+</script>
