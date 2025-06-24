@@ -1,22 +1,22 @@
 .clickable-tabs {
     margin-top: 50px;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
 }
 
 .clickable-tabs .tab {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 25px 50px;
+    gap: 10px;
+    padding: 20px;
     border-bottom: 1px solid #AFAFAF;
     cursor: pointer;
 }
 
 
 .clickable-tabs .tab button {
-    width: 70px;
-    height: 70px;
+    width: 55px;
+    height: 55px;
     background-color: #FF3333;
     border: none;
     display: flex;
@@ -28,17 +28,20 @@
 }
 
 .clickable-tabs .tab:hover button {
-    background-color: #e30613;
+    background-color:#141D43 ;
 }
 
 .clickable-tabs .tab:hover .section-title {
     color: #012862d5;
 }
 
+.clickable-tabs  .section-title {
+    max-width: 85%;
+}
 
 .clickable-tabs .tab button i {
     color: #fff;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .sinova-production {
@@ -50,12 +53,12 @@
 .production-section {
     position: relative;
     width: 100%;
-    height: 520px;
+    height: 440px;
     overflow: hidden;
     background-image: url("../../images/video-background.jpg");
     background-position: center;
     background-size: cover;
-    border-radius: 4px;
+    border-radius: 6px 6px 0 0;
 }
 
 .production-subtitle {
@@ -283,7 +286,7 @@
 
 
 .section-our-history {
-    margin: 50px auto;
+    margin-top: 50px;
     padding: 50px 0;
 }
 
@@ -293,7 +296,7 @@
 
 .two-images {
     width: 100%;
-    height: 380px;
+    height: 360px;
     display: flex;
     gap: 20px;
     padding: 30px 0;
@@ -343,10 +346,10 @@
 }
 
 .section-vision-mission {
-    margin: 50px auto;
-    padding-top: 50px;
+    padding: 50px 0;
 }
- .image-text-content {
+
+.image-text-content {
     width: 100%;
     display: flex;
     align-items: center;
@@ -421,8 +424,3 @@
 .investor-relations {
     padding: 40px 0;
 }
-
-
-
-
-

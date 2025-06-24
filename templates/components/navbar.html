@@ -18,53 +18,129 @@
                         <span>{% trans 'Search' %}</span>
                     </a>
                 </li>
+
                 <li>
-                    EN
+                    <div class="language-dropdown">
+                        <button class="lang-dropdown-btn">
+                            DE
+                            <i class="fa-solid fa-angle-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="languageDropdown">
+                            <button class="lang-option">EN
+                            </button>
+                            <button class="lang-option">ES
+                            </button>
+                            <button class="lang-option">FR
+                            </button>
+                            <button class="lang-option">IT
+                            </button>
+                            <button class="lang-option">PT
+                            </button>
+                            <button class="lang-option">汉语
+                            </button>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-        <div class="sinova-logo">
-            <img  src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
-        </div>
+        <a href="/" class="sinova-logo">
+            <img src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
+        </a>
         <div class="nav-bottom">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="/about">
                         <span>{% trans 'About us' %}</span>
                         <i class="fa-solid fa-caret-down"></i>
                     </a>
+                    <div class="nav-dropdown">
+                        <ul>
+                            <li><a href="/about"><span>{% trans 'Our History' %}</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>{% trans 'Vision, Mission & Values' %}</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>{% trans 'Policies' %}</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a> </li>
+                        </ul>
+                    </div>
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="/news">
+                        <span>{% trans 'News' %}</span>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </a>
+                    <div class="nav-dropdown">
+                        <ul>
+                            <li><a href="/about"><span>{% trans "What's new" %}</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>{% trans "News releases" %}</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>{% trans "Announcements" %}</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="/businesses">
                         <span>{% trans 'Businesses' %}</span>
                         <i class="fa-solid fa-caret-down"></i>
                     </a>
+                    <div class="nav-dropdown">
+                        <ul>
+                            <li><a href="/about"><span>Finance & Investment</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>Technology</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>Trade</span> <i class="fa-solid fa-arrow-right-long"></i></a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/investorRelation">
                         <span>{% trans 'Investor Relations' %}</span>
                         <i class="fa-solid fa-caret-down"></i>
                     </a>
+                    <div class="nav-dropdown">
+                        <ul>
+                            <li><a href="/about"><span>Reports, Results & Presentations</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>Announcements & Publications</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+                            <li><a href="/about"><span>Corporate Governance</span> <i
+                                        class="fa-solid fa-arrow-right-long"></i></a></li>
+
+                        </ul>
+                    </div>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/sustainability">
                         <span>{% trans 'Sustainability' %}</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="">
+                    <a href="/gallery">
                         <span>{% trans 'Media Center' %}</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/contact/">
                         <span>{% trans 'Contact' %}</span>
                     </a>
                 </li>
             </ul>
 
         </div>
+
+        <div class="dropdown-background"></div>
     </div>
+
+
 </nav>
+
+<a href="https://wa.me/994502220607" class="fixed-whatsapp" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
