@@ -1,5 +1,20 @@
 from django.contrib import admin
+from django.core.exceptions import ValidationError
+from django.forms import ModelForm
 from .models import Gallery, GalleryImage
+
+
+class GalleryForm(ModelForm):
+    class Meta:
+        model = Gallery
+        fields = '__all__'
+
+    def clean(self):
+        cleaned_data = super().clean()
+        # Əgər yeni Gallery yaradılırsa və artıq Gallery varsa
+        if not self.instance.pk and Gallery.objects.exists():
+            raise ValidationError('Sadece bir Gallery obyekti mövcud ola bilər.')
+        return cleaned_data
 
 
 class GalleryImageInline(admin.TabularInline): 
@@ -12,6 +27,7 @@ class GalleryImageInline(admin.TabularInline):
 
 @admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
+    form = GalleryForm
     list_display = ('iframe_video_text', 'is_active', 'created_at')
     list_filter = ('is_active', 'created_at')
     search_fields = ('iframe_video_text',)
@@ -26,6 +42,12 @@ class GalleryAdmin(admin.ModelAdmin):
             'fields': ('is_active', 'created_at', 'updated_at')
         }),
     )
+
+    def has_add_permission(self, request):
+        # Əgər artıq Gallery varsa, yeni əlavə etməyə icazə vermir
+        if Gallery.objects.exists():
+            return False
+        return super().has_add_permission(request)
 
 
 @admin.register(GalleryImage)

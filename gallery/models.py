@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.core.exceptions import ValidationError
 
 
 class Gallery(models.Model):
@@ -33,6 +34,15 @@ class Gallery(models.Model):
 
     def get_absolute_url(self):
         return reverse('corporate:profile_detail', kwargs={'pk': self.pk})
+
+    def clean(self):
+        # Sadece 1 Gallery obyekti olmasını təmin edir
+        if not self.pk and Gallery.objects.exists():
+            raise ValidationError('Sadece bir Gallery obyekti yaradıla bilər.')
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
 
 
 class GalleryImage(models.Model):

@@ -23,8 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
-DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
+SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret') 
+
+# PRODUCTION
+
+# DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
+
+# Development
+
+DEBUG = os.getenv('DEBUG', 'true').lower() == 'true'
+
 ALLOWED_HOSTS = ['*']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
