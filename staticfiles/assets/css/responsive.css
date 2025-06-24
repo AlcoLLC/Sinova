@@ -1,0 +1,60 @@
+@media (max-width: 1200px) {
+    header {
+        height: 500px;
+    }
+
+    nav .sinova-logo {
+        width: 150px;
+    }
+}
+
+@media (max-width: 1100px) {}
+
+@media (max-width: 1000px) {}
+
+@media (max-width: 900px) {
+
+    .navbar {
+        height: 130px;
+        padding: 8px;
+    }
+
+    nav::after {
+        top: 130px;
+    }
+
+
+    .language-dropdown .dropdown-content {
+        min-width: 50px;
+    }
+
+    .language-dropdown button {
+        font-size: 12px !important;
+    }
+
+    .language-dropdown .dropdown-content button {
+        padding: 6px;
+        font-size: 12px !important;
+    }
+
+    .nav-top ul {
+        gap: 15px;
+    }
+
+    nav ul span,
+    nav ul i {
+        font-size: 14px;
+    }
+
+    nav .sinova-logo {
+        width: 150px;
+    }
+}
+
+@media (max-width: 800px) {}
+
+@media (max-width: 600px) {}
+
+@media (max-width: 500px) {}
+
+@media (max-width: 400px) {}
