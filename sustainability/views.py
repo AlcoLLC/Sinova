@@ -16,7 +16,7 @@ def sustainability_view(request):
             'sub_contents': sub_contents,
         }
         
-        return render(request, 'sustainability/sustainability.html', context)
+        return render(request, 'sustainability.html', context)
     
     except Exception as e:
         raise Http404("An error occurred while loading the page")
