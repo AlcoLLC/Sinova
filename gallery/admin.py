@@ -40,6 +40,6 @@ class GalleryImageAdmin(admin.ModelAdmin):
             'fields': ('gallery', 'image', 'order')
         }),
         ('Status and Time Information', {
-            'fields': ('is_active', 'in_home', 'created_at', 'updated_at')
+            'fields': ('is_active', 'in_home', 'in_subscribe', 'created_at', 'updated_at')
         }),
     )

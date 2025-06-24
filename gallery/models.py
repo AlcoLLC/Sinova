@@ -50,6 +50,11 @@ class GalleryImage(models.Model):
         verbose_name="Display in Home Gallery",
         help_text="Check to display this image in the home gallery section"
     )
+    in_subscribe = models.BooleanField(
+        default=False,
+        verbose_name="Display in Subscribe Gallery",
+        help_text="Check to display this image in the subscribe gallery section"
+    )
     is_active = models.BooleanField(
         default=True,
     )
@@ -58,5 +63,3 @@ class GalleryImage(models.Model):
 
     class Meta:
         ordering = ['order', '-created_at']
-
-   

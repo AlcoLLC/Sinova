@@ -1,0 +1,9 @@
+<!-- gallery_images_partial.html -->
+{% for image in page_obj %}
+<div class="image-row fade-in">
+  <img
+    src="{{ image.image.url }}"
+    alt="{{ image.gallery.iframe_video_text }}"
+  />
+</div>
+{% endfor %}

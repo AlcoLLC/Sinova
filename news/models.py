@@ -9,7 +9,9 @@ class News(models.Model):
     secondary_image = models.ImageField(upload_to='news_images/', verbose_name="Secondary Image", blank=True, null=True)
     date = models.DateField(verbose_name="Date", help_text="Date of the news article")
     new = models.BooleanField(default=True, verbose_name="Is New", help_text="Indicates if the news is new")
-    announcements = models.BooleanField(default=False, verbose_name="Is Announcement", help_text="Indicates if the news is an announcement")
+    announcement = models.BooleanField(default=False, verbose_name="Is Announcement", help_text="Indicates if the news is an announcement")
+    release = models.BooleanField(default=False, verbose_name="Is release", help_text="Indicates if the news is an release")
+
     slug = models.SlugField(unique=True, verbose_name="Slug", help_text="URL-friendly version of the title", blank=True)
     is_active = models.BooleanField(default=True, verbose_name="Is Active", help_text="Indicates if the news is active")
     order = models.PositiveIntegerField(default=0, verbose_name="Order", help_text="Display order (lower numbers appear first)")
