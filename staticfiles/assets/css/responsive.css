@@ -1,6 +1,11 @@
 @media (max-width: 1200px) {
-    header {
-        height: 500px;
+
+    .page-header {
+        height: 60vh;
+    }
+
+    .home-header .page-header {
+        height: 65vh;
     }
 
     .sinova-logo {
@@ -10,13 +15,19 @@
     .footer-top {
         margin-top: 60px;
     }
-
-
 }
 
 @media (max-width: 1100px) {}
 
 @media (max-width: 1000px) {
+    .sections-container .section-item {
+        height: 450px;
+    }
+
+    .sections-container {
+        margin-top: 60px;
+    }
+
     .scroll-top-btn {
         width: 60px;
         height: 60px;
@@ -134,7 +145,8 @@
         line-height: 45px;
     }
 
-    .subscribe-components .section-title {
+    .subscribe-components .section-title,
+    .sections-container .section-title {
         font-size: 36px;
         line-height: 42px;
     }
@@ -142,9 +154,21 @@
     .section-header .section-title {
         margin-bottom: 30px;
     }
+
+    .home-header .page-header .section-title {
+        width: 550px;
+    }
+
+    .page-header .header-content {
+        width: 450px;
+    }
+
 }
 
 @media (max-width: 900px) {
+
+
+
     .footer-top .pages {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
@@ -165,7 +189,7 @@
         top: 130px;
     }
 
-    .breadcrumb {
+    .breadcrumb-container .container {
         margin-top: 130px;
     }
 
@@ -197,6 +221,56 @@
 }
 
 @media (max-width: 800px) {
+
+    .sections-container .before-content {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        padding: 30px;
+        justify-content: start;
+        padding-left: 25%;
+    }
+
+    .sections-container .after-content {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        padding: 30px;
+        transform: translateY(-100%);
+        justify-content: start;
+        padding-left: 25%;
+    }
+
+    .sections-container .center-icon {
+        top: 48%;
+        left: 0;
+        width: 200%;
+        height: 5%;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-left: none;
+        border-right: none;
+    }
+
+    .sections-container .center-icon i {
+        position: absolute;
+        left: 75%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transform: rotate(-90deg);
+        translate: 0 -12px;
+        font-size: 24px;
+    }
+
+    .sections-container .after-content.active~.center-icon i {
+        transform: rotate(90deg);
+    }
+
+    .sections-container .section-link {
+        margin-top: 5px;
+    }
 
     .subscribe-section .btn-hidden {
         display: block !important;
@@ -255,12 +329,30 @@
         line-height: 38px;
     }
 
+    .sections-container .section-title {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
     .section-header .section-title {
         margin-bottom: 25px;
     }
 
-    header {
-        height: 400px;
+    .home-header .page-header .section-title {
+        width: 500px;
+        margin-bottom: 15px;
+    }
+
+    .page-header .header-content {
+        width: 400px;
+    }
+
+    .page-header {
+        height: 55vh;
+    }
+
+    .home-header .page-header {
+        height: 60vh;
     }
 
     .nav-bottom {
@@ -274,7 +366,7 @@
         align-items: center;
     }
 
-    .breadcrumb {
+    .breadcrumb-container .container {
         margin-top: 90px;
     }
 
@@ -328,9 +420,85 @@
         gap: 10px;
         padding: 20px 0;
     }
+
+    .clickable-tabs .tab {
+        padding: 15px;
+    }
+
+
+    .clickable-tabs .tab button {
+        width: 45px;
+        height: 45px;
+    }
+
+    .sinova-production {
+        padding: 60px 0;
+    }
+
+
+    .production-section {
+        height: 300px;
+        overflow: visible !important;
+    }
+
+    .production-section .container {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        overflow: visible !important;
+    }
+
+    .production-section .section-content {
+        position: absolute;
+        bottom: -60%;
+        left: 5%;
+        right: 5%;
+        text-align: center;
+        max-width: 100%;
+        opacity: 1 !important;
+    }
+
+    .production-section .play-button {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 45px;
+        height: 45px;
+    }
+
+    .production-section .play-button i {
+        font-size: 18px;
+    }
+
+    .production-section .play-button::before {
+        width: 84px;
+        height: 84px;
+        border: 1px solid white;
+    }
+
+    .production-section .play-button::after {
+        width: 125px;
+        height: 125px;
+        border: 1px solid white;
+    }
+
+    .production-subtitle {
+        padding: 15px;
+    }
+
+    .production-subtitle p {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
 }
 
 @media (max-width: 650px) {
+    .sinova-contact-form p {
+        margin-bottom: 15px;
+        max-width: 85%;
+    }
 
     .footer-top .pages {
         grid-template-columns: repeat(2, 1fr);
@@ -384,6 +552,19 @@
 }
 
 @media (max-width: 600px) {
+    .clickable-tabs .tab {
+        padding: 10px;
+    }
+
+    .clickable-tabs .tab button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .clickable-tabs .section-title {
+        font-size: 26px;
+        line-height: 28px;
+    }
 
     .news-sinova-content .news-date span {
         font-size: 12px;
@@ -402,10 +583,9 @@
         line-height: 20px;
     }
 
-
     .section-title {
         font-size: 32px;
-        line-height: 38px;
+        line-height: 36px;
     }
 
     .subscribe-section .section-title {
@@ -413,12 +593,31 @@
         line-height: 34px;
     }
 
-    .section-header .section-title {
-        margin-bottom: 20px;
+    .sections-container .section-title {
+        font-size: 20px;
+        line-height: 24px;
     }
 
-    header {
-        height: 350px;
+    .home-header .page-header .section-title {
+        width: 400px;
+        margin-bottom: 15px;
+    }
+
+    .page-header .header-content {
+        width: 350px;
+    }
+
+    .sections-container .section-description {
+        font-size: 13px;
+        font-weight: 400;
+    }
+
+    .page-header {
+        height: 60vh;
+    }
+
+    .home-header .page-header {
+        height: 65vh;
     }
 
     .navbar {
@@ -431,10 +630,10 @@
     }
 
     .sinova-logo {
-        width: 130px;
+        width: 100px;
     }
 
-    .breadcrumb {
+    .breadcrumb-container .container {
         margin-top: 80px;
     }
 
@@ -445,6 +644,43 @@
 }
 
 @media (max-width: 550px) {
+    .production-section {
+        height: 230px;
+    }
+
+    .production-section .play-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .production-section .play-button i {
+        font-size: 16bropx;
+    }
+
+    .production-section .play-button::before {
+        width: 70px;
+        height: 70px;
+    }
+
+    .production-section .play-button::after {
+        width: 100px;
+        height: 100px;
+    }
+
+    .production-subtitle {
+        padding: 10px 15px;
+    }
+
+    .production-subtitle p {
+        font-weight: 450;
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+
+    .sinova-production {
+        padding: 40px 0;
+    }
 
     .subscribe-section .right-content {
         height: 60vh;
@@ -460,11 +696,68 @@
 
 @media (max-width: 500px) {
 
+    .clickable-tabs .tab {
+        padding: 8px;
+    }
+
+    .clickable-tabs .tab button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .clickable-tabs .tab button i {
+        font-size: 14px;
+    }
 
 
-    header {
-        height: 300px;
+    .clickable-tabs .section-title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .clickable-tabs {
+        margin-top: 30px;
+        padding-bottom: 45px;
+    }
+
+
+    .home-header .page-header .section-title {
+        width: 350px;
+        margin-top: 25px;
+    }
+
+    .page-header .section-title {
+        font-size: 24px;
+        line-height: 26px;
+    }
+
+    .page-header .header-content {
+        width: 300px;
+        padding: 10px;
+
+    }
+
+    .page-header {
+        height: 45vh;
+    }
+
+    .home-header .page-header {
+        height: 50vh;
     }
 }
 
-@media (max-width: 400px) {}
+@media (max-width: 400px) {
+    .home-header .page-header {
+        height: 50vh;
+    }
+
+    .page-header .header-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .page-header .header-content p {
+        font-size: 12px;
+        line-height: 14px;
+    }
+}

@@ -49,6 +49,7 @@
   background-color: #f1f2f6;
 }
 
+
 .production-section {
   position: relative;
   width: 100%;
@@ -175,111 +176,6 @@
   transform: translate(-50%, -50%);
 }
 
-@media (max-width: 770px) {
-  .production-section {
-    height: 300px;
-    overflow: visible !important;
-    margin-bottom: 230px;
-  }
-
-  .production-section .container {
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
-    overflow: visible !important;
-  }
-
-  .production-section .section-content {
-    position: absolute;
-    bottom: -60%;
-    left: 5%;
-    right: 5%;
-    text-align: center;
-    max-width: 100%;
-    opacity: 1 !important;
-  }
-
-  .production-section .section-content p {
-    font-size: 14px;
-  }
-
-  .production-section .section-content h2 {
-    font-size: 28px;
-    line-height: 30px;
-  }
-
-  .production-section .section-content h2,
-  .production-section .section-content p {
-    text-align: center !important;
-    color: #012762 !important;
-  }
-
-  .production-section .play-button {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 45px;
-    height: 45px;
-  }
-
-  .production-section .play-button i {
-    font-size: 18px;
-  }
-
-  .production-section .play-button::before {
-    width: 84px;
-    height: 84px;
-    border: 1px solid white;
-  }
-
-  .production-section .play-button::after {
-    width: 125px;
-    height: 125px;
-    border: 1px solid white;
-  }
-}
-
-@media (max-width: 520px) {
-  .production-section {
-    height: 230px;
-    margin-bottom: 180px;
-  }
-
-  .production-section .section-content {
-    bottom: -80%;
-    left: 2%;
-    right: 2%;
-  }
-
-  .production-section .section-content p {
-    font-size: 12px;
-  }
-
-  .production-section .section-content h2 {
-    font-size: 24px;
-    line-height: 20px;
-  }
-
-  .production-section .play-button {
-    width: 40px;
-    height: 40px;
-  }
-
-  .production-section .play-button i {
-    font-size: 16bropx;
-  }
-
-  .production-section .play-button::before {
-    width: 70px;
-    height: 70px;
-  }
-
-  .production-section .play-button::after {
-    width: 100px;
-    height: 100px;
-  }
-}
 
 .section-our-history {
   margin-top: 50px;
