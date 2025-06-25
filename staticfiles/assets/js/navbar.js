@@ -95,9 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (dropdownIcon) {
           if (dropdown.classList.contains('active')) {
-            dropdownIcon.className = 'fa-solid fa-chevron-up';
+            dropdownIcon.className = 'fa-solid fa-minus';
           } else {
-            dropdownIcon.className = 'fa-solid fa-chevron-down';
+            dropdownIcon.className = 'fa-solid fa-plus';
           }
         }
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             otherDropdown.classList.remove('active');
             const otherIcon = otherDropdown.querySelector('i');
             if (otherIcon) {
-              otherIcon.className = 'fa-solid fa-chevron-down';
+              otherIcon.className = 'fa-solid fa-plus';
             }
           }
         });
@@ -173,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
       '.navbar a[href], .mobile-menu a[href]'
     );
 
-    // Bütün linklərdən active class-ı sil
     allNavLinks.forEach((link) => {
       link.classList.remove('active');
     });
@@ -185,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function () {
       parent.classList.remove('active');
     });
 
-    // Dropdown linklərini yoxla
     const dropdownLinks = document.querySelectorAll(
       '.dropdown-content a[href], .mobile-dropdown-content a[href]'
     );
@@ -243,79 +241,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    handleSpecialDropdownCases(currentPath);
   }
 
-  function handleSpecialDropdownCases(currentPath) {
-    const marketsPaths = [
-      '/markets_automotive',
-      '/markets_industrial',
-      '/markets_shipping',
-    ];
-    const servicesPaths = [
-      '/service_aminol_dealer',
-      '/service_laboratory',
-      '/service_logistics',
-    ];
 
-    if (marketsPaths.includes(currentPath)) {
-      const marketsDropdown = Array.from(
-        document.querySelectorAll('.dropdown > a')
-      ).find((link) =>
-        link.textContent.trim().toLowerCase().includes('market')
-      );
-
-      if (marketsDropdown) {
-        marketsDropdown.classList.add('active');
-      }
-
-      const mobileMarketsDropdown = Array.from(
-        document.querySelectorAll('.mobile-dropdown-head')
-      ).find((link) =>
-        link.textContent.trim().toLowerCase().includes('market')
-      );
-
-      if (mobileMarketsDropdown) {
-        mobileMarketsDropdown.classList.add('active');
-      }
-
-      const activeDropdownLink = document.querySelector(
-        `.dropdown-content a[href="${currentPath}"], .mobile-dropdown-content a[href="${currentPath}"]`
-      );
-      if (activeDropdownLink) {
-        activeDropdownLink.classList.add('active');
-      }
-    }
-
-    if (servicesPaths.includes(currentPath)) {
-      const servicesDropdown = Array.from(
-        document.querySelectorAll('.dropdown > a')
-      ).find((link) =>
-        link.textContent.trim().toLowerCase().includes('service')
-      );
-
-      if (servicesDropdown) {
-        servicesDropdown.classList.add('active');
-      }
-
-      const mobileServicesDropdown = Array.from(
-        document.querySelectorAll('.mobile-dropdown-head')
-      ).find((link) =>
-        link.textContent.trim().toLowerCase().includes('service')
-      );
-
-      if (mobileServicesDropdown) {
-        mobileServicesDropdown.classList.add('active');
-      }
-
-      const activeDropdownLink = document.querySelector(
-        `.dropdown-content a[href="${currentPath}"], .mobile-dropdown-content a[href="${currentPath}"]`
-      );
-      if (activeDropdownLink) {
-        activeDropdownLink.classList.add('active');
-      }
-    }
-  }
 
   setActiveLinks();
 
