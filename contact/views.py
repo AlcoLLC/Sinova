@@ -29,11 +29,6 @@ def get_client_ip(request):
 
 
 def verify_recaptcha(recaptcha_response, client_ip=None):
-    """Verify reCAPTCHA response"""
-    if not RECAPTCHA_SECRET_KEY:
-        logger.warning("reCAPTCHA secret key not configured")
-        return False
-        
     data = {
         'secret': RECAPTCHA_SECRET_KEY,
         'response': recaptcha_response
@@ -58,8 +53,7 @@ def verify_recaptcha(recaptcha_response, client_ip=None):
 
 
 def contact_view(request):
-    # Get contact information for display
-    contact_info = ContactInfo.objects.first()  # Assuming you have one contact info record
+    contact_info = ContactInfo.objects.first() 
     
     if request.method == 'POST':
         client_ip = get_client_ip(request)

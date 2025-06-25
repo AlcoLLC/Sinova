@@ -4,7 +4,7 @@ from .models import Sustainability, SubtainabilityContent
 class SubtainabilityContentInline(admin.TabularInline):
     model = SubtainabilityContent
     extra = 1
-    fields = ('title', 'content', 'is_active')
+    fields = ('title', 'content', 'is_active', 'image_one', 'image_two')
     readonly_fields = ('created_at', 'updated_at')
 
 @admin.register(Sustainability)

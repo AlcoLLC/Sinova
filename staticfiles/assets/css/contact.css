@@ -1,255 +1,334 @@
 .sustainability-section {
-    margin: 70px auto;
+  margin: 70px auto;
 }
 
 .sustainability-section .section-header .section-description {
-    text-align: center;
+  text-align: center;
 }
 
+.sustainability-section .section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
+.sustainability-section .section-header h3 {
+  text-align: center;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+  color: #141d43;
+}
 
 .contact-section {
-    margin: 70px auto;
+  margin: 70px auto;
 }
 
 .contact-content {
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
 }
 
 .contact-content .contact-text {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .contact-content .contact-text span {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 25px;
-    color: #141D43;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 25px;
+  color: #141d43;
 }
 
 .contact-content .contact-text a {
-    padding: 10px 15px;
-    background-color: #FF3333;
-    color: #FFF;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-
+  padding: 10px 15px;
+  background-color: #ff3333;
+  color: #fff;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
 .contact-content .contact-text a:hover {
-    background-color: #e02e2e;
+  background-color: #e02e2e;
 }
 
 .contact-content .contact-text img {
-    filter: brightness(15);
+  filter: brightness(15);
 }
 
 .contact-content .contact-text a span {
-    color: #FFF;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 30.04px;
-
+  color: #fff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 30.04px;
 }
 
-
 .contact-content .contact-image {
-    width: 65%;
-    height: 100%;
+  width: 65%;
+  height: 100%;
 }
 
 .contact-content .contact-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
-
-
-
-
 .sinova-contact-form {
-    margin: 70px auto;
-    background-color: #E8ECEF;
-    color: #141D43;
-    border-radius: 6px;
+  margin: 70px auto;
+  background-color: #e8ecef;
+  color: #141d43;
+  border-radius: 6px;
 }
 
 .sinova-contact-form .form-content {
-    padding: 55px  80px;
+  padding: 55px 80px;
 }
 
 .sinova-contact-form h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .sinova-contact-form p {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .sinova-contact-form .form-group {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .sinova-contact-form input::placeholder,
 .sinova-contact-form textarea::placeholder {
-    color: #b4b7d4;
+  color: #b4b7d4;
 }
 
 .sinova-contact-form .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 16px;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .sinova-contact-form .form-control {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #b4b7d425;
-    border-radius: 4px;
-    background-color: #fff;
-    font-size: 16px;
-    color: #141D43;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #b4b7d425;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #141d43;
 }
 
 .sinova-contact-form .form-control:focus {
-    outline: none;
-    border-color: #b4b7d4;
+  outline: none;
+  border-color: #b4b7d4;
 }
 
 .sinova-contact-form textarea.form-control {
-    resize: vertical;
-    min-height: 170px;
-    max-height: 200px;
+  resize: vertical;
+  min-height: 170px;
+  max-height: 200px;
 }
 
 .sinova-contact-form .form-row {
-    display: flex;
-    align-items: end;
-    gap: 20px;
+  display: flex;
+  align-items: end;
+  gap: 20px;
 }
 
 .sinova-contact-form .form-row .form-group {
-    flex: 1;
+  flex: 1;
 }
 
 .sinova-contact-form .btn-send {
-    background-color: #FF3333;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 24px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
-    margin-top: 10px;
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+  margin-top: 10px;
 }
 
 .sinova-contact-form .btn-send i {
-    margin-left: 8px;
-    font-size: 12px;
+  margin-left: 8px;
+  font-size: 12px;
 }
 
 .sinova-contact-form .btn-send:hover {
-    background-color: #e02e2e;
+  background-color: #e02e2e;
 }
 
+@media (max-width: 1024px) {
+  .sinova-contact-form .form-content {
+    padding: 30px;
+  }
 
-@media (max-width:1024px) {
-    .sinova-contact-form .form-content {
-        padding: 30px;
-    }
+  .sinova-contact-form h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
 
-    .sinova-contact-form h2 {
-        font-size: 22px;
-        line-height: 26px;
-    }
+  .sinova-contact-form p {
+    font-size: 15px;
+    line-height: 20px;
+  }
 
-    .sinova-contact-form p {
-        font-size: 15px;
-        line-height: 20px;
-    }
+  .sinova-contact-form .form-control {
+    font-size: 15px;
+    padding: 11px 14px;
+  }
 
-    .sinova-contact-form .form-control {
-        font-size: 15px;
-        padding: 11px 14px;
-    }
-
-    .sinova-contact-form .btn-send {
-        font-size: 15px;
-        padding: 11px 26px;
-    }
+  .sinova-contact-form .btn-send {
+    font-size: 15px;
+    padding: 11px 26px;
+  }
 }
 
-@media (max-width:770px) {
-    .sinova-contact-form .form-content {
-        padding: 25px;
-    }
+@media (max-width: 770px) {
+  .sinova-contact-form .form-content {
+    padding: 25px;
+  }
 
-    .sinova-contact-form h2 {
-        font-size: 18px;
-        line-height: 24px;
-    }
+  .sinova-contact-form h2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
 
-    .sinova-contact-form p {
-        font-size: 12px;
-    }
+  .sinova-contact-form p {
+    font-size: 12px;
+  }
 
-    .sinova-contact-form .form-group label {
-        font-size: 14px;
-    }
+  .sinova-contact-form .form-group label {
+    font-size: 14px;
+  }
 
-    .sinova-contact-form .form-control {
-        font-size: 12px;
-        padding: 10px 12px;
-    }
+  .sinova-contact-form .form-control {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
 
-    .sinova-contact-form .btn-send {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-
-    
+  .sinova-contact-form .btn-send {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
 }
 
-@media (max-width:630px) {
-    .sinova-contact-form .form-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-    }
+@media (max-width: 630px) {
+  .sinova-contact-form .form-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
 
-    .sinova-contact-form .form-group {
-        width: 100%;
-    }
+  .sinova-contact-form .form-group {
+    width: 100%;
+  }
 
-    .sinova-contact-form h2 {
-        font-size: 16px;
-        line-height: 20px;
-    }
+  .sinova-contact-form h2 {
+    font-size: 16px;
+    line-height: 20px;
+  }
 
-    .sinova-contact-form .btn-send {
-        font-size: 13px;
-        padding: 11px 30px;
-        margin: 10px auto;
-    }
+  .sinova-contact-form .btn-send {
+    font-size: 13px;
+    padding: 11px 30px;
+    margin: 10px auto;
+  }
+}
+
+.sinova-contact-form .notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 300px;
+  max-width: 400px;
+  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.sinova-contact-form .notification.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sinova-contact-form .notification.success {
+  background-color: #d4edda;
+  border-left: 4px solid #28a745;
+  color: #155724;
+  z-index: 30000000000000000000000;
+}
+
+.sinova-contact-form .notification.error {
+  background-color: #f8d7da;
+  border-left: 4px solid #dc3545;
+  color: #721c24;
+}
+
+.sinova-contact-form .notification.warning {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  color: #856404;
+}
+
+.sinova-contact-form .notification-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.sinova-contact-form .notification-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 15px;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.sinova-contact-form .notification-close:hover {
+  opacity: 1;
+}
+
+.sinova-contact-form .hidden {
+  display: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sinova-contact-form .notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    min-width: auto;
+    max-width: none;
+  }
 }
