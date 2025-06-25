@@ -50,3 +50,15 @@ def page_header_processor(request):
             'header_bg_image': None,
             'page_header': None,
         }
+    
+from businesses.models import Category as BusinessCategory
+from investorRelations.models import Category as InvestorCategory
+
+def global_categories(request):
+    business_categories = BusinessCategory.objects.filter(is_active=True).order_by('order', 'title')
+    investor_categories = InvestorCategory.objects.filter(is_active=True).order_by('order', 'title')
+
+    return {
+        'business_categories': business_categories,
+        'investor_categories': investor_categories
+    }
