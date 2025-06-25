@@ -12,7 +12,6 @@ def category_list(request):
     
     context = {
         'categories': categories,
-        'page_title': 'Our Services',
         'gallery_subscribe_images' : gallery_subscribe_images
 
     }
