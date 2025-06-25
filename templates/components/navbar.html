@@ -23,7 +23,7 @@
                     <div class="language-dropdown">
                         <button class="lang-dropdown-btn">
                             DE
-                            <i class="fa-solid fa-angle-down"></i>
+                            <i class="fa-solid fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content" id="languageDropdown">
                             <button class="lang-option">EN
@@ -42,18 +42,15 @@
                     </div>
                 </li>
 
-                <li>
-                    <button class="hamburger" id="hamburger">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </li>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
             </ul>
-
-
+            <a href="/" class="sinova-logo">
+                <img src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
+            </a>
         </div>
-        <a href="/" class="sinova-logo">
-            <img src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
-        </a>
+
         <div class="nav-bottom">
             <ul>
                 <li>
@@ -143,13 +140,80 @@
 
         </div>
 
-
         <div class="dropdown-background"></div>
     </div>
 
-
-
 </nav>
+
+
+<div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-navbar">
+        <ul>
+            <li class="mobile-dropdown">
+                <a class="mobile-dropdown-head" >
+                    <span>{% trans 'About us' %}</span>
+                    <i class="fa-solid fa-plus"></i> </a>
+
+                <div class="mobile-dropdown-content">
+                    <a href="">{% trans 'Our History' %}</a>
+                    <a href="">{% trans 'Vision, Mission & Values' %}</a>
+                    <a href="">{% trans 'Policies' %}</a>
+                </div>
+            </li>
+
+            <li class="mobile-dropdown">
+                <a class="mobile-dropdown-head">
+                    <span>{% trans 'News' %}</span>
+                    <i class="fa-solid fa-plus"></i> </a>
+
+                <div class="mobile-dropdown-content">
+                    <a href="">{% trans "What's new" %}</a>
+                    <a href="">{% trans "News releases" %}</a>
+                    <a href="">{% trans "Announcements" %}</a>
+                </div>
+            </li>
+
+            <li class="mobile-dropdown">
+                <a class="mobile-dropdown-head">
+                    <span>{% trans 'Businesses' %}</span>
+                    <i class="fa-solid fa-plus"></i> </a>
+
+                <div class="mobile-dropdown-content">
+                    <a href="">Finance & Investment</a>
+                    <a href="">Technology</a>
+                    <a href="">Trade</a>
+                </div>
+            </li>
+
+            <li class="mobile-dropdown">
+                <a class="mobile-dropdown-head">
+                    <span>{% trans 'Investor Relations' %}</span>
+                    <i class="fa-solid fa-plus"></i> </a>
+
+                <div class="mobile-dropdown-content">
+                    <a href="">Reports, Results & Presentations</a>
+                    <a href="">Announcements & Publications</a>
+                    <a href="">Corporate Governance</a>
+                </div>
+            </li>
+            <li>
+                <a href="/sustainability">
+                    <span>{% trans 'Sustainability' %}</span>
+                </a>
+            </li>
+            <li>
+                <a href="/gallery">
+                    <span>{% trans 'Media Center' %}</span>
+                </a>
+            </li>
+            <li>
+                <a href="/contact">
+                    <span>{% trans 'Contact' %}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 <a href="https://wa.me/994502220607" class="fixed-whatsapp" target="_blank">
     <i class="fab fa-whatsapp"></i>
