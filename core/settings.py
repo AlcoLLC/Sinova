@@ -65,6 +65,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     'jazzmin',
+    'modeltranslation', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -154,7 +155,7 @@ LANGUAGES = [
 ]
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
-MODELTRANSLATION_LANGUAGES = ('en', 'de', 'fr', 'it', 'es', 'pt' 'zh-hans')
+MODELTRANSLATION_LANGUAGES = ('en', 'de', 'fr', 'it', 'es', 'pt' ,'zh-hans')
 
 
 LANGUAGE_CODE = 'en'

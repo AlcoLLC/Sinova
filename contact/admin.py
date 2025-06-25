@@ -1,13 +1,12 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from django.utils.html import format_html
-from django.urls import reverse
-from django.utils.safestring import mark_safe
 from .models import Contact, ContactInfo
+from modeltranslation.admin import TranslationAdmin
 
 
 @admin.register(ContactInfo)
-class ContactInfoAdmin(admin.ModelAdmin):
+class ContactInfoAdmin(TranslationAdmin):
     list_display = [
         'address_preview',
         'phone_number',
@@ -57,7 +56,6 @@ class ContactInfoAdmin(admin.ModelAdmin):
         queryset = super().get_queryset(request)
         return queryset
     
-    # Allow only one ContactInfo record (singleton pattern)
     def has_add_permission(self, request):
         if self.model.objects.count() >= 1:
             return False

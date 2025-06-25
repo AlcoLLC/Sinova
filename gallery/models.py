@@ -36,7 +36,6 @@ class Gallery(models.Model):
         return reverse('corporate:profile_detail', kwargs={'pk': self.pk})
 
     def clean(self):
-        # Sadece 1 Gallery obyekti olmasını təmin edir
         if not self.pk and Gallery.objects.exists():
             raise ValidationError('Sadece bir Gallery obyekti yaradıla bilər.')
 

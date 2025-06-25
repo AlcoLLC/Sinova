@@ -10,7 +10,7 @@
         <p class="section-description">{% trans 'Sinova head office: ' %}</p>
         <p class="section-description">{{ contact_info.address }}</p>
       </div>
-      <a href="{{ contact_info.location }}">
+      <a href="{{ contact_info.location }}" target="_blank">
         <span>{% trans 'Location' %}</span>
         <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
       </a>

@@ -3,15 +3,16 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from .models import Category, CategoryFeature
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-class CategoryFeatureInline(admin.TabularInline):
+class CategoryFeatureInline(TranslationTabularInline):
     model = CategoryFeature
     extra = 1
     fields = ('title', 'order')
     ordering = ('order',)
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin):
     list_display = (
         'title', 
         'image_preview', 
@@ -75,7 +76,7 @@ class CategoryAdmin(admin.ModelAdmin):
         }
 
 @admin.register(CategoryFeature)
-class CategoryFeatureAdmin(admin.ModelAdmin):
+class CategoryFeatureAdmin(TranslationAdmin):
     list_display = ('title', 'category', 'order')
     list_filter = ('category',)
     list_editable = ('order',)

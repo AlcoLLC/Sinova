@@ -1,14 +1,15 @@
 from django.contrib import admin
 from .models import Sustainability, SubtainabilityContent
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-class SubtainabilityContentInline(admin.TabularInline):
+class SubtainabilityContentInline(TranslationTabularInline):
     model = SubtainabilityContent
     extra = 1
     fields = ('title', 'content', 'is_active', 'image_one', 'image_two')
     readonly_fields = ('created_at', 'updated_at')
 
 @admin.register(Sustainability)
-class SustainabilityAdmin(admin.ModelAdmin):
+class SustainabilityAdmin(TranslationAdmin):
     list_display = ('id', 'get_title', 'is_active', 'created_at', 'updated_at')
     list_filter = ('is_active', 'created_at', 'updated_at')
     search_fields = ('maincontent', 'subcontent')
@@ -36,7 +37,7 @@ class SustainabilityAdmin(admin.ModelAdmin):
     get_title.short_description = 'Title'
 
 @admin.register(SubtainabilityContent)
-class SubtainabilityContentAdmin(admin.ModelAdmin):
+class SubtainabilityContentAdmin(TranslationAdmin):
     list_display = ('title', 'sustainability', 'is_active', 'created_at')
     list_filter = ('is_active', 'created_at', 'sustainability')
     search_fields = ('title', 'content')
