@@ -4,13 +4,11 @@ from django.db.models import Q
 from .models import News
 
 def news_list(request):
-    # "What's new" için tüm haberleri çek (5 ile sınırlama)
     news_new = News.objects.filter(
         is_active=True, 
         new=True
     ).order_by('order', '-date')
     
-    # Eğer new=True olan haberler 5'ten azsa, geriye kalanları new=False olanlardan tamamla
     if news_new.count() < 5:
         remaining_count = 5 - news_new.count()
         additional_news = News.objects.filter(
@@ -20,7 +18,6 @@ def news_list(request):
         
         news_new = list(news_new) + list(additional_news)
     
-    # Diğer kategoriler için tüm haberleri çek (sınırsız)
     news_releases = News.objects.filter(
         is_active=True, 
         release=True

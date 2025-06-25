@@ -1,9 +1,9 @@
 {% load static %} {% load i18n %}
-
-
-<header class="page-header">
+<header class="page-header" {% if header_bg_image %}style="background-image: url('{{ header_bg_image.url }}')"{% endif %}>
     <div class="header-content">
-        <h2 class="section-title">Page title</h2>
-        <p class="section-description">Page description</p>
+        <h2 class="section-title">{{ page_title }}</h2>
+        {% if page_description %}
+        <p class="section-description">{{ page_description }}</p>
+        {% endif %}
     </div>
 </header>
