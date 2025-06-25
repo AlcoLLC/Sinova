@@ -1,8 +1,9 @@
 from django.contrib import admin
 from .models import HomeContent, PickUp
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(HomeContent)
-class HomeContentAdmin(admin.ModelAdmin):
+class HomeContentAdmin(TranslationAdmin):
     list_display = ['title', 'subtitle', 'created_at', 'updated_at']
     list_filter = ['created_at', 'updated_at']
     search_fields = ['title', 'subtitle', 'description']
@@ -25,7 +26,7 @@ class HomeContentAdmin(admin.ModelAdmin):
         return super().get_queryset(request).order_by('-created_at')
     
 @admin.register(PickUp)
-class PickUpAdmin(admin.ModelAdmin):
+class PickUpAdmin(TranslationAdmin):
     list_display = ['title', 'is_active', 'created_at', 'updated_at']
     list_filter = ['is_active', 'created_at', 'updated_at'] 
     search_fields = ['title', 'url']

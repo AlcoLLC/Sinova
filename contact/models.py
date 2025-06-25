@@ -2,8 +2,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
-# Create your models here.
-
 class ContactInfo(models.Model):
     address = models.CharField(max_length=255, verbose_name='address')
     location = models.URLField(verbose_name='location')

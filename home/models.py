@@ -9,14 +9,14 @@ class HomeContent(models.Model):
     image = models.ImageField(upload_to='home_images/', verbose_name="Home Image")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Updated At")
-
+    
     class Meta:
         verbose_name = "Home Content"
         verbose_name_plural = "Home Contents"
-
+    
     def __str__(self):
         return self.title
-    
+
 class PickUp(models.Model):
     title = models.CharField(max_length=100, verbose_name="Pick Up Title")
     image = models.ImageField(upload_to='pickup_images/', verbose_name="Pick Up Image")
@@ -24,10 +24,10 @@ class PickUp(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Is Active")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Updated At")
-
+    
     class Meta:
         verbose_name = "Pick Up"
         verbose_name_plural = "Pick Ups"
-
+    
     def __str__(self):
         return self.title

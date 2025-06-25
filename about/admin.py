@@ -1,13 +1,14 @@
 from django.contrib import admin
 from .models import About, AboutValuesContent
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-class AboutValuesContentInline(admin.TabularInline):
+class AboutValuesContentInline(TranslationTabularInline):
     model = AboutValuesContent
     extra = 1
     fields = ('title', 'description')
 
 @admin.register(About)
-class AboutAdmin(admin.ModelAdmin):
+class AboutAdmin(TranslationAdmin):
     list_display = ('our_history_title', 'created_at', 'updated_at')
     list_filter = ('created_at', 'updated_at')
     search_fields = ('our_history_title', 'our_mission', 'our_vision')
@@ -58,7 +59,7 @@ class AboutAdmin(admin.ModelAdmin):
 
 
 @admin.register(AboutValuesContent)
-class AboutValuesContentAdmin(admin.ModelAdmin):
+class AboutValuesContentAdmin(TranslationAdmin):
     list_display = ('title', 'about', 'description')
     list_filter = ('about',)
     search_fields = ('title', 'description')

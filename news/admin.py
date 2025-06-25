@@ -1,9 +1,9 @@
 from django.contrib import admin
-from django.utils.html import format_html
 from .models import News
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(News)
-class NewsAdmin(admin.ModelAdmin):
+class NewsAdmin(TranslationAdmin):
     list_display = ['title', 'date', 'new', 'announcement', 'release', 'is_active', 'order', 'created_at']
     list_editable = ['is_active', 'order', 'new', 'announcement', 'release']
 
@@ -25,4 +25,3 @@ class NewsAdmin(admin.ModelAdmin):
             'fields': ('date', 'new', 'announcement','release', 'is_active', 'order')
         }),
     )
-

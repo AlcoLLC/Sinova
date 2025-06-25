@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from .models import Gallery, GalleryImage
+from modeltranslation.admin import TranslationAdmin
 
 
 class GalleryForm(ModelForm):
@@ -11,9 +12,8 @@ class GalleryForm(ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        # Əgər yeni Gallery yaradılırsa və artıq Gallery varsa
         if not self.instance.pk and Gallery.objects.exists():
-            raise ValidationError('Sadece bir Gallery obyekti mövcud ola bilər.')
+            raise ValidationError('Only one Gallery object can exist.')
         return cleaned_data
 
 
@@ -26,7 +26,7 @@ class GalleryImageInline(admin.TabularInline):
 
 
 @admin.register(Gallery)
-class GalleryAdmin(admin.ModelAdmin):
+class GalleryAdmin(TranslationAdmin):
     form = GalleryForm
     list_display = ('iframe_video_text', 'is_active', 'created_at')
     list_filter = ('is_active', 'created_at')
@@ -44,7 +44,6 @@ class GalleryAdmin(admin.ModelAdmin):
     )
 
     def has_add_permission(self, request):
-        # Əgər artıq Gallery varsa, yeni əlavə etməyə icazə vermir
         if Gallery.objects.exists():
             return False
         return super().has_add_permission(request)
