@@ -1,220 +1,278 @@
 {% load static %} {% load i18n %}
 
-
+<meta name="csrf-token" content="{{ csrf_token }}" />
 
 <nav>
-    <div class="navbar">
-        <div class="nav-top container">
-            <ul>
-                <li>
-                    <a href="">
-                        <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo">
-                        <span>{% trans 'Head office' %}</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <img src="{% static 'images/search-icon.svg' %}" alt="Sinova Logo">
-                        <span>{% trans 'Search' %}</span>
-                    </a>
-                </li>
+  <div class="navbar">
+    <div class="nav-top container">
+      <ul>
+        <li>
+          <a href="">
+            <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
+            <span>{% trans 'Head office' %}</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <img
+              src="{% static 'images/search-icon.svg' %}"
+              alt="Sinova Logo"
+            />
+            <span>{% trans 'Search' %}</span>
+          </a>
+        </li>
 
-                <li>
-                    <div class="language-dropdown">
-                        <button class="lang-dropdown-btn">
-                            DE
-                            <i class="fa-solid fa-caret-down"></i>
-                        </button>
-                        <div class="dropdown-content" id="languageDropdown">
-                            <button class="lang-option">EN
-                            </button>
-                            <button class="lang-option">ES
-                            </button>
-                            <button class="lang-option">FR
-                            </button>
-                            <button class="lang-option">IT
-                            </button>
-                            <button class="lang-option">PT
-                            </button>
-                            <button class="lang-option">汉语
-                            </button>
-                        </div>
-                    </div>
-                </li>
+        <li>
+          <div class="language-dropdown">
+            <button class="lang-dropdown-btn">
+              {% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'es'
+              %}ES{% elif LANGUAGE_CODE == 'fr' %}FR{% elif LANGUAGE_CODE ==
+              'it' %}IT{% elif LANGUAGE_CODE == 'pt' %}PT{% elif LANGUAGE_CODE
+              == 'zh-hans' %}汉语{% else %}EN{% endif %}
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content" id="languageDropdown">
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
+                data-lang="en"
+              >
+                EN
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}"
+                data-lang="es"
+              >
+                ES
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}"
+                data-lang="fr"
+              >
+                FR
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}"
+                data-lang="it"
+              >
+                IT
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'pt' %}active{% endif %}"
+                data-lang="pt"
+              >
+                PT
+              </button>
+              <button
+                class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}"
+                data-lang="zh-hans"
+              >
+                汉语
+              </button>
+            </div>
+          </div>
+        </li>
 
-                <button class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </ul>
-            <a href="/" class="sinova-logo">
-                <img src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo">
-            </a>
-        </div>
-
-        <div class="nav-bottom">
-            <ul>
-                <li>
-                    <a href="/about">
-                        <span>{% trans 'About us' %}</span>
-                        <i class="fa-solid fa-caret-down"></i>
-                    </a>
-                    <div class="nav-dropdown">
-                        <ul>
-                            <li><a href="/about"><span>{% trans 'Our History' %}</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>{% trans 'Vision, Mission & Values' %}</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>{% trans 'Policies' %}</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a> </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li>
-                    <a href="/news">
-                        <span>{% trans 'News' %}</span>
-                        <i class="fa-solid fa-caret-down"></i>
-                    </a>
-                    <div class="nav-dropdown">
-                        <ul>
-                            <li><a href="/about"><span>{% trans "What's new" %}</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>{% trans "News releases" %}</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>{% trans "Announcements" %}</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li>
-                    <a href="/businesses">
-                        <span>{% trans 'Businesses' %}</span>
-                        <i class="fa-solid fa-caret-down"></i>
-                    </a>
-                    <div class="nav-dropdown">
-                        <ul>
-                            <li><a href="/about"><span>Finance & Investment</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>Technology</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>Trade</span> <i class="fa-solid fa-arrow-right-long"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="/investorRelation">
-                        <span>{% trans 'Investor Relations' %}</span>
-                        <i class="fa-solid fa-caret-down"></i>
-                    </a>
-                    <div class="nav-dropdown">
-                        <ul>
-                            <li><a href="/about"><span>Reports, Results & Presentations</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>Announcements & Publications</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-                            <li><a href="/about"><span>Corporate Governance</span> <i
-                                        class="fa-solid fa-arrow-right-long"></i></a></li>
-
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="/sustainability">
-                        <span>{% trans 'Sustainability' %}</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/gallery">
-                        <span>{% trans 'Media Center' %}</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/contact/">
-                        <span>{% trans 'Contact' %}</span>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-        <div class="dropdown-background"></div>
+        <button class="hamburger" id="hamburger">
+          <i class="fas fa-bars"></i>
+        </button>
+      </ul>
+      <a href="{% url 'home:home' %}" class="sinova-logo">
+        <img src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo" />
+      </a>
     </div>
 
+    <div class="nav-bottom">
+      <ul>
+        <li>
+          <a href="{% url 'about:about' %}">
+            <span>{% trans 'About us' %}</span>
+            <i class="fa-solid fa-caret-down"></i>
+          </a>
+          <div class="nav-dropdown">
+            <ul>
+              <li>
+                <a href="{% url 'about:about_tab' tab='our-history' %}"
+                  ><span>{% trans 'Our History' %}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i
+                ></a>
+              </li>
+              <li>
+                <a href="{% url 'about:about_tab' tab='vision-mission' %}"
+                  ><span>{% trans 'Vision, Mission & Values' %}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i
+                ></a>
+              </li>
+              <li>
+                <a href="{% url 'about:about_tab' tab='policies' %}"
+                  ><span>{% trans 'Policies' %}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li>
+          <a href="{% url 'news:news_list' %}">
+            <span>{% trans 'News' %}</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'businesses:businesses' %}">
+            <span>{% trans 'Businesses' %}</span>
+            <i class="fa-solid fa-caret-down"></i>
+          </a>
+          <div class="nav-dropdown">
+            <ul>
+              {% for category in business_categories %}
+              <li>
+                <a
+                  href="{% url 'businesses:category_detail' category_slug=category.slug %}"
+                >
+                  <span>{{ category.title }}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'investorRelation:investorRelation' %}">
+            <span>{% trans 'Investor Relations' %}</span>
+            <i class="fa-solid fa-caret-down"></i>
+          </a>
+          <div class="nav-dropdown">
+            <ul>
+              {% for category in investor_categories %}
+              <li>
+                <a
+                  href="{% url 'investorRelation:category_detail' category_slug=category.slug %}"
+                >
+                  <span>{{ category.title }}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="{% url 'sustainability:sustainability' %}">
+            <span>{% trans 'Sustainability' %}</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{% url 'gallery:gallery_view' %}">
+            <span>{% trans 'Media Center' %}</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'contact:contact' %}">
+            <span>{% trans 'Contact' %}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown-background"></div>
+  </div>
 </nav>
 
-
 <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-navbar">
-        <ul>
-            <li class="mobile-dropdown">
-                <a class="mobile-dropdown-head" >
-                    <span>{% trans 'About us' %}</span>
-                    <i class="fa-solid fa-plus"></i> </a>
+  <div class="mobile-navbar">
+    <ul>
+      <li class="mobile-dropdown">
+        <a class="mobile-dropdown-head">
+          <span>{% trans 'About us' %}</span>
+          <i class="fa-solid fa-plus"></i>
+        </a>
 
-                <div class="mobile-dropdown-content">
-                    <a href="/about">{% trans 'Our History' %}</a>
-                    <a href="">{% trans 'Vision, Mission & Values' %}</a>
-                    <a href="">{% trans 'Policies' %}</a>
-                </div>
-            </li>
+        <div class="mobile-dropdown-content">
+          <a href="{% url 'about:about_tab' tab='our-history' %}"
+            >{% trans 'Our History' %}</a
+          >
+          <a href="{% url 'about:about_tab' tab='vision-mission' %}"
+            >{% trans 'Vision, Mission & Values' %}</a
+          >
+          <a href="{% url 'about:about_tab' tab='policies' %}"
+            >{% trans 'Policies' %}</a
+          >
+        </div>
+      </li>
 
-            <li class="mobile-dropdown">
-                <a class="mobile-dropdown-head">
-                    <span>{% trans 'News' %}</span>
-                    <i class="fa-solid fa-plus"></i> </a>
+      <li class="mobile-dropdown">
+        <a class="mobile-dropdown-head">
+          <span>{% trans 'News' %}</span>
+          <i class="fa-solid fa-plus"></i>
+        </a>
+      </li>
 
-                <div class="mobile-dropdown-content">
-                    <a href="/news">{% trans "What's new" %}</a>
-                    <a href="">{% trans "News releases" %}</a>
-                    <a href="">{% trans "Announcements" %}</a>
-                </div>
-            </li>
+      <li class="mobile-dropdown">
+        <a class="mobile-dropdown-head">
+          <span>{% trans 'Businesses' %}</span>
+          <i class="fa-solid fa-plus"></i>
+        </a>
 
-            <li class="mobile-dropdown">
-                <a class="mobile-dropdown-head">
-                    <span>{% trans 'Businesses' %}</span>
-                    <i class="fa-solid fa-plus"></i> </a>
+        <div class="mobile-dropdown-content">
+          {% for category in business_categories %}
+          <a
+            href="{% url 'businesses:category_detail' category_slug=category.slug %}"
+          >
+            {{ category.title }}
+          </a>
+          {% endfor %}
+        </div>
+      </li>
 
-                <div class="mobile-dropdown-content">
-                    <a href="">Finance & Investment</a>
-                    <a href="">Technology</a>
-                    <a href="">Trade</a>
-                </div>
-            </li>
+      <li class="mobile-dropdown">
+        <a class="mobile-dropdown-head">
+          <span>{% trans 'Investor Relations' %}</span>
+          <i class="fa-solid fa-plus"></i>
+        </a>
 
-            <li class="mobile-dropdown">
-                <a class="mobile-dropdown-head">
-                    <span>{% trans 'Investor Relations' %}</span>
-                    <i class="fa-solid fa-plus"></i> </a>
-
-                <div class="mobile-dropdown-content">
-                    <a href="">Reports, Results & Presentations</a>
-                    <a href="">Announcements & Publications</a>
-                    <a href="">Corporate Governance</a>
-                </div>
-            </li>
-            <li>
-                <a href="/sustainability">
-                    <span>{% trans 'Sustainability' %}</span>
-                </a>
-            </li>
-            <li>
-                <a href="/gallery">
-                    <span>{% trans 'Media Center' %}</span>
-                </a>
-            </li>
-            <li>
-                <a href="/contact">
-                    <span>{% trans 'Contact' %}</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+        <div class="mobile-dropdown-content">
+          {% for category in investorRelation_categories %}
+          <a
+            href="{% url 'investorRelation:category_detail' category_slug=category.slug %}"
+          >
+            {{ category.title }}
+          </a>
+          {% endfor %}
+        </div>
+      </li>
+      <li>
+        <a href="{% url 'sustainability:sustainability' %}">
+          <span>{% trans 'Sustainability' %}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'gallery:gallery_view' %}">
+          <span>{% trans 'Media Center' %}</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'contact:contact' %}">
+          <span>{% trans 'Contact' %}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <a href="https://wa.me/994502220607" class="fixed-whatsapp" target="_blank">
-    <i class="fab fa-whatsapp"></i>
+  <i class="fab fa-whatsapp"></i>
 </a>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const activeTab = "{{ active_tab|default:'' }}";
+    if (activeTab) {
+      const section = document.getElementById(activeTab);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  });
+</script>
