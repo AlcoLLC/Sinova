@@ -81,6 +81,13 @@
         padding: 15px 30px;
     }
 
+    .show-more {
+        margin: 20px auto;
+        padding: 15px 30px;
+        font-size: 16px;
+        line-height: 25px;
+    }
+
     .news-content {
         margin-bottom: 40px;
     }
@@ -386,6 +393,15 @@
     .news-section .news-button {
         width: 100%;
     }
+
+    .show-more {
+        width: 100%;
+        margin: 15px auto;
+        padding: 12px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
 
     .section-title {
         font-size: 32px;
