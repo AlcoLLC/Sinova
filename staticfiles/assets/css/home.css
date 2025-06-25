@@ -77,13 +77,12 @@ nav {
   flex-direction: column;
 }
 
-nav .sinova-logo {
+.sinova-logo {
   display: block;
   width: 180px;
   margin: 0 auto;
 }
-
-nav .sinova-logo img {
+.sinova-logo img {
   width: 100%;
 }
 
@@ -1077,6 +1076,10 @@ header {
   transition: background-color 0.3s ease;
 }
 
+.subscribe-section .btn-hidden {
+  display: none;
+}
+
 .subscribe-section .send-btn:hover {
   background-color: #e02e2e;
 }
@@ -1091,6 +1094,11 @@ header {
 .subscribe-section .checkbox-container {
   position: relative;
   margin-top: 2px;
+}
+
+.subscribe-section .section-description {
+  text-align: justify;
+  width: 90%;
 }
 
 .subscribe-section input[type="checkbox"] {
@@ -1191,18 +1199,19 @@ header {
 }
 
 .footer-top .pages {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
 }
 
 .footer-top .pages a {
-  min-width: 18%;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 14px 20px;
+  gap: 5px;
+  padding: 14px;
+  font-size: 14px;
   background-color: #fff;
   color: #141D43;
   font-weight: 600;
@@ -1223,7 +1232,8 @@ header {
 }
 
 .footer-top .pages a i {
-  font-size: 18px;
+  font-size: 14px;
+  margin-bottom: 3px;
   color: #FF3333;
   transition: all 0.5s ease;
 }
@@ -1233,7 +1243,7 @@ header {
 }
 
 footer .sinova-logo {
-  width: 170px;
+  display: inline-block;
   margin-bottom: 30px;
 }
 
@@ -1250,13 +1260,13 @@ footer .sinova-logo {
 .footer-desc {
   font-weight: 450;
   font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 17px;
   color: #141D43;
 }
 
 .follow-us .footer-desc {
   font-weight: 600;
+  width: 80%  ;
 }
 
 .footer-main {
@@ -1291,7 +1301,7 @@ footer .sinova-logo {
   width: 45%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .footer-main .contact-us>div {

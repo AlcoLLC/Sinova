@@ -23,21 +23,11 @@
         about Sinova Group. {% endblocktrans %}
       </p>
 
-      <form
-        id="subscribeForm"
-        method="post"
-        action="{% url 'subscription:subscribe' %}"
-      >
+      <form id="subscribeForm" method="post" action="{% url 'subscription:subscribe' %}">
         {% csrf_token %}
         <div class="form-row">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="{% trans 'Your email address' %}"
-            required
-          />
-          <button type="submit" class="send-btn">{% trans "Send" %}</button>
+          <input type="email" name="email" id="email" placeholder="{% trans 'Your email address' %}" required />
+          <button type="submit" class="send-btn btn-visible">{% trans "Send" %}</button>
         </div>
         <label for="checkbox">
           <div class="checkbox-container">
@@ -54,24 +44,20 @@
             {%endblocktrans%}
           </p>
         </label>
+        <button type="submit" class="send-btn btn-hidden">{% trans "Send" %}</button>
+
       </form>
     </div>
 
     <div class="right-content">
       <div class="images-left">
         {% for image in gallery_subscribe_images|slice:":3" %}
-        <img
-          src="{{ image.image.url }}"
-          alt="{{ image.gallery.iframe_video_text }}"
-        />
+        <img src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
         {% empty %} {% endfor %}
       </div>
       <div class="image-right">
         {% for image in gallery_subscribe_images|slice:"3:7" %}
-        <img
-          src="{{ image.image.url }}"
-          alt="{{ image.gallery.iframe_video_text }}"
-        />
+        <img src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
         {% empty %} {% endfor %}
       </div>
     </div>
