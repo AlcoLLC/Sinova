@@ -130,6 +130,16 @@ nav ul a.active i {
   color: #FF3333;
 }
 
+.nav-dropdown ul a:hover span,
+.nav-dropdown ul a:hover i {
+  color: #fff;
+}
+
+.nav-dropdown ul a.active span,
+.nav-dropdown ul a.active i {
+  color: #fff;
+}
+
 .nav-bottom {
   width: 900px;
   max-width: 95%;
@@ -362,7 +372,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   padding: 15px 20px;
 }
 
-.mobile-menu .mobile-navbar ul li::after {
+.mobile-menu .mobile-navbar ul li:not(:last-child)::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -662,7 +672,7 @@ header {
 
 .news-section .news-tabs {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 10px;
   position: relative;
@@ -670,7 +680,9 @@ header {
 }
 
 .news-section .tab {
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
   cursor: pointer;
   color: #fff;
@@ -968,19 +980,35 @@ header {
 }
 
 
-.pick-up-section .pick-up-content img {
-  width: 100%;
-  height: 80%;
-  object-fit: cover;
-}
 
 .pick-up-section .pick-up-content {
   padding-bottom: 20px;
   background-color: #fff;
   color: #141D43;
   transition: all 0.5s ease;
-
+  min-height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
 }
+
+.pick-up-section .pick-up-content img {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+}
+
+.pick-up-section .pick-up-content .pick-up-description {
+  height: 25%;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 26px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 
 .pick-up-section .pick-up-content:hover {
   background-color: #FF3333;
@@ -988,13 +1016,6 @@ header {
 
 }
 
-.pick-up-section .pick-up-content .pick-up-description {
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 30px;
-  text-align: center;
-  padding: 15px;
-}
 
 
 .subscribe-section {
@@ -1013,7 +1034,6 @@ header {
 .subscribe-section .section-title {
   margin-bottom: 30px;
 }
-
 
 
 .subscribe-section .subscribe-components .left-content {

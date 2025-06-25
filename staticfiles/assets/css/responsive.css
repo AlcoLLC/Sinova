@@ -10,9 +10,109 @@
 
 @media (max-width: 1100px) {}
 
-@media (max-width: 1000px) {}
+@media (max-width: 1000px) {
+    .subscribe-section .subscribe-components {
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .subscribe-section .section-title {
+        margin-bottom: 10px;
+    }
+
+    .subscribe-section .right-content {
+        width: 45%;
+        height: 70vh;
+        gap: 30px;
+    }
+
+    .subscribe-section .right-content .images-left,
+    .subscribe-section .right-content .image-right {
+        gap: 30px;
+    }
+
+    .subscribe-section label {
+        font-size: 14px;
+    }
+
+    .pick-up-section {
+        padding: 80px 0;
+    }
+
+    .pick-up-section .pick-up-content {
+        padding-bottom: 15px;
+        min-height: 280px;
+
+    }
+
+    .pick-up-section .pick-up-components {
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .pick-up-section .pick-up-content .pick-up-description {
+        font-size: 20px;
+        line-height: 22px;
+    }
+
+
+    .news-section .news-button a {
+        padding: 15px 30px;
+    }
+
+    .news-content {
+        margin-bottom: 40px;
+    }
+
+
+    .news-sinova-content {
+        padding: 15px 0;
+    }
+
+    .news-sinova-content:hover {
+        padding: 15px;
+    }
+
+    .news-sinova-content .news-date {
+        font-size: 14px;
+    }
+
+    .news-sinova-content .news-date span {
+        line-height: 28px;
+        font-size: 14px;
+        padding: 0px 7px;
+
+    }
+
+
+    .news-section .news-tabs {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .news-section .tab {
+        padding: 15px;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .news-section {
+        margin: 30px auto;
+        padding-top: 30px;
+    }
+
+    .section-title {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    .section-header .section-title {
+        margin-bottom: 30px;
+    }
+}
 
 @media (max-width: 900px) {
+
 
 
     .navbar {
@@ -56,6 +156,35 @@
 }
 
 @media (max-width: 800px) {
+
+    .pick-up-section {
+        padding: 50px 0;
+    }
+
+    .pick-up-section .pick-up-content {
+        padding-bottom: 15px;
+        min-height: 200px;
+    }
+
+    .pick-up-section .pick-up-content .pick-up-description {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+
+    .news-content {
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        font-size: 36px;
+        line-height: 42px;
+    }
+
+    .section-header .section-title {
+        margin-bottom: 25px;
+    }
+
     header {
         height: 400px;
     }
@@ -97,7 +226,63 @@
 
 }
 
+
+@media (max-width: 650px) {
+
+
+    .section-description {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+
+
+    .pick-up-section .pick-up-components {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .pick-up-section .pick-up-content .pick-up-description {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+
+    .news-section .news-tabs {
+        gap: 4px;
+        margin-bottom: 10px;
+    }
+
+    .news-sinova-content {
+        padding: 10px 0;
+    }
+
+    .news-section .tab {
+        padding: 10px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+}
+
 @media (max-width: 600px) {
+
+    .news-sinova-content .news-date span {
+        font-size: 12px;
+    }
+
+
+    .news-section .news-button {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 32px;
+        line-height: 38px;
+    }
+
+    .section-header .section-title {
+        margin-bottom: 20px;
+    }
 
     header {
         height: 350px;
@@ -126,7 +311,22 @@
 
 }
 
+@media (max-width: 550px) {
+
+
+    .news-section .tab {
+        padding: 10px 6px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+
+
+}
+
 @media (max-width: 500px) {
+
+
 
     header {
         height: 300px;
