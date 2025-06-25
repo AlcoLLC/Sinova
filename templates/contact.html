@@ -4,24 +4,28 @@
 <section class="contact-section container">
   <div class="contact-content">
     <div class="contact-text">
-      <p class="section-subtitle">{% trans 'Sinova headquarters' %}</p>
-      <div>
-        <span>{% trans 'Address' %}</span>
-        <p class="section-description">{% trans 'Sinova head office: ' %}</p>
-        <p class="section-description">{{ contact_info.address }}</p>
+      <div class="contact-column">
+        <p class="section-subtitle">{% trans 'Sinova headquarters' %}</p>
+        <div>
+          <span>{% trans 'Address' %}</span>
+          <p class="section-description">{% trans 'Sinova head office: ' %}</p>
+          <p class="section-description">{{ contact_info.address }}</p>
+        </div>
+        <a href="{{ contact_info.location }}" target="_blank">
+          <span>{% trans 'Location' %}</span>
+          <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
+        </a>
       </div>
-      <a href="{{ contact_info.location }}" target="_blank">
-        <span>{% trans 'Location' %}</span>
-        <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
-      </a>
-      <div>
-        <span>{% trans 'Phone number' %}</span>
-        <p class="section-description">{{ contact_info.phone_number }}</p>
-      </div>
+      <div class="contact-column">
+        <div>
+          <span>{% trans 'Phone number' %}</span>
+          <p class="section-description">{{ contact_info.phone_number }}</p>
+        </div>
 
-      <div>
-        <span>{% trans 'E-mail adress' %}</span>
-        <p class="section-description">{{ contact_info.email }}</p>
+        <div>
+          <span>{% trans 'E-mail adress' %}</span>
+          <p class="section-description">{{ contact_info.email }}</p>
+        </div>
       </div>
     </div>
     <div class="contact-image">
@@ -52,82 +56,37 @@
       {% csrf_token %}
 
       <div class="form-group">
-        <input
-          type="text"
-          id="company"
-          name="company_name"
-          class="form-control"
-          placeholder="Company name*"
-          required
-        />
+        <input type="text" id="company" name="company_name" class="form-control" placeholder="Company name*" required />
       </div>
 
       <div class="form-group">
-        <textarea
-          id="question"
-          name="message"
-          class="form-control"
-          placeholder="Your question, wish and/or clarification*"
-          required
-        ></textarea>
+        <textarea id="question" name="message" class="form-control"
+          placeholder="Your question, wish and/or clarification*" required></textarea>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <input
-            type="text"
-            id="firstName"
-            name="first_name"
-            class="form-control"
-            placeholder="First name*"
-            required
-          />
+          <input type="text" id="firstName" name="first_name" class="form-control" placeholder="First name*" required />
         </div>
 
         <div class="form-group">
-          <input
-            type="text"
-            id="lastName"
-            name="last_name"
-            class="form-control"
-            placeholder="Last name*"
-            required
-          />
+          <input type="text" id="lastName" name="last_name" class="form-control" placeholder="Last name*" required />
         </div>
       </div>
 
       <div class="form-row">
         <div class="form-group">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            placeholder="Email address*"
-            required
-          />
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email address*" required />
         </div>
 
         <div class="form-group">
-          <input
-            type="tel"
-            id="phone"
-            name="phone_number"
-            class="form-control"
-            placeholder="Phone number*"
-            required
-          />
+          <input type="tel" id="phone" name="phone_number" class="form-control" placeholder="Phone number*" required />
         </div>
       </div>
 
       <div class="form-group recaptcha-container">
-        <div
-          class="g-recaptcha"
-          data-sitekey="{{ recaptcha_site_key }}"
-          data-callback="onRecaptchaSuccess"
-          data-expired-callback="onRecaptchaExpired"
-          data-error-callback="onRecaptchaError"
-        ></div>
+        <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onRecaptchaSuccess"
+          data-expired-callback="onRecaptchaExpired" data-error-callback="onRecaptchaError"></div>
       </div>
 
       <button type="submit" class="btn-send">
@@ -142,14 +101,14 @@
 
 <script>
   {% if messages %}
-    document.addEventListener("DOMContentLoaded", function() {
-      {% for message in messages %}
-        let messageType = "{{ message.tags }}";
-        if (messageType === "info") messageType = "success";
-        if (window.showNotification) {
-          window.showNotification("{{ message|escapejs }}", messageType);
-        }
-      {% endfor %}
-    });
+  document.addEventListener("DOMContentLoaded", function () {
+    {% for message in messages %}
+    let messageType = "{{ message.tags }}";
+    if (messageType === "info") messageType = "success";
+    if (window.showNotification) {
+      window.showNotification("{{ message|escapejs }}", messageType);
+    }
+    {% endfor %}
+  });
   {% endif %}
 </script>

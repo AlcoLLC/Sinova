@@ -1,15 +1,12 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
 
-<div class="breadcrumb-container">
+{% include 'components/page-header.html' %}
   <div class="container">
     <div class="breadcrumb">
       <a href="/home">{% trans "Home page" %} </a>
       <span> | {% trans "News" %} </span>
     </div>
   </div>
-</div>
-
-{% include 'components/page-header.html' %}
 
 <section class="news-section container">
   <div class="section-header">
