@@ -5,22 +5,19 @@
 {% block content %}
 
 <header class="placeholder-header">
-  <div class=" page-header ">
-    <div class="page-header-content">
-      <h2 class="section-title">{% trans "Search" %}</h2>
-      <div class="container search-bar">
-        <form method="GET" class="search-form">
-          <input
-            type="text"
-            name="search"
-            class="search-input"
-            placeholder="{% trans 'Search...' %}"
-            data-search-query=""
-          />
-          <button type="button" class="cancel-button">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </form>
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h2 class="section-title">{% trans "Search" %}</h2>
+        <div class="container search-bar">
+          <form method="GET" class="search-form">
+            <input type="text" name="search" class="search-input" placeholder="{% trans 'Search...' %}"
+              data-search-query="" />
+            <button type="button" class="cancel-button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
