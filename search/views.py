@@ -81,7 +81,7 @@ def search_all_models(query):
         return results
     
     try:
-        about_fields = ['iframe_video_text', 'our_history_title', 'our_history_content_one', 
+        about_fields = ['iframe_video_text', 'our_history_content_one', 
                        'our_history_content_two', 'our_mission', 'our_vision', 'policies_description']
         
         abouts = About.objects.filter(

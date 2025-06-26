@@ -12,7 +12,7 @@
 
 <div class="clickable-tabs container">
   {% for category in categories %}
-  <div class="tab" data-tab="{{ category.slug }}">
+  <div class="tab" data-slug="{{ category.slug }}">
     <h2 class="section-title">{{ category.title }}</h2>
     <button><i class="fa-solid fa-arrow-down-long"></i></button>
   </div>

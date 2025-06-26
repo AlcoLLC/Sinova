@@ -55,9 +55,8 @@
 
 <section class="section-our-history container" id="our-history">
   <div class="section-header">
-    {% if about.our_history_title %}
-    <h2 class="section-title">{{ about.our_history_title }}</h2>
-    {% else %} {% endif %} {% if about.our_history_content_one %}
+    <h2 class="section-title">{% trans "Our History" %}</h2>
+    {% if about.our_history_content_one %}
     <p class="section-description">{{ about.our_history_content_one|safe }}</p>
     {% else %} {% endif %}
   </div>

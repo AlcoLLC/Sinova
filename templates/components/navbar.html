@@ -56,7 +56,7 @@
         </button>
       </ul>
       <a href="{% url 'home:home' %}" class="sinova-logo">
-        <img src="{% static 'images/sinova-logo.svg' %}" alt="Sinova Logo" />
+        <img src="{% static 'images/sinova-logo.png' %}" alt="Sinova Logo" />
       </a>
     </div>
 
@@ -65,64 +65,17 @@
         <li>
           <a href="{% url 'about:about' %}">
             <span>{% trans 'About us' %}</span>
-            <i class="fa-solid fa-caret-down"></i>
           </a>
-          <div class="nav-dropdown">
-            <ul>
-              <li>
-                <a href="{% url 'about:about_tab' tab='our-history' %}"><span>{% trans 'Our History' %}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i></a>
-              </li>
-              <li>
-                <a href="{% url 'about:about_tab' tab='vision-mission' %}"><span>{% trans 'Vision, Mission & Values'
-                    %}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i></a>
-              </li>
-              <li>
-                <a href="{% url 'about:about_tab' tab='policies' %}"><span>{% trans 'Policies' %}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i></a>
-              </li>
-            </ul>
-          </div>
         </li>
-
-
-
         <li>
           <a href="{% url 'businesses:businesses' %}">
             <span>{% trans 'Businesses' %}</span>
-            <i class="fa-solid fa-caret-down"></i>
           </a>
-          <div class="nav-dropdown">
-            <ul>
-              {% for category in business_categories %}
-              <li>
-                <a href="{% url 'businesses:category_detail' category_slug=category.slug %}">
-                  <span>{{ category.title }}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
         </li>
         <li>
           <a href="{% url 'investorRelation:investorRelation' %}">
             <span>{% trans 'Investor Relations' %}</span>
-            <i class="fa-solid fa-caret-down"></i>
           </a>
-          <div class="nav-dropdown">
-            <ul>
-              {% for category in investor_categories %}
-              <li>
-                <a href="{% url 'investorRelation:category_detail' category_slug=category.slug %}">
-                  <span>{{ category.title }}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i>
-                </a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
         </li>
 
         <li>
@@ -160,44 +113,19 @@
       <li class="mobile-dropdown">
         <a href="{% url 'about:about' %}" class="mobile-dropdown-head">
           <span>{% trans 'About us' %}</span>
-          <i class="fa-solid fa-plus"></i>
         </a>
-
-        <div class="mobile-dropdown-content">
-          <a href="{% url 'about:about_tab' tab='our-history' %}">{% trans 'Our History' %}</a>
-          <a href="{% url 'about:about_tab' tab='vision-mission' %}">{% trans 'Vision, Mission & Values' %}</a>
-          <a href="{% url 'about:about_tab' tab='policies' %}">{% trans 'Policies' %}</a>
-        </div>
       </li>
 
       <li class="mobile-dropdown">
         <a href="{% url 'businesses:businesses' %}" class="mobile-dropdown-head">
           <span>{% trans 'Businesses' %}</span>
-          <i class="fa-solid fa-plus"></i>
         </a>
-
-        <div class="mobile-dropdown-content">
-          {% for category in business_categories %}
-          <a href="{% url 'businesses:category_detail' category_slug=category.slug %}">
-            {{ category.title }}
-          </a>
-          {% endfor %}
-        </div>
       </li>
 
       <li class="mobile-dropdown">
         <a href="{% url 'investorRelation:investorRelation' %}" class="mobile-dropdown-head">
           <span>{% trans 'Investor Relations' %}</span>
-          <i class="fa-solid fa-plus"></i>
         </a>
-
-        <div class="mobile-dropdown-content">
-          {% for category in investorRelation_categories %}
-          <a href="{% url 'investorRelation:category_detail' category_slug=category.slug %}">
-            {{ category.title }}
-          </a>
-          {% endfor %}
-        </div>
       </li>
 
       <li>
