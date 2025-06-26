@@ -8,6 +8,21 @@ class SearchManager {
     this.searchResults = [];
     this.searchTimeout = null;
 
+    // i18n messages - these will be provided by Django template
+    this.messages = {
+      searchError: gettext(
+        "An error occurred during search. Please try again."
+      ),
+      noResults: gettext("No results found for"),
+      noResultsTip: gettext(
+        "You can try different keywords or use more general terms."
+      ),
+      resultsFound: gettext("results found for"),
+      showing: gettext("Showing"),
+      of: gettext("of"),
+      totalResults: gettext("total results"),
+    };
+
     this.initializeElements();
     this.bindEvents();
     this.loadFromURL();
@@ -71,7 +86,7 @@ class SearchManager {
         /*
         this.searchTimeout = setTimeout(() => {
           const query = this.searchInput.value.trim();
-          if (query.length > 2) { // En az 3 karakter
+          if (query.length > 2) { // At least 3 characters
             this.performSearch(query);
           } else if (query.length === 0) {
             this.showPlaceholder();
@@ -184,7 +199,7 @@ class SearchManager {
       }
     } catch (error) {
       console.error("Search error:", error);
-      this.showError("Arama sırasında bir hata oluştu. Lütfen tekrar deneyin.");
+      this.showError(this.messages.searchError);
     }
   }
 
@@ -242,8 +257,8 @@ class SearchManager {
       if (this.searchResultsContainer) {
         this.searchResultsContainer.innerHTML = `
           <div class="no-results">
-            <p><i class="fa-solid fa-search"></i> "${this.currentQuery}" için sonuç bulunamadı.</p>
-            <p class="no-results-tip">Farklı anahtar kelimeler deneyebilir veya daha genel terimler kullanabilirsiniz.</p>
+            <p><i class="fa-solid fa-search"></i> ${this.messages.noResults} "${this.currentQuery}".</p>
+            <p class="no-results-tip">${this.messages.noResultsTip}</p>
           </div>
         `;
       }
@@ -255,7 +270,7 @@ class SearchManager {
 
     // Sonuç sayısını göster
     if (this.searchResultsCount) {
-      this.searchResultsCount.textContent = `"${this.currentQuery}" için ${this.totalResults} sonuç bulundu`;
+      this.searchResultsCount.textContent = `${this.totalResults} ${this.messages.resultsFound} "${this.currentQuery}"`;
     }
     if (this.searchResultsInfo) this.searchResultsInfo.style.display = "block";
 
@@ -312,7 +327,7 @@ class SearchManager {
     );
 
     if (this.paginationInfo) {
-      this.paginationInfo.textContent = `${startIndex}–${endIndex} arası gösteriliyor (toplam ${this.totalResults} sonuç)`;
+      this.paginationInfo.textContent = `${this.messages.showing} ${startIndex}–${endIndex} ${this.messages.of} ${this.totalResults} ${this.messages.totalResults}`;
     }
 
     let paginationHTML = "";
@@ -536,6 +551,14 @@ function initializeSimpleSearch() {
   const cancelBtn = document.querySelector(".page-header .cancel-button");
   const searchInput = document.querySelector(".search-input");
   const searchForm = document.querySelector(".search-form");
+
+  // i18n messages for simple search
+  const messages = {
+    noResults: gettext("No results found for"),
+    noResultsTip: gettext(
+      "You can try different keywords or use more general terms."
+    ),
+  };
 
   if (cancelBtn) {
     cancelBtn.addEventListener("click", function (e) {
