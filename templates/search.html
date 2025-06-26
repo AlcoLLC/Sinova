@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+
+<!-- Page-Header -->
+
+<header class="placeholder-header page-header">
+  <div class="section-container">
+    <div class="page-header-content">
+      <h2>{% trans "Search" %}</h2>
+      <div class="container search-bar">
+        <form method="GET" class="search-form">
+          <input
+            type="text"
+            name="search"
+            class="search-input"
+            placeholder="{% trans 'Search...' %}"
+            data-search-query=""
+          />
+          <button type="button" class="cancel-button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="search-section container">
+  <div class="search-results-info" style="display: none">
+    <span class="search-results-count"></span>
+  </div>
+
+  <div class="search-results-container"></div>
+
+  <div class="pagination-container" style="display: none">
+    <p class="pagination-info"></p>
+    <div class="pagination"></div>
+  </div>
+
+  <div class="search-placeholder">
+    <p>{% trans "Enter keywords to search..." %}</p>
+  </div>
+
+  <div class="search-loading" style="display: none">
+    <p>{% trans "Searching..." %}</p>
+  </div>
+</section>
+
+{% endblock %}

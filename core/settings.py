@@ -84,7 +84,8 @@ INSTALLED_APPS = [
     'subscribtion',
     'sustainability',
     'contact',
-    'pageHeader'
+    'pageHeader', 
+    'search'
 ]
 
 MIDDLEWARE = [
