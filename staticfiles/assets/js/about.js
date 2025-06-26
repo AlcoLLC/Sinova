@@ -16,18 +16,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Dinamik tab ve section selector'ları
   const tabs = document.querySelectorAll(".clickable-tabs .tab");
 
+  // Statik about sayfası için section'lar
   const aboutSections = document.querySelectorAll(
     '[id="our-history"], [id="vision-mission"], [id="policies"]'
   );
 
+  // Dinamik kategoriler için section'lar (businesses, investor relations vb.)
   const dynamicSections = document.querySelectorAll(
-    '[id^="business-"], [id^="investor-"]'
+    '[id^="category-"], [id^="business-"], [id^="investor-"]'
   );
 
+  // Tüm section'ları birleştir
   const allSections = [...aboutSections, ...dynamicSections];
 
+  // Sayfa tipini belirle
   const pageType = getPageType();
 
   function getPageType() {
@@ -36,27 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (path.includes("/businesses/")) return "businesses";
     if (path.includes("/investor")) return "investor";
     return "general";
-  }
-
-  // Tab'dan target ID'yi al - About için data-tab, diğerleri için data-slug
-  function getTargetId(tab) {
-    if (pageType === "about") {
-      return tab.getAttribute("data-tab");
-    } else {
-      return tab.getAttribute("data-slug") || tab.getAttribute("data-tab");
-    }
-  }
-
-  // Target ID'ye göre tab'ı bul
-  function findTabByTargetId(targetId) {
-    if (pageType === "about") {
-      return document.querySelector(`[data-tab="${targetId}"]`);
-    } else {
-      return (
-        document.querySelector(`[data-slug="${targetId}"]`) ||
-        document.querySelector(`[data-tab="${targetId}"]`)
-      );
-    }
   }
 
   function updateURL(tabId) {
@@ -99,10 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateActiveTab(targetId) {
     tabs.forEach((t) => t.classList.remove("active"));
 
-    // Target ID'ye göre tab'ı bul
+    // Farklı selector'lar dene
     const activeTab =
-      findTabByTargetId(targetId) ||
-      document.querySelector(`[data-category="${targetId}"]`);
+      document.querySelector(`[data-tab="${targetId}"]`) ||
+      document.querySelector(`[data-category="${targetId}"]`) ||
+      document.querySelector(`[data-slug="${targetId}"]`);
 
     if (activeTab) {
       activeTab.classList.add("active");
@@ -114,7 +99,10 @@ document.addEventListener("DOMContentLoaded", function () {
     tab.addEventListener("click", function (e) {
       e.preventDefault();
 
-      const targetId = getTargetId(this);
+      const targetId =
+        this.getAttribute("data-tab") ||
+        this.getAttribute("data-category") ||
+        this.getAttribute("data-slug");
 
       if (targetId) {
         // Eğer farklı bir sayfaya yönlendirme gerekiyorsa
@@ -225,7 +213,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // İlk kategoriyi varsayılan olarak kullan
     const firstTab = tabs[0];
     if (firstTab) {
-      return getTargetId(firstTab);
+      return (
+        firstTab.getAttribute("data-tab") ||
+        firstTab.getAttribute("data-category") ||
+        firstTab.getAttribute("data-slug")
+      );
     }
 
     return null;
