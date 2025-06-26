@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.db.models import Q
 from django.core.paginator import Paginator
-from django.utils.translation import get_language
-
 from about.models import About, AboutValuesContent
 from businesses.models import Category as BusinessCategory, CategoryFeature as BusinessCategoryFeature
 from contact.models import ContactInfo
@@ -16,7 +14,6 @@ from sustainability.models import Sustainability, SubtainabilityContent
 
 
 def normalize_turkish_text(text):
-    """Türkçe karakterleri normalize eder"""
     if not text:
         return ""
     
@@ -38,38 +35,30 @@ def normalize_turkish_text(text):
 
 
 def create_comprehensive_search_q(query, fields):
-    """Çok kapsamlı arama Q objesi oluşturur"""
     if not query or not fields:
         return Q()
     
     q_objects = Q()
     query_clean = query.strip()
     
-    # 1. Tam query ile arama
     for field in fields:
-        # Orijinal query
         q_objects |= Q(**{f"{field}__icontains": query_clean})
         
-        # Büyük/küçük harf duyarsız
         q_objects |= Q(**{f"{field}__iexact": query_clean})
         
-        # Türkçe karaktersiz versiyon
         normalized_query = normalize_turkish_text(query_clean)
         if normalized_query != query_clean:
             q_objects |= Q(**{f"{field}__icontains": normalized_query})
     
-    # 2. Kelime bazlı arama
     words = [word.strip() for word in query_clean.split() if word.strip()]
     for word in words:
         for field in fields:
             q_objects |= Q(**{f"{field}__icontains": word})
             
-            # Normalize edilmiş kelime
             normalized_word = normalize_turkish_text(word)
             if normalized_word != word:
                 q_objects |= Q(**{f"{field}__icontains": normalized_word})
     
-    # 3. Tek karakter araması (1 karakter için)
     if len(query_clean) == 1:
         for field in fields:
             q_objects |= Q(**{f"{field}__icontains": query_clean})
@@ -77,26 +66,20 @@ def create_comprehensive_search_q(query, fields):
             if normalized_char != query_clean:
                 q_objects |= Q(**{f"{field}__icontains": normalized_char})
     
-    # 4. Kısmi kelime araması
     for field in fields:
-        # Kelimenin başında
         q_objects |= Q(**{f"{field}__istartswith": query_clean})
-        # Kelimenin sonunda
         q_objects |= Q(**{f"{field}__iendswith": query_clean})
-        # Regex ile daha esnek arama
         q_objects |= Q(**{f"{field}__iregex": f".*{query_clean}.*"})
     
     return q_objects
 
 
 def search_all_models(query):
-    """Tüm modellerde arama yapar"""
     results = []
     
     if not query:
         return results
     
-    # About model
     try:
         about_fields = ['iframe_video_text', 'our_history_title', 'our_history_content_one', 
                        'our_history_content_two', 'our_mission', 'our_vision', 'policies_description']
@@ -107,10 +90,10 @@ def search_all_models(query):
         
         for about in abouts:
             results.append({
-                'title': 'Hakkımızda',
+                'title': 'About',
                 'description': (about.our_history_content_one or about.our_mission or about.our_vision or '')[:200] + '...',
                 'url': '/about/',
-                'type': 'Hakkımızda',
+                'type': 'About',
                 'image': about.our_mission_image.url if about.our_mission_image else None,
                 'model': 'About'
             })
@@ -126,17 +109,16 @@ def search_all_models(query):
         
         for value in about_values:
             results.append({
-                'title': f'Değerlerimiz - {value.title}',
+                'title': f'Values - {value.title}',
                 'description': (value.description or '')[:200] + '...',
                 'url': '/about/',
-                'type': 'Hakkımızda - Değerler',
+                'type': 'About',
                 'image': None,
                 'model': 'AboutValues'
             })
     except Exception as e:
         print(f"AboutValues model error: {e}")
     
-    # Business Categories
     try:
         business_category_fields = ['title', 'description']
         business_categories = BusinessCategory.objects.filter(
@@ -149,7 +131,7 @@ def search_all_models(query):
                 'title': category.title,
                 'description': (category.description or '')[:200] + '...',
                 'url': f'/businesses/{category.slug}/',
-                'type': 'İş Kategorisi',
+                'type': 'Businesses',
                 'image': category.main_image.url if category.main_image else None,
                 'model': 'BusinessCategory'
             })
@@ -166,16 +148,15 @@ def search_all_models(query):
         for feature in business_features:
             results.append({
                 'title': f'{feature.category.title} - {feature.title}',
-                'description': f'{feature.category.title} kategorisinde iş özelliği',
+                'description': f'{feature.category.title} category business feature',
                 'url': f'/businesses/{feature.category.slug}/',
-                'type': 'İş Özelliği',
+                'type': 'Businesses category',
                 'image': feature.category.main_image.url if feature.category.main_image else None,
                 'model': 'BusinessFeature'
             })
     except Exception as e:
         print(f"BusinessFeature model error: {e}")
     
-    # Contact Info
     try:
         contact_fields = ['address', 'phone_number', 'email']
         contacts = ContactInfo.objects.filter(
@@ -184,17 +165,16 @@ def search_all_models(query):
         
         for contact in contacts:
             results.append({
-                'title': 'İletişim Bilgileri',
-                'description': f'Adres: {contact.address}, Telefon: {contact.phone_number}, E-posta: {contact.email}',
+                'title': 'Contact Information',
+                'description': f'Address: {contact.address}, Phone: {contact.phone_number}, E-mail: {contact.email}',
                 'url': '/contact/',
-                'type': 'İletişim',
+                'type': 'Contact',
                 'image': contact.image.url if contact.image else None,
                 'model': 'Contact'
             })
     except Exception as e:
         print(f"Contact model error: {e}")
     
-    # Gallery
     try:
         gallery_fields = ['iframe_video_text']
         galleries = Gallery.objects.filter(
@@ -204,17 +184,16 @@ def search_all_models(query):
         
         for gallery in galleries:
             results.append({
-                'title': 'Galeri Video',
+                'title': 'Gallery',
                 'description': gallery.iframe_video_text or '',
                 'url': '/gallery/',
-                'type': 'Galeri',
+                'type': 'Gallery',
                 'image': gallery.iframe_video_image.url if gallery.iframe_video_image else None,
                 'model': 'Gallery'
             })
     except Exception as e:
         print(f"Gallery model error: {e}")
     
-    # Gallery Images
     try:
         gallery_images = GalleryImage.objects.filter(
             Q(gallery__iframe_video_text__icontains=query) |
@@ -224,17 +203,16 @@ def search_all_models(query):
         
         for image in gallery_images:
             results.append({
-                'title': f'Galeri Resmi - {image.gallery.iframe_video_text}',
-                'description': f'{image.gallery.iframe_video_text} galerisinden resim',
+                'title': f'Gallery Photo - {image.gallery.iframe_video_text}',
+                'description': f'{image.gallery.iframe_video_text} image from gallery',
                 'url': '/gallery/',
-                'type': 'Galeri Resmi',
+                'type': 'Gallery Photo',
                 'image': image.image.url if image.image else None,
                 'model': 'GalleryImage'
             })
     except Exception as e:
         print(f"GalleryImage model error: {e}")
     
-    # Home Content
     try:
         home_fields = ['title', 'description', 'subtitle', 'subdescription']
         home_contents = HomeContent.objects.filter(
@@ -264,16 +242,15 @@ def search_all_models(query):
         for pickup in pickups:
             results.append({
                 'title': pickup.title,
-                'description': f'Taşıma hizmeti: {pickup.title}',
+                'description': f'Pick up: {pickup.title}',
                 'url': '/',
-                'type': 'Taşıma Hizmeti',
+                'type': 'Pick up',
                 'image': pickup.image.url if pickup.image else None,
                 'model': 'PickUp'
             })
     except Exception as e:
         print(f"PickUp model error: {e}")
     
-    # Investor Relations
     try:
         investor_category_fields = ['title', 'description']
         investor_categories = InvestorCategory.objects.filter(
@@ -286,14 +263,13 @@ def search_all_models(query):
                 'title': category.title,
                 'description': (category.description or '')[:200] + '...',
                 'url': f'/investorRelation/{category.slug}/',
-                'type': 'Yatırımcı İlişkileri',
+                'type': 'Investor Relation',
                 'image': category.main_image.url if category.main_image else None,
                 'model': 'InvestorCategory'
             })
     except Exception as e:
         print(f"InvestorCategory model error: {e}")
     
-    # Investor Features
     try:
         investor_feature_fields = ['title']
         investor_features = InvestorCategoryFeature.objects.filter(
@@ -303,16 +279,15 @@ def search_all_models(query):
         for feature in investor_features:
             results.append({
                 'title': f'{feature.category.title} - {feature.title}',
-                'description': f'{feature.category.title} kategorisinde yatırımcı ilişkileri özelliği',
+                'description': f'Investor relations feature in {feature.category.title} category',
                 'url': f'/investorRelation/{feature.category.slug}/',
-                'type': 'Yatırımcı Özelliği',
+                'type': 'Investor Relation',
                 'image': feature.category.main_image.url if feature.category.main_image else None,
                 'model': 'InvestorFeature'
             })
     except Exception as e:
         print(f"InvestorFeature model error: {e}")
     
-    # News
     try:
         news_fields = ['title', 'content']
         news_items = News.objects.filter(
@@ -325,7 +300,7 @@ def search_all_models(query):
                 'title': news.title,
                 'description': (news.content or '')[:200] + '...',
                 'url': news.get_absolute_url(),
-                'type': 'Haberler',
+                'type': 'News',
                 'image': news.main_image.url if news.main_image else None,
                 'model': 'News'
             })
@@ -351,7 +326,6 @@ def search_all_models(query):
     except Exception as e:
         print(f"PageHeader model error: {e}")
     
-    # Sustainability
     try:
         sustainability_fields = ['maincontent', 'subcontent']
         sustainabilities = Sustainability.objects.filter(
@@ -371,7 +345,6 @@ def search_all_models(query):
     except Exception as e:
         print(f"Sustainability model error: {e}")
     
-    # Sustainability Content
     try:
         sustainability_content_fields = ['title', 'content']
         sustainability_contents = SubtainabilityContent.objects.filter(
@@ -395,7 +368,6 @@ def search_all_models(query):
 
 
 def calculate_advanced_relevance(result, query):
-    """Gelişmiş relevans hesaplama"""
     if not query:
         return 0
     
@@ -405,21 +377,17 @@ def calculate_advanced_relevance(result, query):
     
     score = 0
     
-    # Tam eşleşme (en yüksek puan)
     if query_lower == title_lower:
         score += 1000
     elif query_lower == desc_lower:
         score += 800
     
-    # Başlık içinde tam cümle
     if query_lower in title_lower:
         score += 500
     
-    # Açıklama içinde tam cümle  
     if query_lower in desc_lower:
         score += 300
     
-    # Kelime bazlı eşleşmeler
     query_words = query_lower.split()
     for word in query_words:
         if word in title_lower:
@@ -427,7 +395,6 @@ def calculate_advanced_relevance(result, query):
         if word in desc_lower:
             score += 50
     
-    # Kısmi eşleşmeler
     for word in query_words:
         title_words = title_lower.split()
         desc_words = desc_lower.split()
@@ -440,7 +407,6 @@ def calculate_advanced_relevance(result, query):
             if word in desc_word or desc_word in word:
                 score += 10
     
-    # Tek karakter için özel puanlama
     if len(query) == 1:
         if query_lower in title_lower:
             score += 200
@@ -451,7 +417,6 @@ def calculate_advanced_relevance(result, query):
 
 
 def search_api(request):
-    """JSON API endpoint for search"""
     query = request.GET.get('search', '').strip()
     page_number = request.GET.get('page', 1)
     
@@ -465,10 +430,8 @@ def search_api(request):
             'has_previous': False
         })
     
-    # Tüm modellerde arama yap
     results = search_all_models(query)
     
-    # Tekrarlı sonuçları kaldır
     seen = set()
     unique_results = []
     for result in results:
@@ -480,10 +443,8 @@ def search_api(request):
     results = unique_results
     total_results = len(results)
     
-    # Relevansa göre sırala
     results.sort(key=lambda x: calculate_advanced_relevance(x, query), reverse=True)
     
-    # Sayfalama
     paginator = Paginator(results, 10)
     page_obj = paginator.get_page(page_number)
     
@@ -499,15 +460,11 @@ def search_api(request):
 
 
 def search_view(request):
-    """HTML view for search page"""
     query = request.GET.get('search', '').strip()
     
-    # Check if this is an AJAX request asking for JSON
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest' or request.GET.get('format') == 'json':
         return search_api(request)
     
-    # For regular HTML requests, just render the template
-    # The JavaScript will handle the actual search via AJAX
     try:
         page_header = PageHeader.objects.get(page_key='search_view')
         header_context = {
