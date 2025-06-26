@@ -12,10 +12,6 @@ class About(models.Model):
         max_length=200,
         verbose_name="Iframe Video Text",
     )
-    our_history_title = models.CharField(
-        max_length=100,
-        verbose_name="Our History Title",
-    )
     our_history_content_one = models.TextField(
         verbose_name="Our History Content",
     )

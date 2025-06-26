@@ -9,9 +9,9 @@ class AboutValuesContentInline(TranslationTabularInline):
 
 @admin.register(About)
 class AboutAdmin(TranslationAdmin):
-    list_display = ('our_history_title', 'created_at', 'updated_at')
+    list_display = ('created_at', 'updated_at')
     list_filter = ('created_at', 'updated_at')
-    search_fields = ('our_history_title', 'our_mission', 'our_vision')
+    search_fields = ('our_mission', 'our_vision')
 
     fieldsets = (
         ('Video Section', {
@@ -19,7 +19,6 @@ class AboutAdmin(TranslationAdmin):
         }),
         ('Our History', {
             'fields': (
-                'our_history_title',
                 'our_history_content_one',
                 ('our_history_image_one', 'our_history_image_two'),
                 'our_history_content_two',
