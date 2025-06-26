@@ -1,6 +1,8 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 
-<!-- Page-Header -->
+{% block content %}
 
 <header class="placeholder-header page-header">
   <div class="section-container">
@@ -44,5 +46,21 @@
     <p>{% trans "Searching..." %}</p>
   </div>
 </section>
+
+<script type="text/javascript">
+  const django_translations = {
+    'An error occurred during search. Please try again.': '{% trans "An error occurred during search. Please try again." %}',
+    'No results found for': '{% trans "No results found for" %}',
+    'You can try different keywords or use more general terms.': '{% trans "You can try different keywords or use more general terms." %}',
+    'results found for': '{% trans "results found for" %}',
+    'Showing': '{% trans "Showing" %}',
+    'of': '{% trans "of" %}',
+    'total results': '{% trans "total results" %}'
+  };
+
+  function gettext(msgid) {
+    return django_translations[msgid] || msgid;
+  }
+</script>
 
 {% endblock %}
