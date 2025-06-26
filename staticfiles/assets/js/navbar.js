@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getCurrentLanguageFromPath() {
     const currentPath = window.location.pathname;
     // Desteklenen dillerin tam listesi - EN dahil
-    const supportedLangs = ["en", "es", "fr", "it", "pt", "zh-hans"];
+    const supportedLangs = ["en", "de", "es", "fr", "it", "es", "pt", "zh-hans"];
 
     // Önce tam eşleşme kontrolü
     for (let lang of supportedLangs) {
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function calculateNewPath(langCode) {
     const currentPath = window.location.pathname;
-    const supportedLangs = ["en", "es", "fr", "it", "pt", "zh-hans"]; // EN eklendi
+    const supportedLangs = ["en", "de", "fr", "it", "es", "pt", "zh-hans"]; // EN eklendi
 
     let pathWithoutLang = currentPath;
     let currentLang = getCurrentLanguageFromPath();
@@ -182,9 +182,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (langDropdownBtn) {
       const langTexts = {
         en: "EN",
-        es: "ES",
+        de: "DE",
         fr: "FR",
         it: "IT",
+        es: "ES",
         pt: "PT",
         "zh-hans": "汉语",
       };
