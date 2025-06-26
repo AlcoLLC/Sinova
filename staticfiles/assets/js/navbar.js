@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return `/${langCode}${pathWithoutLang}`;
       } else {
         return `/${langCode}/${pathWithoutLang}`;
-      }
+      }A
     }
   }
 
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileDropdowns = document.querySelectorAll(".mobile-dropdown");
 
   mobileDropdowns.forEach((dropdown) => {
-    const dropdownHead = dropdown.querySelector(".mobile-dropdown-head");
+    const dropdownHead = dropdown.querySelector(".mobile-dropdown-head i");
     const dropdownIcon = dropdown.querySelector("i");
 
     if (dropdownHead) {
