@@ -496,8 +496,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   justify-content: flex-end;
   padding: 50px;
   position: relative;
-  z-index: -1;
-
+  z-index: -5;
 }
 
 .page-header::after {
@@ -505,10 +504,10 @@ nav:hover.dropdown-active .nav-dropdown.active {
   content: "";
   width: 100%;
   height: 100%;
-  background-color: #00000018;
+  background-color: #00000048;
   top: 0;
   left: 0;
-  z-index: 3;
+  z-index: -1;
 }
 
 .home-header .page-header {
@@ -1317,16 +1316,14 @@ footer .sinova-logo {
 }
 
 .footer-main .follow-us .sosial a img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   transition: all 0.3s ease;
 }
 
 .footer-main .follow-us .sosial a img:hover {
   transform: scale(1.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .footer-main .contact-us {
   width: 45%;
