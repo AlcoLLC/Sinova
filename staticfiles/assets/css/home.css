@@ -1329,16 +1329,14 @@ footer .sinova-logo {
 }
 
 .footer-main .follow-us .sosial a img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   transition: all 0.3s ease;
 }
 
 .footer-main .follow-us .sosial a img:hover {
   transform: scale(1.1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 .footer-main .contact-us {
   width: 45%;
