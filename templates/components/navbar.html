@@ -14,10 +14,7 @@
         </li>
         <li>
           <a href="">
-            <img
-              src="{% static 'images/search-icon.svg' %}"
-              alt="Sinova Logo"
-            />
+            <img src="{% static 'images/search-icon.svg' %}" alt="Sinova Logo" />
             <span>{% trans 'Search' %}</span>
           </a>
         </li>
@@ -32,40 +29,22 @@
               <i class="fa-solid fa-caret-down"></i>
             </button>
             <div class="dropdown-content" id="languageDropdown">
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}"
-                data-lang="en"
-              >
+              <button class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}" data-lang="en">
                 EN
               </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}"
-                data-lang="es"
-              >
+              <button class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">
                 ES
               </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}"
-                data-lang="fr"
-              >
+              <button class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">
                 FR
               </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}"
-                data-lang="it"
-              >
+              <button class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">
                 IT
               </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'pt' %}active{% endif %}"
-                data-lang="pt"
-              >
+              <button class="lang-option {% if LANGUAGE_CODE == 'pt' %}active{% endif %}" data-lang="pt">
                 PT
               </button>
-              <button
-                class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}"
-                data-lang="zh-hans"
-              >
+              <button class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}" data-lang="zh-hans">
                 汉语
               </button>
             </div>
@@ -91,32 +70,23 @@
           <div class="nav-dropdown">
             <ul>
               <li>
-                <a href="{% url 'about:about_tab' tab='our-history' %}"
-                  ><span>{% trans 'Our History' %}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i
-                ></a>
+                <a href="{% url 'about:about_tab' tab='our-history' %}"><span>{% trans 'Our History' %}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i></a>
               </li>
               <li>
-                <a href="{% url 'about:about_tab' tab='vision-mission' %}"
-                  ><span>{% trans 'Vision, Mission & Values' %}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i
-                ></a>
+                <a href="{% url 'about:about_tab' tab='vision-mission' %}"><span>{% trans 'Vision, Mission & Values'
+                    %}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i></a>
               </li>
               <li>
-                <a href="{% url 'about:about_tab' tab='policies' %}"
-                  ><span>{% trans 'Policies' %}</span>
-                  <i class="fa-solid fa-arrow-right-long"></i
-                ></a>
+                <a href="{% url 'about:about_tab' tab='policies' %}"><span>{% trans 'Policies' %}</span>
+                  <i class="fa-solid fa-arrow-right-long"></i></a>
               </li>
             </ul>
           </div>
         </li>
 
-        <li>
-          <a href="{% url 'news:news_list' %}">
-            <span>{% trans 'News' %}</span>
-          </a>
-        </li>
+
 
         <li>
           <a href="{% url 'businesses:businesses' %}">
@@ -127,9 +97,7 @@
             <ul>
               {% for category in business_categories %}
               <li>
-                <a
-                  href="{% url 'businesses:category_detail' category_slug=category.slug %}"
-                >
+                <a href="{% url 'businesses:category_detail' category_slug=category.slug %}">
                   <span>{{ category.title }}</span>
                   <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
@@ -147,9 +115,7 @@
             <ul>
               {% for category in investor_categories %}
               <li>
-                <a
-                  href="{% url 'investorRelation:category_detail' category_slug=category.slug %}"
-                >
+                <a href="{% url 'investorRelation:category_detail' category_slug=category.slug %}">
                   <span>{{ category.title }}</span>
                   <i class="fa-solid fa-arrow-right-long"></i>
                 </a>
@@ -158,6 +124,13 @@
             </ul>
           </div>
         </li>
+
+        <li>
+          <a href="{% url 'news:news_list' %}">
+            <span>{% trans 'News' %}</span>
+          </a>
+        </li>
+
         <li>
           <a href="{% url 'sustainability:sustainability' %}">
             <span>{% trans 'Sustainability' %}</span>
@@ -185,42 +158,27 @@
   <div class="mobile-navbar">
     <ul>
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">
+        <a href="{% url 'about:about' %}" class="mobile-dropdown-head">
           <span>{% trans 'About us' %}</span>
           <i class="fa-solid fa-plus"></i>
         </a>
 
         <div class="mobile-dropdown-content">
-          <a href="{% url 'about:about_tab' tab='our-history' %}"
-            >{% trans 'Our History' %}</a
-          >
-          <a href="{% url 'about:about_tab' tab='vision-mission' %}"
-            >{% trans 'Vision, Mission & Values' %}</a
-          >
-          <a href="{% url 'about:about_tab' tab='policies' %}"
-            >{% trans 'Policies' %}</a
-          >
+          <a href="{% url 'about:about_tab' tab='our-history' %}">{% trans 'Our History' %}</a>
+          <a href="{% url 'about:about_tab' tab='vision-mission' %}">{% trans 'Vision, Mission & Values' %}</a>
+          <a href="{% url 'about:about_tab' tab='policies' %}">{% trans 'Policies' %}</a>
         </div>
       </li>
 
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">
-          <span>{% trans 'News' %}</span>
-          <i class="fa-solid fa-plus"></i>
-        </a>
-      </li>
-
-      <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">
+        <a href="{% url 'businesses:businesses' %}" class="mobile-dropdown-head">
           <span>{% trans 'Businesses' %}</span>
           <i class="fa-solid fa-plus"></i>
         </a>
 
         <div class="mobile-dropdown-content">
           {% for category in business_categories %}
-          <a
-            href="{% url 'businesses:category_detail' category_slug=category.slug %}"
-          >
+          <a href="{% url 'businesses:category_detail' category_slug=category.slug %}">
             {{ category.title }}
           </a>
           {% endfor %}
@@ -228,33 +186,38 @@
       </li>
 
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">
+        <a href="{% url 'investorRelation:investorRelation' %}" class="mobile-dropdown-head">
           <span>{% trans 'Investor Relations' %}</span>
           <i class="fa-solid fa-plus"></i>
         </a>
 
         <div class="mobile-dropdown-content">
           {% for category in investorRelation_categories %}
-          <a
-            href="{% url 'investorRelation:category_detail' category_slug=category.slug %}"
-          >
+          <a href="{% url 'investorRelation:category_detail' category_slug=category.slug %}">
             {{ category.title }}
           </a>
           {% endfor %}
         </div>
       </li>
+
       <li>
-        <a href="{% url 'sustainability:sustainability' %}">
+        <a href="{% url 'news:news_list' %} " class="mobile-item">
+          <span>{% trans 'News' %}</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'sustainability:sustainability' %}" class="mobile-item">
           <span>{% trans 'Sustainability' %}</span>
         </a>
       </li>
       <li>
-        <a href="{% url 'gallery:gallery_view' %}">
+        <a href="{% url 'gallery:gallery_view' %}" class="mobile-item">
           <span>{% trans 'Media Center' %}</span>
         </a>
       </li>
       <li>
-        <a href="{% url 'contact:contact' %}">
+        <a href="{% url 'contact:contact' %}" class="mobile-item">
           <span>{% trans 'Contact' %}</span>
         </a>
       </li>
@@ -265,6 +228,7 @@
 <a href="https://wa.me/994502220607" class="fixed-whatsapp" target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const activeTab = "{{ active_tab|default:'' }}";
