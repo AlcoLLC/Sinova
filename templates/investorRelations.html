@@ -1,4 +1,8 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %} {% block content %}
+{% extends 'base.html' %}{% load static %} {% load i18n %}
+
+{% block title %}{% trans "Investor Relations" %}{% endblock %}
+
+{% block content %}
 {% include 'components/page-header.html' %}
 
 <div class="clickable-tabs container">
