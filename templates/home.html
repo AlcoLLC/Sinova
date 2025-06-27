@@ -146,6 +146,7 @@
 </section>
 
 <!-- PICK UP SECTION -->
+ {% comment %} 
 <section class="pick-up-section">
   <div class="section-header">
     <h2 class="section-title">{% trans "Pick up" %}</h2>
@@ -160,6 +161,7 @@
     {% empty %} {% endfor %}
   </div>
 </section>
+ {% endcomment %}
 
 <!--SUBSCRIBE SECTION -->
 {% include 'components/subscribe.html' %}
