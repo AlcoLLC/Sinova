@@ -393,21 +393,8 @@ nav:hover.dropdown-active .nav-dropdown.active {
   justify-content: space-between;
 }
 
-.mobile-menu ul li .mobile-dropdown-head span {
-  width: 85%;
-}
-
-.mobile-menu ul li .mobile-dropdown-head i {
-  width: 15%;
-  text-align: right;
-}
-
 .mobile-menu ul li a.active {
   color: #FF3333 !important;
-}
-
-.mobile-menu ul li a.active i {
-  color: #fff !important;
 }
 
 .mobile-menu .mobile-navbar {
@@ -1141,7 +1128,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
 
 .subscribe-section .section-description {
   text-align: justify;
-  width: 85%;
+  width: 90%;
 }
 
 .subscribe-section input[type="checkbox"] {

@@ -16,46 +16,77 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Dinamik tab ve section selector'ları
   const tabs = document.querySelectorAll(".clickable-tabs .tab");
 
-  // Statik about sayfası için section'lar
   const aboutSections = document.querySelectorAll(
     '[id="our-history"], [id="vision-mission"], [id="policies"]'
   );
 
-  // Dinamik kategoriler için section'lar (businesses, investor relations vb.)
   const dynamicSections = document.querySelectorAll(
-    '[id^="category-"], [id^="business-"], [id^="investor-"]'
+    '[id^="business-"], [id^="investor-"]'
   );
 
-  // Tüm section'ları birleştir
   const allSections = [...aboutSections, ...dynamicSections];
 
-  // Sayfa tipini belirle
   const pageType = getPageType();
+
+  // Navbar offset hesaplama fonksiyonu
+  function getNavbarHeight() {
+    const navbar = document.querySelector(
+      "nav, .navbar, .header, .main-nav, .navigation"
+    );
+
+    const specificUrl = "/investorRelation";
+    if (window.location.pathname.startsWith(specificUrl)) {
+      if (navbar) {
+        return navbar.offsetHeight - 20;
+      }
+    }
+
+    if (navbar) {
+      return navbar.offsetHeight + 100;
+    }
+    return 80;
+  }
 
   function getPageType() {
     const path = window.location.pathname;
     if (path.includes("/about/")) return "about";
     if (path.includes("/businesses/")) return "businesses";
-    if (path.includes("/investor")) return "investor";
+    if (path.includes("/investorRelation/")) return "investor";
     return "general";
+  }
+
+  function getTargetId(tab) {
+    if (pageType === "about") {
+      return tab.getAttribute("data-tab");
+    } else {
+      return tab.getAttribute("data-slug") || tab.getAttribute("data-tab");
+    }
+  }
+
+  function findTabByTargetId(targetId) {
+    if (pageType === "about") {
+      return document.querySelector(`[data-tab="${targetId}"]`);
+    } else {
+      return (
+        document.querySelector(`[data-slug="${targetId}"]`) ||
+        document.querySelector(`[data-tab="${targetId}"]`)
+      );
+    }
   }
 
   function updateURL(tabId) {
     const url = new URL(window.location);
 
-    // URL-in əsas hissəsini al ("/about/vision-mission/" kimi)
     let basePath = url.pathname.split("/").filter(Boolean);
 
     if (basePath.length > 1) {
-      basePath = basePath.slice(0, 2); // ["about", "vision-mission"]
+      basePath = basePath.slice(0, 2);
     }
 
-    // Yeni path qur
     url.pathname = `/${basePath[0]}/${tabId}/`;
-    url.search = ""; // query parametrləri təmizlə
+    url.search = "";
 
     window.history.pushState({ tab: tabId, pageType: pageType }, "", url);
   }
@@ -67,15 +98,19 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(`[data-slug="${targetId}"]`);
 
     if (targetElement) {
-      targetElement.scrollIntoView({
+      const navbarHeight = getNavbarHeight();
+
+      const elementPosition =
+        targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
         behavior: "smooth",
-        block: "start",
       });
 
-      // Aktif tab'ı güncelle
       updateActiveTab(targetId);
-
-      // URL'yi güncelle
       updateURL(targetId);
     }
   }
@@ -83,29 +118,22 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateActiveTab(targetId) {
     tabs.forEach((t) => t.classList.remove("active"));
 
-    // Farklı selector'lar dene
     const activeTab =
-      document.querySelector(`[data-tab="${targetId}"]`) ||
-      document.querySelector(`[data-category="${targetId}"]`) ||
-      document.querySelector(`[data-slug="${targetId}"]`);
+      findTabByTargetId(targetId) ||
+      document.querySelector(`[data-category="${targetId}"]`);
 
     if (activeTab) {
       activeTab.classList.add("active");
     }
   }
 
-  // Tab click event'leri
   tabs.forEach((tab) => {
     tab.addEventListener("click", function (e) {
       e.preventDefault();
 
-      const targetId =
-        this.getAttribute("data-tab") ||
-        this.getAttribute("data-category") ||
-        this.getAttribute("data-slug");
+      const targetId = getTargetId(this);
 
       if (targetId) {
-        // Eğer farklı bir sayfaya yönlendirme gerekiyorsa
         if (shouldRedirect(targetId)) {
           redirectToPage(targetId);
         } else {
@@ -116,15 +144,12 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function shouldRedirect(targetId) {
-    // Mevcut sayfa ile hedef tab'ın uyumluluğunu kontrol et
     const currentPath = window.location.pathname;
 
-    // About tab'ları about sayfasında olmalı
     if (["our-history", "vision-mission", "policies"].includes(targetId)) {
       return !currentPath.includes("/about/");
     }
 
-    // Business kategorileri businesses sayfasında olmalı
     if (
       targetId.startsWith("business-") ||
       targetId.startsWith("finance") ||
@@ -134,14 +159,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return !currentPath.includes("/businesses/");
     }
 
-    // Investor kategorileri investor sayfasında olmalı
     if (
       targetId.startsWith("investor-") ||
       targetId.startsWith("reports") ||
       targetId.startsWith("announcements") ||
       targetId.startsWith("governance")
     ) {
-      return !currentPath.includes("/investor");
+      return !currentPath.includes("/investorRelation/");
     }
 
     return false;
@@ -150,23 +174,18 @@ document.addEventListener("DOMContentLoaded", function () {
   function redirectToPage(targetId) {
     let redirectUrl = "";
 
-    // About sayfası redirect'leri
     if (["our-history", "vision-mission", "policies"].includes(targetId)) {
       redirectUrl = `/about/${targetId}/`;
-    }
-    // Business sayfası redirect'leri
-    else if (
+    } else if (
       targetId.startsWith("business-") ||
       ["finance", "technology", "trade"].includes(targetId)
     ) {
       redirectUrl = `/businesses/${targetId}/`;
-    }
-    // Investor sayfası redirect'leri
-    else if (
+    } else if (
       targetId.startsWith("investor-") ||
       ["reports", "announcements", "governance"].includes(targetId)
     ) {
-      redirectUrl = `/investor/${targetId}/`;
+      redirectUrl = `/investorRelation/${targetId}/`;
     }
 
     if (redirectUrl) {
@@ -178,17 +197,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let tabParam = null;
 
     if (pageType === "about") {
-      // About sayfası için query parameter kontrol et
       const urlParams = new URLSearchParams(window.location.search);
       tabParam = urlParams.get("tab");
     } else {
-      // Diğer sayfalar için URL path'inden tab'ı çıkar
       const pathParts = window.location.pathname
         .split("/")
         .filter((part) => part);
       tabParam = pathParts[pathParts.length - 1];
 
-      // Eğer son part sayfa adıysa, varsayılan tab'ı kullan
       if (["businesses", "investor", "investorRelation"].includes(tabParam)) {
         tabParam = getDefaultTab();
       }
@@ -199,7 +215,6 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToSection(tabParam);
       }, 100);
     } else {
-      // Varsayılan tab'ı aktif yap
       const defaultTab = getDefaultTab();
       if (defaultTab) {
         updateActiveTab(defaultTab);
@@ -210,27 +225,20 @@ document.addEventListener("DOMContentLoaded", function () {
   function getDefaultTab() {
     if (pageType === "about") return "our-history";
 
-    // İlk kategoriyi varsayılan olarak kullan
     const firstTab = tabs[0];
     if (firstTab) {
-      return (
-        firstTab.getAttribute("data-tab") ||
-        firstTab.getAttribute("data-category") ||
-        firstTab.getAttribute("data-slug")
-      );
+      return getTargetId(firstTab);
     }
 
     return null;
   }
 
-  // Browser back/forward navigation
   window.addEventListener("popstate", function (event) {
     let targetTab = null;
 
     if (event.state && event.state.tab) {
       targetTab = event.state.tab;
     } else {
-      // State yoksa URL'den çıkarmaya çalış
       if (pageType === "about") {
         const urlParams = new URLSearchParams(window.location.search);
         targetTab = urlParams.get("tab");
@@ -249,19 +257,26 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(`[data-slug="${targetTab}"]`);
 
       if (targetElement) {
-        targetElement.scrollIntoView({
+        // Burada da navbar offset'i uygula
+        const navbarHeight = getNavbarHeight();
+        const elementPosition =
+          targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
           behavior: "smooth",
-          block: "start",
         });
+
         updateActiveTab(targetTab);
       }
     }
   });
 
-  // Intersection Observer - sadece mevcut sayfadaki section'lar için
+  // Intersection Observer - navbar offset'i ile ayarlandı
   const observerOptions = {
     root: null,
-    rootMargin: "-20% 0px -70% 0px",
+    rootMargin: `-${getNavbarHeight()}px 0px -70% 0px`, // Navbar yüksekliğini rootMargin'e ekle
     threshold: 0,
   };
 
