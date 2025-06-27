@@ -133,7 +133,7 @@
       </div>
     </div>
   </div>
-
+ {% comment %}
   <div class="text-container">
     {% for value in values %}
     <h4 class="section-subtitle">
@@ -143,6 +143,8 @@
     <p class="section-description">{{ value.description|safe }}</p>
     {% empty %} {% endfor %}
   </div>
+
+   {% endcomment %}
 
   <div class="image-container">
     {% if about.value_image %}
