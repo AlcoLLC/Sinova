@@ -1,6 +1,7 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %} {% block title %}{%
-trans "Media center" %}{% endblock %} {% block content %}
+trans "Media center" %}{% endblock %} 
 
+{% block content %}
 <div class="breadcrumb-container">
   <div class="container">
     <div class="breadcrumb">
@@ -55,9 +56,8 @@ trans "Media center" %}{% endblock %} {% block content %}
 <section class="sinova-media-center container">
   <div class="media-center-images" id="galleryContainer">
     {% for image in page_obj %} {% if forloop.counter0|divisibleby:2 %}
-    <div class="image-row" {% if forloop.counter0|add:1>
-      6 %}style="display: none;"{% endif %}> {% endif %}
-
+    <div class="image-row" {% if forloop.counter0|add:1 > 6 %}style="display: none;"{% endif %}>
+            {% endif %}
       <div class="image-item">
         <img
           src="{{ image.image.url }}"
@@ -87,13 +87,14 @@ trans "Media center" %}{% endblock %} {% block content %}
       >{% if page_obj.has_next %}true{% else %}false{% endif %}</span
     >
     <span id="nextPageUrl"
-      >{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif
-      %}</span
+      >{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}</span
     >
     <span id="totalImages">{{ page_obj.paginator.count }}</span>
   </div>
 </section>
+{% endblock %}
 
+{% block extra_js %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const showMoreButton = document.getElementById("showMoreButton");
@@ -159,7 +160,7 @@ trans "Media center" %}{% endblock %} {% block content %}
     function loadMoreImages() {
       if (!hasNext) return;
 
-      showMoreButton.textContent = '{% trans "Loading..." %}';
+      showMoreButton.textContent = "{% trans 'Loading...' %}";
       showMoreButton.disabled = true;
 
       // Get next page URL
@@ -229,7 +230,7 @@ trans "Media center" %}{% endblock %} {% block content %}
           currentVisibleRows = newVisibleRows;
 
           // Reset button
-          showMoreButton.textContent = '{% trans "SHOW MORE" %}';
+          showMoreButton.textContent = "{% trans 'SHOW MORE' %}";
           showMoreButton.disabled = false;
 
           // Hide button if no more content
@@ -239,11 +240,10 @@ trans "Media center" %}{% endblock %} {% block content %}
         })
         .catch((error) => {
           console.error("Error loading more images:", error);
-          showMoreButton.textContent = '{% trans "SHOW MORE" %}';
+          showMoreButton.textContent = "{% trans 'SHOW MORE' %}";
           showMoreButton.disabled = false;
         });
     }
   });
 </script>
-
 {% endblock %}
