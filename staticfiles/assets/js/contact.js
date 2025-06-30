@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showNotification(message, type = "success") {
     if (!notification || !notificationMessage) return;
-    
+
     notification.classList.remove("success", "error", "warning", "hidden");
     notification.classList.add(type);
     notificationMessage.textContent = message;
@@ -35,12 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
   window.showNotification = showNotification;
 
   console.log("Checking reCAPTCHA...");
-  
+
   function checkRecaptcha() {
-    if (typeof grecaptcha !== 'undefined') {
+    if (typeof grecaptcha !== "undefined") {
       console.log("reCAPTCHA loaded successfully");
-      
-      const recaptchaContainer = document.querySelector('.g-recaptcha');
+
+      const recaptchaContainer = document.querySelector(".g-recaptcha");
       if (recaptchaContainer) {
         console.log("reCAPTCHA container found");
         console.log("Site key:", recaptchaContainer.dataset.sitekey);
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(checkRecaptcha, 1000);
     }
   }
-  
+
   checkRecaptcha();
 
   window.onRecaptchaSuccess = function () {
@@ -72,14 +72,22 @@ document.addEventListener("DOMContentLoaded", function () {
   if (form) {
     form.addEventListener("submit", function (e) {
       console.log("Form submission started");
-      
-      const recaptchaResponse = document.querySelector('[name="g-recaptcha-response"]');
+
+      const recaptchaResponse = document.querySelector(
+        '[name="g-recaptcha-response"]'
+      );
       console.log("reCAPTCHA response element:", recaptchaResponse);
-      console.log("reCAPTCHA response value:", recaptchaResponse ? recaptchaResponse.value : "not found");
+      console.log(
+        "reCAPTCHA response value:",
+        recaptchaResponse ? recaptchaResponse.value : "not found"
+      );
 
       if (!recaptchaResponse || !recaptchaResponse.value) {
         e.preventDefault();
-        showNotification("Please complete the reCAPTCHA verification.", "warning");
+        showNotification(
+          "Please complete the reCAPTCHA verification.",
+          "warning"
+        );
         console.log("Form submission blocked - no reCAPTCHA response");
         return false;
       }
@@ -87,7 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const submitButton = form.querySelector('button[type="submit"]');
       if (submitButton) {
         const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        submitButton.innerHTML =
+          '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
         submitButton.disabled = true;
 
         setTimeout(() => {
