@@ -15,7 +15,7 @@ class NewsAdmin(TranslationAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'slug', 'content')
+            'fields': ('title', 'subtitle', 'slug', 'content')
         }),
         ('Images', {
             'fields': ('main_image', 'secondary_image'),

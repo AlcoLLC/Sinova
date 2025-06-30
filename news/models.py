@@ -4,6 +4,7 @@ from django.utils.text import slugify
 
 class News(models.Model):
     title = models.CharField(max_length=200, verbose_name="Title")
+    subtitle = models.TextField(verbose_name="SubTitle", blank=True, null=True)
     content = models.TextField(verbose_name="Content")
     main_image = models.ImageField(upload_to='news_images/', verbose_name="Image", blank=True, null=True)
     secondary_image = models.ImageField(upload_to='news_images/', verbose_name="Secondary Image", blank=True, null=True)

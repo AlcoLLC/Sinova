@@ -1,105 +1,122 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %}
-
-{% block title %}{% trans "Media center" %}{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block title %}{%
+trans "Media center" %}{% endblock %} {% block content %}
 
 <div class="breadcrumb-container">
-    <div class="container">
-        <div class="breadcrumb">
-            <a href="/home">{% trans "Home page" %} </a>
-            <span> | {% trans "Media center" %} </span>
-        </div>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="{% url 'home:home' %}">{% trans "Home page" %} </a>
+      <span> | {% trans "Media center" %} </span>
     </div>
+  </div>
 </div>
 
-{% comment %} <section class="sinova-production">
-    <div class="container">
-        <div class="production-section" {% if gallery.iframe_video_image %}style="background-image: url('{{ gallery.iframe_video_image.url }}');"{% endif %}>
-            <div class="section-background"></div>
-            <div class="play-button" id="playButton">
-                <i>►</i>
-            </div>
-            <div class="video-container" id="videoContainer">
-                {% if gallery.iframe_video %}
-                <iframe  width="560" height="315"
-                    src="{{ gallery.iframe_video }}"
-                    title="{{ gallery.iframe_video_text }}" 
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                {% else %}
-                
-                {% endif %}
-            </div>
-        </div>
-        <div class="production-subtitle">
-            <p>
-                {% if gallery.iframe_video_text %}
-                    {{ gallery.iframe_video_text }}
-                {% else %}
-                {% endif %}
-            </p>
-        </div>
+{% comment %}
+<section class="sinova-production">
+  <div class="container">
+    <div
+      class="production-section"
+      {%
+      if
+      gallery.iframe_video_image
+      %}style="background-image: url('{{ gallery.iframe_video_image.url }}');"
+      {%
+      endif
+      %}
+    >
+      <div class="section-background"></div>
+      <div class="play-button" id="playButton">
+        <i>►</i>
+      </div>
+      <div class="video-container" id="videoContainer">
+        {% if gallery.iframe_video %}
+        <iframe
+          width="560"
+          height="315"
+          src="{{ gallery.iframe_video }}"
+          title="{{ gallery.iframe_video_text }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+        {% else %} {% endif %}
+      </div>
     </div>
-</section> {% endcomment %}
+    <div class="production-subtitle">
+      <p>
+        {% if gallery.iframe_video_text %} {{ gallery.iframe_video_text }} {%
+        else %} {% endif %}
+      </p>
+    </div>
+  </div>
+</section>
+{% endcomment %}
 
 <section class="sinova-media-center container">
-    <div class="media-center-images" id="galleryContainer">
-        {% for image in page_obj %}
-            {% if forloop.counter0|divisibleby:2 %}
-                <div class="image-row" {% if forloop.counter0|add:1 > 6 %}style="display: none;"{% endif %}>
-            {% endif %}
-            
-            <div class="image-item">
-                <img src="{{ image.image.url }}" alt="{{ gallery.iframe_video_text }}" loading="lazy">
-            </div>
-            
-            {% if forloop.counter0|add:1|divisibleby:2 or forloop.last %}
-                </div>
-            {% endif %}
-        {% empty %}
-        <div class="no-images">
-            <p>{% trans "No images available" %}</p>
-        </div>
-        {% endfor %}
-    </div>
+  <div class="media-center-images" id="galleryContainer">
+    {% for image in page_obj %} {% if forloop.counter0|divisibleby:2 %}
+    <div class="image-row" {% if forloop.counter0|add:1>
+      6 %}style="display: none;"{% endif %}> {% endif %}
 
-    <!-- Show More button - only show if total images > 6 -->
-    {% if page_obj.paginator.count > 6 %}
-    <button class="show-more" id="showMoreButton">
-        {% trans "SHOW MORE" %}
-    </button>
-    {% endif %}
+      <div class="image-item">
+        <img
+          src="{{ image.image.url }}"
+          alt="{{ gallery.iframe_video_text }}"
+          loading="lazy"
+        />
+      </div>
 
-    <!-- Pagination for AJAX loading -->
-    <div class="pagination-info" style="display: none;">
-        <span id="currentPage">1</span>
-        <span id="hasNext">{% if page_obj.has_next %}true{% else %}false{% endif %}</span>
-        <span id="nextPageUrl">{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}</span>
-        <span id="totalImages">{{ page_obj.paginator.count }}</span>
+      {% if forloop.counter0|add:1|divisibleby:2 or forloop.last %}
     </div>
+    {% endif %} {% empty %}
+    <div class="no-images">
+      <p>{% trans "No images available" %}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Show More button - only show if total images > 6 -->
+  {% if page_obj.paginator.count > 6 %}
+  <button class="show-more" id="showMoreButton">{% trans "SHOW MORE" %}</button>
+  {% endif %}
+
+  <!-- Pagination for AJAX loading -->
+  <div class="pagination-info" style="display: none">
+    <span id="currentPage">1</span>
+    <span id="hasNext"
+      >{% if page_obj.has_next %}true{% else %}false{% endif %}</span
+    >
+    <span id="nextPageUrl"
+      >{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif
+      %}</span
+    >
+    <span id="totalImages">{{ page_obj.paginator.count }}</span>
+  </div>
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
     const showMoreButton = document.getElementById("showMoreButton");
     const galleryContainer = document.getElementById("galleryContainer");
     const allRows = document.querySelectorAll(".image-row");
     const rowsPerLoad = 3; // 3 rows = 6 images (2 images per row)
     let currentVisibleRows = Math.min(rowsPerLoad, allRows.length);
-    let currentPage = parseInt(document.getElementById("currentPage").textContent);
-    let hasNext = document.getElementById("hasNext").textContent === 'true';
-    const totalImages = parseInt(document.getElementById("totalImages").textContent);
+    let currentPage = parseInt(
+      document.getElementById("currentPage").textContent
+    );
+    let hasNext = document.getElementById("hasNext").textContent === "true";
+    const totalImages = parseInt(
+      document.getElementById("totalImages").textContent
+    );
 
     // If total images <= 6, don't show button at all
     if (totalImages <= 6) {
-        if (showMoreButton) {
-            showMoreButton.style.display = 'none';
-        }
-        // Show all available rows
-        showRows(allRows.length);
-        return;
+      if (showMoreButton) {
+        showMoreButton.style.display = "none";
+      }
+      // Show all available rows
+      showRows(allRows.length);
+      return;
     }
 
     if (!showMoreButton) return;
@@ -108,116 +125,125 @@ document.addEventListener("DOMContentLoaded", function () {
     showRows(currentVisibleRows);
 
     showMoreButton.addEventListener("click", function () {
-        // If we have more rows on current page, show them
-        if (currentVisibleRows < allRows.length) {
-            const nextBatch = Math.min(currentVisibleRows + rowsPerLoad, allRows.length);
-            showRows(nextBatch);
-            currentVisibleRows = nextBatch;
-            
-            // If we've shown all rows on this page and there are more pages
-            if (currentVisibleRows >= allRows.length && hasNext) {
-                loadMoreImages();
-            }
-        } else if (hasNext) {
-            // Load more images from next page
-            loadMoreImages();
+      // If we have more rows on current page, show them
+      if (currentVisibleRows < allRows.length) {
+        const nextBatch = Math.min(
+          currentVisibleRows + rowsPerLoad,
+          allRows.length
+        );
+        showRows(nextBatch);
+        currentVisibleRows = nextBatch;
+
+        // If we've shown all rows on this page and there are more pages
+        if (currentVisibleRows >= allRows.length && hasNext) {
+          loadMoreImages();
         }
-        
-        // Hide button if no more content
-        if (currentVisibleRows >= allRows.length && !hasNext) {
-            showMoreButton.style.display = 'none';
-        }
+      } else if (hasNext) {
+        // Load more images from next page
+        loadMoreImages();
+      }
+
+      // Hide button if no more content
+      if (currentVisibleRows >= allRows.length && !hasNext) {
+        showMoreButton.style.display = "none";
+      }
     });
 
     function showRows(count) {
-        for (let i = 0; i < count && i < allRows.length; i++) {
-            allRows[i].style.display = "flex";
-            allRows[i].classList.add("fade-in");
-        }
+      for (let i = 0; i < count && i < allRows.length; i++) {
+        allRows[i].style.display = "flex";
+        allRows[i].classList.add("fade-in");
+      }
     }
 
     function loadMoreImages() {
-        if (!hasNext) return;
-        
-        showMoreButton.textContent = '{% trans "Loading..." %}';
-        showMoreButton.disabled = true;
-        
-        // Get next page URL
-        const nextPageUrl = document.getElementById("nextPageUrl").textContent;
-        
-        fetch(nextPageUrl, {
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest'
+      if (!hasNext) return;
+
+      showMoreButton.textContent = '{% trans "Loading..." %}';
+      showMoreButton.disabled = true;
+
+      // Get next page URL
+      const nextPageUrl = document.getElementById("nextPageUrl").textContent;
+
+      fetch(nextPageUrl, {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Create rows with 2 images each
+          const images = data.images;
+          let rowsToShow = 0;
+
+          for (let i = 0; i < images.length; i += 2) {
+            const imageRow = document.createElement("div");
+            imageRow.className = "image-row";
+
+            // Hide rows beyond the first batch
+            if (rowsToShow >= rowsPerLoad) {
+              imageRow.style.display = "none";
             }
+
+            const imageItem1 = document.createElement("div");
+            imageItem1.className = "image-item";
+            imageItem1.innerHTML = `<img src="${images[i].url}" alt="${images[i].alt}" loading="lazy">`;
+            imageRow.appendChild(imageItem1);
+
+            if (i + 1 < images.length) {
+              const imageItem2 = document.createElement("div");
+              imageItem2.className = "image-item";
+              imageItem2.innerHTML = `<img src="${images[i + 1].url}" alt="${
+                images[i + 1].alt
+              }" loading="lazy">`;
+              imageRow.appendChild(imageItem2);
+            }
+
+            galleryContainer.appendChild(imageRow);
+            rowsToShow++;
+          }
+
+          // Update pagination info
+          currentPage = data.current_page;
+          hasNext = data.has_next;
+          document.getElementById("currentPage").textContent = currentPage;
+          document.getElementById("hasNext").textContent = hasNext
+            ? "true"
+            : "false";
+          document.getElementById("nextPageUrl").textContent =
+            data.next_page_url || "";
+
+          // Update allRows reference and show new batch
+          const newAllRows = document.querySelectorAll(".image-row");
+          const newVisibleRows =
+            currentVisibleRows + Math.min(rowsPerLoad, rowsToShow);
+
+          // Show new batch of rows
+          for (let i = currentVisibleRows; i < newVisibleRows; i++) {
+            if (newAllRows[i]) {
+              newAllRows[i].style.display = "flex";
+              newAllRows[i].classList.add("fade-in");
+            }
+          }
+
+          currentVisibleRows = newVisibleRows;
+
+          // Reset button
+          showMoreButton.textContent = '{% trans "SHOW MORE" %}';
+          showMoreButton.disabled = false;
+
+          // Hide button if no more content
+          if (!hasNext && currentVisibleRows >= newAllRows.length) {
+            showMoreButton.style.display = "none";
+          }
         })
-        .then(response => response.json())
-        .then(data => {
-            // Create rows with 2 images each
-            const images = data.images;
-            let rowsToShow = 0;
-            
-            for (let i = 0; i < images.length; i += 2) {
-                const imageRow = document.createElement('div');
-                imageRow.className = 'image-row';
-                
-                // Hide rows beyond the first batch
-                if (rowsToShow >= rowsPerLoad) {
-                    imageRow.style.display = 'none';
-                }
-                
-                const imageItem1 = document.createElement('div');
-                imageItem1.className = 'image-item';
-                imageItem1.innerHTML = `<img src="${images[i].url}" alt="${images[i].alt}" loading="lazy">`;
-                imageRow.appendChild(imageItem1);
-                
-                if (i + 1 < images.length) {
-                    const imageItem2 = document.createElement('div');
-                    imageItem2.className = 'image-item';
-                    imageItem2.innerHTML = `<img src="${images[i + 1].url}" alt="${images[i + 1].alt}" loading="lazy">`;
-                    imageRow.appendChild(imageItem2);
-                }
-                
-                galleryContainer.appendChild(imageRow);
-                rowsToShow++;
-            }
-            
-            // Update pagination info
-            currentPage = data.current_page;
-            hasNext = data.has_next;
-            document.getElementById("currentPage").textContent = currentPage;
-            document.getElementById("hasNext").textContent = hasNext ? 'true' : 'false';
-            document.getElementById("nextPageUrl").textContent = data.next_page_url || '';
-            
-            // Update allRows reference and show new batch
-            const newAllRows = document.querySelectorAll(".image-row");
-            const newVisibleRows = currentVisibleRows + Math.min(rowsPerLoad, rowsToShow);
-            
-            // Show new batch of rows
-            for (let i = currentVisibleRows; i < newVisibleRows; i++) {
-                if (newAllRows[i]) {
-                    newAllRows[i].style.display = "flex";
-                    newAllRows[i].classList.add("fade-in");
-                }
-            }
-            
-            currentVisibleRows = newVisibleRows;
-            
-            // Reset button
-            showMoreButton.textContent = '{% trans "SHOW MORE" %}';
-            showMoreButton.disabled = false;
-            
-            // Hide button if no more content
-            if (!hasNext && currentVisibleRows >= newAllRows.length) {
-                showMoreButton.style.display = 'none';
-            }
-        })
-        .catch(error => {
-            console.error('Error loading more images:', error);
-            showMoreButton.textContent = '{% trans "SHOW MORE" %}';
-            showMoreButton.disabled = false;
+        .catch((error) => {
+          console.error("Error loading more images:", error);
+          showMoreButton.textContent = '{% trans "SHOW MORE" %}';
+          showMoreButton.disabled = false;
         });
     }
-});
+  });
 </script>
 
 {% endblock %}
