@@ -1,15 +1,11 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %}
-
-{% block title %}{{ news.title }}{% endblock %}
-
-
-{% block content %}
+{% extends 'base.html' %}{% load static %} {% load i18n %} {% block title %}{{
+news.title }}{% endblock %} {% block content %}
 
 <div class="breadcrumb-container">
   <div class="container">
     <div class="breadcrumb">
-      <a href="/home">{% trans "Home page" %} </a>
-      <a href="/news">{% trans "News" %} </a>
+      <a href="{% url 'home:home' %}">{% trans "Home page" %} </a>
+      <a href="{% url 'news:news_list' %}">{% trans "News" %} </a>
       <span> {{ news.title }} </span>
     </div>
   </div>
@@ -28,9 +24,11 @@
     <img src="{{ news.secondary_image.url }}" alt="History Image 2" />
     {% endif %}
   </div>
+  {% endif %} {% if news.subtitle %}
+  <div class="section-description bold">{{ news.subtitle|linebreaks }}</div>
   {% endif %}
 
-  <p class="section-description">{{ news.content }}</p>
+  <div class="section-description">{{ news.content|linebreaks }}</div>
 </section>
 
 {% endblock %}
