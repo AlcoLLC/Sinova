@@ -4,8 +4,8 @@ from modeltranslation.admin import TranslationAdmin
 
 @admin.register(News)
 class NewsAdmin(TranslationAdmin):
-    list_display = ['title', 'date', 'new', 'announcement', 'release', 'is_active', 'order', 'created_at']
-    list_editable = ['is_active', 'order', 'new', 'announcement', 'release']
+    list_display = ['title', 'date', 'new', 'announcement', 'release', 'is_active', 'order', 'created_at', 'in_home']
+    list_editable = ['is_active', 'order', 'new', 'announcement', 'release', 'in_home']
 
     list_filter = ['new', 'announcement', 'release', 'is_active', 'date', 'created_at']
     search_fields = ['title', 'content']
@@ -22,6 +22,6 @@ class NewsAdmin(TranslationAdmin):
             'classes': ('collapse',)
         }),
         ('Settings', {
-            'fields': ('date', 'new', 'announcement','release', 'is_active', 'order')
+            'fields': ('date', 'new', 'announcement','release', 'is_active', 'in_home','order')
         }),
     )

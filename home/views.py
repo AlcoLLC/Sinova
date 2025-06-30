@@ -5,6 +5,11 @@ from news.models import News
 from .models import HomeContent, PickUp
 
 def home_view(request):
+    home_news = News.objects.filter(in_home=True).order_by('-created_at')
+    home_news_list = list(home_news[:3])
+    large_card_news = home_news_list[0] if home_news_list else None
+    small_cards_news = home_news_list[1:3] if len(home_news_list) > 1 else []
+
     gallery_images = GalleryImage.objects.filter(
         is_active=True, 
         in_home=True
@@ -15,43 +20,18 @@ def home_view(request):
         in_subscribe = True
     ).select_related('gallery').order_by('order', '-created_at')
     
-    # Önce new=True olanları al
-    news_new = News.objects.filter(
-        is_active=True, 
-        new=True
-    ).order_by('order', '-date')[:5]
-    
-    if news_new.count() < 5:
-        remaining_count = 5 - news_new.count()
-        additional_news = News.objects.filter(
-            is_active=True,
-            new=False
-        ).order_by('order', '-date')[:remaining_count]
-        
-        news_new = list(news_new) + list(additional_news)
-    
-    news_releases = News.objects.filter(
-        is_active=True, 
-        release=True
-    ).order_by('order', '-date')[:5]  
-    
-    news_announcements = News.objects.filter(
-        is_active=True, 
-        announcement=True
-    ).order_by('order', '-date')[:5] 
-    
+
     home_contents = HomeContent.objects.all().order_by('id')[:3]
     
     pickup_items = PickUp.objects.filter(is_active=True).order_by('id')
     
     context = {
         'gallery_images': gallery_images,
-        'news_new': news_new,
-        'news_releases': news_releases,
-        'news_announcements': news_announcements,
         'home_contents': home_contents,
         'pickup_items': pickup_items,
-        'gallery_subscribe_images': gallery_subscribe_images
+        'gallery_subscribe_images': gallery_subscribe_images,
+        'large_card_news': large_card_news,
+        'small_cards_news': small_cards_news
     }
     
     return render(request, 'home.html', context)
