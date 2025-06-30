@@ -15,6 +15,7 @@ class News(models.Model):
 
     slug = models.SlugField(unique=True, verbose_name="Slug", help_text="URL-friendly version of the title", blank=True)
     is_active = models.BooleanField(default=True, verbose_name="Is Active", help_text="Indicates if the news is active")
+    in_home = models.BooleanField(default=False, verbose_name="In Home", help_text="Indicates if the news in home")
     order = models.PositiveIntegerField(default=0, verbose_name="Order", help_text="Display order (lower numbers appear first)")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Updated At")

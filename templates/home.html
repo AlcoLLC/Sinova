@@ -31,71 +31,57 @@
 </section>
 
 <!-- NEWS TABS SECTION -->
-<section class="news-section container">
+<section class="home-news-section container">
   <div class="section-header">
     <h2 class="section-title">{% trans "News" %}</h2>
   </div>
 
-  <div class="news-tabs">
-    <div class="tab active" data-tab="news-sinova">
-      {% trans "News" %}
-    </div>
-    <div class="tab" data-tab="news-releases">{% trans "News releases" %}</div>
-    <div class="tab" data-tab="announcements">{% trans "Announcements" %}</div>
-  </div>
 
-  <div class="news-content">
-    <!-- What's new -->
-    <div class="tab-content active" id="news-sinova">
-      {% for news in news_new %}
-      <div class="news-sinova-content">
-        <a href="{{ news.get_absolute_url }}">
-          <p class="news-date">
-            {{ news.date|date:"M d, Y" }} {% if news.new %}<span>{% trans "New" %}</span>{% endif %}
-          </p>
-          <p class="section-description">{{ news.title }}</p>
-        </a>
-      </div>
-      {% empty %}
-        <p class="section-description">{% trans "No news available" %}</p>
-      {% endfor %}
-    </div>
 
-    <!-- News releases -->
-    <div class="tab-content" id="news-releases">
-      {% for news in news_releases %}
-      <div class="news-sinova-content">
-        <a href="{{ news.get_absolute_url }}">
-          <p class="news-date">
-            {{ news.date|date:"M d, Y" }} {% if news.new %}<span>{% trans "New" %}</span>{% endif %}
-          </p>
-          <p class="section-description">{{ news.title }}</p>
-        </a>
-      </div>
-      {% empty %}
-        <p class="section-description">
-          {% trans "No news releases available" %}
+
+  <div class="news-grid">
+    {% if large_card_news %}
+    <div class="news-card card-large">
+      <img src="{{ large_card_news.main_image.url }}" alt="{{ large_card_news.title }}" class="card-image" />
+      <div class="card-content">
+        <div class="card-meta">
+          <div class="card-date">
+            <i class="far fa-calendar-alt date-icon"></i>
+            {{ large_card_news.created_at|date:"F j, Y" }}
+          </div>
+        </div>
+        <h3 class="card-title">{{ large_card_news.title }}</h3>
+        <p class="card-description"> {{ large_card_news.content|truncatewords:20 }}
         </p>
-      {% endfor %}
-    </div>
-
-    <!-- Announcements -->
-    <div class="tab-content" id="announcements">
-      {% for news in news_announcements %}
-      <div class="news-sinova-content">
-        <a href="{{ news.get_absolute_url }}">
-          <p class="news-date">
-            {{ news.date|date:"M d, Y" }} {% if news.new %}<span>{% trans "New" %}</span>{% endif %}
-          </p>
-          <p class="section-description">{{ news.title }}</p>
+        <a href="{{ news.get_absolute_url }}" class="read-more">
+          {% trans "Read More" %}
+          <i class="fas fa-arrow-right-long read-more-icon"></i>
         </a>
       </div>
-      {% empty %}
-        <p class="section-description">
-          {% trans "No announcements available" %}
-        </p>
-      {% endfor %}
     </div>
+
+    {% endif %} {% for news in small_cards_news %}
+
+    <div class="news-card card-small">
+      <div class="card-image-container">
+        <img src="{{ news.main_image.url }}" alt="{{ news.title }}" class="card-image" />
+      </div>
+      <div class="card-content">
+        <div class="card-meta">
+          <div class="card-date">
+            <i class="far fa-calendar-alt date-icon"></i> {{ news.created_at|date:"F j, Y" }}
+          </div>
+        </div>
+        <h3 class="card-title"> {{news.title}} </h3>
+        <p class="card-description"> {{ news.content|truncatewords:15 }}
+        </p>
+        <a href="{{ news.get_absolute_url }}" class="read-more">
+          {% trans "Read More" %}
+          <i class="fas fa-arrow-right-long read-more-icon"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
   </div>
 
   <button class="news-button">
@@ -104,6 +90,7 @@
   </button>
 
 </section>
+
 
 <!-- COMPANY SECTION -->
 <section class="sections-container">
@@ -146,7 +133,7 @@
 </section>
 
 <!-- PICK UP SECTION -->
- {% comment %} 
+{% comment %}
 <section class="pick-up-section">
   <div class="section-header">
     <h2 class="section-title">{% trans "Pick up" %}</h2>
@@ -161,7 +148,7 @@
     {% empty %} {% endfor %}
   </div>
 </section>
- {% endcomment %}
+{% endcomment %}
 
 <!--SUBSCRIBE SECTION -->
 {% include 'components/subscribe.html' %}
