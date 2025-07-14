@@ -1467,7 +1467,8 @@ footer .sinova-logo {
 
 }
 
-.footer-main .contact-us .contacts a {
+.footer-main .contact-us .contacts a,
+.footer-main .contact-us .contacts span{
   margin-right: 20px;
   color: #141D43;
   font-weight: 450;

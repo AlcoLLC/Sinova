@@ -3,11 +3,7 @@
   {% endif %}
 
   <div class="image-item">
-    <img
-      src="{{ image.image.url }}"
-      alt="{{ image.gallery.iframe_video_text }}"
-      loading="lazy"
-    />
+    <img loading="lazy" src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
   </div>
 
   {% if forloop.counter0|add:1|divisibleby:2 or forloop.last %}

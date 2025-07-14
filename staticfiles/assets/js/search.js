@@ -297,19 +297,17 @@ class SearchManager {
     return `
       <div class="search-result">
         <div class="result-content">
-          ${
-            result.image
-              ? `<div class="result-image"><img src="${result.image}" alt="${result.title}" loading="lazy" /></div>`
-              : ""
-          }
+          ${result.image
+        ? `<div class="result-image"><img loading="lazy"  src="${result.image}" alt="${result.title}" /></div>`
+        : ""
+      }
           <div class="result-text">
             <a href="${result.url}" class="result-type">${result.type} ></a>
             <h2><a href="${result.url}">${result.title}</a></h2>
-            ${
-              result.description
-                ? `<p class="result-description">${result.description}</p>`
-                : ""
-            }
+            ${result.description
+        ? `<p class="result-description">${result.description}</p>`
+        : ""
+      }
           </div>
         </div>
         <button class="result-btn">
@@ -334,9 +332,8 @@ class SearchManager {
 
     // Previous button
     if (this.hasPrevious) {
-      paginationHTML += `<a href="#" class="page-btn" data-page="${
-        this.currentPage - 1
-      }"><i class="fa-solid fa-chevron-left"></i></a>`;
+      paginationHTML += `<a href="#" class="page-btn" data-page="${this.currentPage - 1
+        }"><i class="fa-solid fa-chevron-left"></i></a>`;
     }
 
     // Page numbers
@@ -378,9 +375,8 @@ class SearchManager {
 
     // Next button
     if (this.hasNext) {
-      paginationHTML += `<a href="#" class="page-btn" data-page="${
-        this.currentPage + 1
-      }"><i class="fa-solid fa-chevron-right"></i></a>`;
+      paginationHTML += `<a href="#" class="page-btn" data-page="${this.currentPage + 1
+        }"><i class="fa-solid fa-chevron-right"></i></a>`;
     }
 
     if (this.pagination) {

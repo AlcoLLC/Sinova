@@ -1,10 +1,50 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %} 
+{% extends 'base.html' %}{% load static %} {% load i18n %}
 
-{% block title %}{% trans "Contact" %}{% endblock %}
+{% block title %}{{ _("meta_title_contact")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_contact")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "contact_keywords" %}{% endblock %}
+
+
+
+
 
 {% block extra_head %}
 <!-- reCAPTCHA Script -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact – Sinova Group",
+  "url": "https://sinovagroup.ch{{ request.path }}",
+  "inLanguage": ["en", "de", "es", "fr", "it", "pt", "zh-hans"],
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Sinova Group",
+    "url": "https://sinovagroup.ch",
+    "logo": "https://sinovagroup.ch/static/images/sinova-logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue du Grand-Pont 18",
+      "addressLocality": "Lausanne",
+      "postalCode": "1003",
+      "addressCountry": "CH"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "{{ contact_info.phone_number|default:'+41 21 000 00 00' }}",
+      "email": "{{ contact_info.email|default:'contact@sinovagroup.ch' }}",
+      "contactType": "Customer Support",
+      "availableLanguage": ["en", "de", "es", "fr", "it", "pt", "zh-hans"]
+    }]
+  }
+}
+</script>
+
 {% endblock %}
 
 {% block content %}
@@ -22,7 +62,7 @@
         </div>
         <a href="{{ contact_info.location }}" target="_blank">
           <span>{% trans 'Location' %}</span>
-          <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
+          <img loading="lazy" src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
         </a>
       </div>
       <div class="contact-column">
@@ -38,7 +78,7 @@
       </div>
     </div>
     <div class="contact-image">
-      <img src="{{ contact_info.image.url }}" alt="Contact Image" />
+      <img loading="lazy" src="{{ contact_info.image.url }}" alt="Contact Image" />
     </div>
   </div>
 </section>
@@ -95,12 +135,12 @@
 
       <div class="form-group recaptcha-container">
         {% if recaptcha_site_key %}
-          <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onRecaptchaSuccess"
-            data-expired-callback="onRecaptchaExpired" data-error-callback="onRecaptchaError"></div>
+        <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onRecaptchaSuccess"
+          data-expired-callback="onRecaptchaExpired" data-error-callback="onRecaptchaError"></div>
         {% else %}
-          <div style="color: red; padding: 10px; border: 1px solid red;">
-            reCAPTCHA Site Key not configured
-          </div>
+        <div style="color: red; padding: 10px; border: 1px solid red;">
+          reCAPTCHA Site Key not configured
+        </div>
         {% endif %}
       </div>
 

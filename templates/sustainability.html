@@ -1,7 +1,9 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %}
 
 
-{% block title %}{% trans "Sustainability" %}{% endblock %}
+{% block title %}{{ _("meta_title_sustainability")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_sustainability")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "sustainability_keywords" %}{% endblock %}
 
 
 {% block content %}
@@ -15,10 +17,7 @@
   <div class="image-text-content">
     {% if sustainability.image_subcontent %}
 
-    <img
-      src="{{ sustainability.image_subcontent.url }}"
-      alt="Sustainability Sub Image"
-    />
+    <img loading="lazy" src="{{ sustainability.image_subcontent.url }}" alt="Sustainability Sub Image" />
     {% endif %} {% if sustainability.subcontent %}
     <div class="text-content">
       <div class="section-description">
@@ -30,10 +29,7 @@
 
   {% if sustainability.image_maincontent %}
   <div class="image-container">
-    <img
-      src="{{ sustainability.image_maincontent.url }}"
-      alt="Sustainability Main Image"
-    />
+    <img loading="lazy" src="{{ sustainability.image_maincontent.url }}" alt="Sustainability Main Image" />
   </div>
   {% endif %} {% if sub_contents %} {% for sub_content in sub_contents %}
   <div class="section-header">
@@ -43,28 +39,16 @@
 
   {% if sub_content.image_one and sub_content.image_two %}
   <div class="two-images {% cycle 'reverse' '' %}">
-    <img
-      src="{{ sub_content.image_one.url }}"
-      alt="{{ sub_content.title }} Image 1"
-    />
-    <img
-      src="{{ sub_content.image_two.url }}"
-      alt="{{ sub_content.title }} Image 2"
-    />
+    <img loading="lazy" src="{{ sub_content.image_one.url }}" alt="{{ sub_content.title }} Image 1" />
+    <img loading="lazy" src="{{ sub_content.image_two.url }}" alt="{{ sub_content.title }} Image 2" />
   </div>
   {% elif sub_content.image_one %}
   <div class="image-container">
-    <img
-      src="{{ sub_content.image_one.url }}"
-      alt="{{ sub_content.title }} Image"
-    />
+    <img loading="lazy" src="{{ sub_content.image_one.url }}" alt="{{ sub_content.title }} Image" />
   </div>
   {% elif sub_content.image_two %}
   <div class="image-container">
-    <img
-      src="{{ sub_content.image_two.url }}"
-      alt="{{ sub_content.title }} Image"
-    />
+    <img loading="lazy" src="{{ sub_content.image_two.url }}" alt="{{ sub_content.title }} Image" />
   </div>
   {% endif %} {% endfor %} {% else %}
   <div></div>

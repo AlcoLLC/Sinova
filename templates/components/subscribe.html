@@ -52,12 +52,12 @@
     <div class="right-content">
       <div class="images-left">
         {% for image in gallery_subscribe_images|slice:":3" %}
-        <img src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
+        <img loading="lazy" src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
         {% empty %} {% endfor %}
       </div>
       <div class="image-right">
         {% for image in gallery_subscribe_images|slice:"3:7" %}
-        <img src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
+        <img loading="lazy" src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
         {% empty %} {% endfor %}
       </div>
     </div>

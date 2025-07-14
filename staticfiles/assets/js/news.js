@@ -37,43 +37,51 @@ document.addEventListener("DOMContentLoaded", function () {
   const showMoreButton = document.getElementById("showMoreNewsButton");
   const scrollTopButton = document.getElementById("scrollTopButton");
 
-  showMoreButton.addEventListener("click", function () {
-    const activeTabContent = document.querySelector(".tab-content.active");
-    const hiddenItems = activeTabContent.querySelectorAll(
-      ".news-sinova-content.hidden"
-    );
 
-    this.style.pointerEvents = "none";
 
-    // Her tıklamada 3 öğe daha göster
-    const itemsToShow = Math.min(3, hiddenItems.length);
+  if (showMoreButton) {
+    showMoreButton.addEventListener("click", function () {
+      const activeTabContent = document.querySelector(".tab-content.active");
+      const hiddenItems = activeTabContent.querySelectorAll(
+        ".news-sinova-content.hidden"
+      );
 
-    for (let i = 0; i < itemsToShow; i++) {
-      setTimeout(() => {
-        hiddenItems[i].classList.remove("hidden");
-        hiddenItems[i].classList.add("preparing");
-        hiddenItems[i].style.display = "block";
+      this.style.pointerEvents = "none";
 
+      // Her tıklamada 3 öğe daha göster
+      const itemsToShow = Math.min(3, hiddenItems.length);
+
+      for (let i = 0; i < itemsToShow; i++) {
         setTimeout(() => {
-          hiddenItems[i].classList.add("fade-in");
-          hiddenItems[i].style.opacity = "1";
-        }, 50);
-      }, i * 300);
-    }
+          hiddenItems[i].classList.remove("hidden");
+          hiddenItems[i].classList.add("preparing");
+          hiddenItems[i].style.display = "block";
 
-    setTimeout(() => {
-      this.style.pointerEvents = "auto";
-      checkButtons();
-    }, itemsToShow * 300 + 800);
-  });
+          setTimeout(() => {
+            hiddenItems[i].classList.add("fade-in");
+            hiddenItems[i].style.opacity = "1";
+          }, 50);
+        }, i * 300);
+      }
 
-  scrollTopButton.addEventListener("click", function () {
-    const newsSection = document.querySelector(".news-section");
-    newsSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+      setTimeout(() => {
+        this.style.pointerEvents = "auto";
+        checkButtons();
+      }, itemsToShow * 300 + 800);
     });
-  });
+
+  }
+
+  if (scrollTopButton) {
+    scrollTopButton.addEventListener("click", function () {
+      const newsSection = document.querySelector(".news-section");
+      newsSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+  }
 
   function checkButtons() {
     const activeTabContent = document.querySelector(".tab-content.active");

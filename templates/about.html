@@ -1,7 +1,48 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %}
 
-{% block title %}{% trans "About" %}{% endblock %}
 
+{% block title %}{{ _("meta_title_about")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_about")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "about_keywords" %}{% endblock %}
+
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About – Sinova Group",
+  "url": "https://sinovagroup.ch{{ request.path }}",
+  "inLanguage": ["en", "de", "es", "fr", "it", "pt", "zh-hans"],
+  "description": "{{ about.our_history_content_one|striptags|truncatechars:160|default:'Learn more about Sinova Group’s history, mission, vision, and values.'|escapejs }}",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Sinova Group",
+    "url": "https://sinovagroup.ch",
+    "logo": "https://sinovagroup.ch/static/images/sinova-logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rue du Grand-Pont 18",
+      "addressLocality": "Lausanne",
+      "postalCode": "1003",
+      "addressCountry": "CH"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "info@sinovagroup.ch",
+      "telephone": "+41 21 643 10 28"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/sinova-group",
+      "https://www.instagram.com/sinovagroup",
+      "https://www.facebook.com/profile.php?id=61578239306541"
+    ],
+    "mission": "{{ about.our_mission|striptags|escapejs }}",
+    "vision": "{{ about.our_vision|striptags|escapejs }}"
+  }
+}
+</script>
+{% endblock %}
 
 {% block content %}
 {% include 'components/page-header.html' %}
@@ -25,10 +66,7 @@
   <div class="container">
     {% if about.iframe_video_image %}
 
-    <div
-      class="production-section"
-      style="background-image: url('{{ about.iframe_video_image.url }}');"
-    >
+    <div class="production-section" style="background-image: url('{{ about.iframe_video_image.url }}');">
       <div class="section-background"></div>
 
       <div class="play-button" id="playButton">
@@ -36,16 +74,9 @@
       </div>
       <div class="video-container" id="videoContainer">
         {% if about.iframe_video %}
-        <iframe
-          width="560"
-          height="315"
-          src="{{ about.iframe_video }}"
-          title="YouTube video player"
-          frameborder="0"
+        <iframe width="560" height="315" src="{{ about.iframe_video }}" title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         {% else %} {% endif %}
       </div>
     </div>
@@ -68,9 +99,9 @@
 
   <div class="two-images">
     {% if about.our_history_image_one %}
-    <img src="{{ about.our_history_image_one.url }}" alt="History Image 1" />
+    <img loading="lazy" src="{{ about.our_history_image_one.url }}" alt="History Image 1" />
     {% else %} {% endif %} {% if about.our_history_image_two %}
-    <img src="{{ about.our_history_image_two.url }}" alt="History Image 2" />
+    <img loading="lazy" src="{{ about.our_history_image_two.url }}" alt="History Image 2" />
     {% else %} {% endif %}
   </div>
 
@@ -80,9 +111,9 @@
 
   <div class="two-images reverse">
     {% if about.our_history_image_three %}
-    <img src="{{ about.our_history_image_three.url }}" alt="History Image 3" />
+    <img loading="lazy" src="{{ about.our_history_image_three.url }}" alt="History Image 3" />
     {% else %} {% endif %} {% if about.our_history_image_four %}
-    <img src="{{ about.our_history_image_four.url }}" alt="History Image 4" />
+    <img loading="lazy" src="{{ about.our_history_image_four.url }}" alt="History Image 4" />
     {% else %} {% endif %}
   </div>
 </section>
@@ -94,7 +125,7 @@
 
   <div class="image-text-content">
     {% if about.value_image %}
-    <img src="{{ about.our_mission_image.url }}" alt="Mission Image " />
+    <img loading="lazy" src="{{ about.our_mission_image.url }}" alt="Mission Image " />
     {% else %} {% endif %}
     <div class="text-content">
       <h3 class="section-subtitle">{% trans "Our mission" %}</h3>
@@ -106,7 +137,7 @@
 
   <div class="image-text-content reverse">
     {% if about.value_image %}
-    <img src="{{ about.our_vision_image.url }}" alt="Vision Image " />
+    <img loading="lazy" src="{{ about.our_vision_image.url }}" alt="Vision Image " />
     {% else %} {% endif %}
     <div class="text-content">
       <h3 class="section-subtitle">{% trans "Our vision" %}</h3>
@@ -118,7 +149,7 @@
 
   <div class="image-text-content">
     {% if about.value_image %}
-    <img src="{{ about.value_image.url }}" alt="Values Image " />
+    <img loading="lazy" src="{{ about.value_image.url }}" alt="Values Image " />
     {% else %} {% endif %}
     <div class="text-content">
       <h3 class="section-subtitle">{% trans "Our values" %}</h3>
@@ -133,7 +164,7 @@
       </div>
     </div>
   </div>
- {% comment %}
+  {% comment %}
   <div class="text-container">
     {% for value in values %}
     <h4 class="section-subtitle">
@@ -144,11 +175,11 @@
     {% empty %} {% endfor %}
   </div>
 
-   {% endcomment %}
+  {% endcomment %}
 
   <div class="image-container">
     {% if about.value_image %}
-    <img src="{{ about.end_image.url }}" alt="Mission Vision Image" />
+    <img loading="lazy" src="{{ about.end_image.url }}" alt="Mission Vision Image" />
     {% else %} {% endif %}
   </div>
 </section>

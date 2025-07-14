@@ -1,12 +1,18 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %} {% block title %}{%
-trans "Media center" %}{% endblock %} 
+{% extends 'base.html' %}{% load static %} {% load i18n %} 
+
+
+{% block title %}{{ _("meta_title_media_center")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_media_center")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "media_center_keywords" %}{% endblock %}
+
+
 
 {% block content %}
 <div class="breadcrumb-container">
   <div class="container">
     <div class="breadcrumb">
       <a href="{% url 'home:home' %}">{% trans "Home page" %} </a>
-      <span> | {% trans "Media center" %} </span>
+      <h1> | {% trans "Media center" %} </h1>
     </div>
   </div>
 </div>
@@ -19,10 +25,9 @@ trans "Media center" %}{% endblock %}
       {% endif %}
       
       <div class="image-item gallery-image-item">
-        <img
+        <img loading="lazy" 
           src="{{ image.image.url }}"
           alt="{{ gallery.iframe_video_text }}"
-          loading="lazy"
         />
       </div>
 

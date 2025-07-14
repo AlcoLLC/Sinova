@@ -1,6 +1,9 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %}
 
-{% block title %}{% trans "Investor Relations" %}{% endblock %}
+{% block title %}{{ _("meta_title_investor_relations")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_investor_relations")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "investor_relations_keywords" %}{% endblock %}
+
 
 {% block content %}
 {% include 'components/page-header.html' %}
@@ -18,7 +21,7 @@
 <section class="investor-relations container" id="category-{{ category.id }}">
   <div class="image-container">
     {% if category.main_image %}
-    <img src="{{ category.main_image.url }}" alt="{{ category.title }}" />
+    <img loading="lazy" src="{{ category.main_image.url }}" alt="{{ category.title }}" />
     {% else %}
     {% endif %}
   </div>
