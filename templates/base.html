@@ -7,10 +7,10 @@
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="h5P70Z03LS8YAmS70Olm9g" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}{% trans "Sinova | Official Website" %}{% endblock %}</title>
+  <title>{% block title %}{% trans "Sinova Group – Strategic Investments in Finance & Tech" %}{% endblock %}</title>
 
-  <link rel="icon" type="image/svg+xml" href="https://sinovagroup.ch/static/images/icon.webp">
-  <link rel="canonical" href="https://sinovagroup.ch/{{ request.path }}" />
+  <link rel="icon" type="image/webp" href="https://sinovagroup.ch/static/images/icon.webp">
+  <link rel="canonical" href="https://sinovagroup.ch{{ request.path }}/" />
   <link rel="alternate" hreflang="en" href="https://sinovagroup.ch/">
   <link rel="alternate" hreflang="de" href="https://sinovagroup.ch/de/">
   <link rel="alternate" hreflang="es" href="https://sinovagroup.ch/es/">
@@ -20,19 +20,27 @@
   <link rel="alternate" hreflang="zh-hans" href="https://sinovagroup.ch/zh-hans/">
 
   <meta name="description"
-    content="{% block description %}{% trans 'Discover Sinova – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}{% endblock %}">
+    content="{% block description %}{% trans 'Sinova Group is a Swiss-based holding active in finance, logistics, technology, and production. Driving innovation, sustainability, and global growth.' %}{% endblock %}">
   <meta name="keywords"
-    content="{% block keywords %}{% trans 'tomoil, motor oil, car oil, lubricants, synthetic oil, engine oil, hydraulic oil, gear oil' %}{% endblock %}">
+    content="{% block keywords %}{% trans 'Sinova Group, investments, holding, Switzerland, finance, logistics, technology, production, sustainability, ESG, innovation, global growth' %}{% endblock %}">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Sinova">
   <meta property="og:type" content="website">
   <meta property="og:description"
-    content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
-  <meta property="og:image" content="https://sinovagroup.ch/static/images/tomoil-logo.webp">
-  <meta property="og:url" content="https://sinovagroup.ch{{ request.path }}">
-
+    content="{% trans 'Sinova Group is a Swiss-based holding active in finance, logistics, technology, and production. Driving innovation, sustainability, and global growth.' %}">
+  <meta property="og:image" content="https://sinovagroup.ch/static/images/sinova-logo.webp">
+  <meta property="og:url" content="https://sinovagroup.ch{{ request.path }}/">
   <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
+  <meta name="google-site-verification" content="9g-xrNt3jcp_P1xbfbLZ26O9-MWBSoUxwvze7FQRasI" />
   <meta name="msvalidate.01" content="91C3B398DE92AC84DB8733389F9B025C" />
+
+  <link rel="preload" as="font" href="{% static 'assets/font/TTNormsProCompact-Bold.otf' %}" type="font/otf"
+    crossorigin="anonymous">
+  <link rel="preload" as="font" href="{% static 'assets/font/TTNormsProCompact-Medium.otf' %}" type="font/otf"
+    crossorigin="anonymous">
+  <link rel="preload" as="font" href="{% static 'assets/font/TTNormsProCompact-Normal.otf' %}" type="font/otf"
+    crossorigin="anonymous">
+
 
   <link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/about.css' %}" />
@@ -40,15 +48,16 @@
   <link rel="stylesheet" href="{% static 'assets/css/news.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/contact.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/search.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
+
+  {% block page_css %}{% endblock %}
+
   <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
 
-  <meta name="google-site-verification" content="9g-xrNt3jcp_P1xbfbLZ26O9-MWBSoUxwvze7FQRasI" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print"
+    onload="this.media='all'">
+
 </head>
 
 <body>
@@ -64,16 +73,24 @@
     document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
-  <script src="{% static 'assets/js/navbar.js' %}"></script>
-  <script src="{% static 'assets/js/home.js' %}"></script>
-  <script src="{% static 'assets/js/about.js' %}"></script>
-  <script src="{% static 'assets/js/news.js' %}"></script>
-  <script src="{% static 'assets/js/search.js' %}"></script>
-  <script src="{% static 'assets/js/gallery.js' %}"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QTK593BWX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
+    gtag('config', 'G-7QTK593BWX');
+  </script>
+
+  <script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/navbar.js' %}" defer></script>
+  <script src="{% static 'assets/js/home.js' %}" defer></script>
+  <script src="{% static 'assets/js/about.js' %}" defer></script>
+  <script src="{% static 'assets/js/news.js' %}" defer></script>
+  <script src="{% static 'assets/js/search.js' %}" defer></script>
+  <script src="{% static 'assets/js/gallery.js' %}" defer></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </body>
 
 </html>
