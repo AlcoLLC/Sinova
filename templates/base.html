@@ -1,16 +1,39 @@
 {% load static %} {% load i18n %}
 
 <!DOCTYPE html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE }}">
+
 <head>
+  <script src="https://analytics.ahrefs.com/analytics.js" data-key="h5P70Z03LS8YAmS70Olm9g" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Sinova{% endblock %}</title>
-   <link
-      rel="icon"
-      type="image/png"
-      href="{% static 'images/logo.png' %}"
-    />
+  <title>{% block title %}{% trans "Sinova | Official Website" %}{% endblock %}</title>
+
+  <link rel="icon" type="image/svg+xml" href="https://sinovagroup.ch/static/images/icon.webp">
+  <link rel="canonical" href="https://sinovagroup.ch/{{ request.path }}" />
+  <link rel="alternate" hreflang="en" href="https://sinovagroup.ch/">
+  <link rel="alternate" hreflang="de" href="https://sinovagroup.ch/de/">
+  <link rel="alternate" hreflang="es" href="https://sinovagroup.ch/es/">
+  <link rel="alternate" hreflang="fr" href="https://sinovagroup.ch/fr/">
+  <link rel="alternate" hreflang="it" href="https://sinovagroup.ch/it/">
+  <link rel="alternate" hreflang="pt" href="https://sinovagroup.ch/pt/">
+  <link rel="alternate" hreflang="zh-hans" href="https://sinovagroup.ch/zh-hans/">
+
+  <meta name="description"
+    content="{% block description %}{% trans 'Discover Sinova – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}{% endblock %}">
+  <meta name="keywords"
+    content="{% block keywords %}{% trans 'tomoil, motor oil, car oil, lubricants, synthetic oil, engine oil, hydraulic oil, gear oil' %}{% endblock %}">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Sinova">
+  <meta property="og:type" content="website">
+  <meta property="og:description"
+    content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
+  <meta property="og:image" content="https://sinovagroup.ch/static/images/tomoil-logo.webp">
+  <meta property="og:url" content="https://sinovagroup.ch{{ request.path }}">
+
+  <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
+  <meta name="msvalidate.01" content="91C3B398DE92AC84DB8733389F9B025C" />
+
   <link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/about.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/gallery.css' %}" />
@@ -18,6 +41,7 @@
   <link rel="stylesheet" href="{% static 'assets/css/contact.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/search.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+
   <meta name="google-site-verification" content="9g-xrNt3jcp_P1xbfbLZ26O9-MWBSoUxwvze7FQRasI" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -30,6 +54,15 @@
 <body>
   {% include 'components/navbar.html' %} {% block content %} {% endblock %}
   {%include 'components/footer.html' %}
+
+
+  <script>
+    var ahrefs_analytics_script = document.createElement('script');
+    ahrefs_analytics_script.async = true;
+    ahrefs_analytics_script.src = 'https://analytics.ahrefs.com/analytics.js';
+    ahrefs_analytics_script.setAttribute('data-key', 'h5P70Z03LS8YAmS70Olm9g');
+    document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
