@@ -9,15 +9,9 @@
 {% endblock %}
 
 {% block page_js %}
+  <script src="{% static 'assets/js/contact.js' %}" defer></script>
+  <script src="https://www.google.com/recaptcha/api.js" defer></script>
 {% endblock %}
-
-
-
-{% block extra_head %}
-<!-- reCAPTCHA Script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{% endblock %}
-
 
 {% block extra_schema %}
 <script type="application/ld+json">
@@ -156,9 +150,6 @@
     </form>
   </div>
 </section>
-
-<!-- reCAPTCHA Script (alternative placement) -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
   // Global reCAPTCHA callbacks

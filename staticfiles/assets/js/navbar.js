@@ -1,3 +1,20 @@
+// Scroll to top functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollToTopButton = document.querySelector("footer .contact-us button");
+
+  if (scrollToTopButton) {
+    scrollToTopButton.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const langDropdownBtn = document.querySelector(".lang-dropdown-btn");
   const languageDropdown = document.getElementById("languageDropdown");
