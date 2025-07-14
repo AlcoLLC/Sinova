@@ -1,39 +1,4 @@
-.breadcrumb-container {
-  width: 100%;
-  background-color: #fff;
-  border-top: 1px solid #afafafaf;
-}
 
-.breadcrumb-container .container {
-  margin-top: 150px;
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 30px 0;
-  margin-top: 20px;
-}
-
-.breadcrumb a {
-  font-size: 14px;
-  line-height: 24.03px;
-  opacity: 0.5;
-  color: #141d43;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.breadcrumb a:hover {
-  opacity: 1;
-}
-
-.breadcrumb span,
-.breadcrumb h1 {
-  font-size: 14px;
-  line-height: 24.03px;
-  color: #141d43;
-}
 
 .sinova-media-center {
   margin: 30px auto;

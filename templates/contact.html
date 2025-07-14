@@ -4,7 +4,12 @@
 {% block description %}{{ _("meta_description_contact")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "contact_keywords" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/contact.css' %}" />
+{% endblock %}
 
+{% block page_js %}
+{% endblock %}
 
 
 

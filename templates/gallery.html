@@ -5,7 +5,12 @@
 {% block description %}{{ _("meta_description_media_center")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "media_center_keywords" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/gallery.css' %}" />
+{% endblock %}
 
+{% block page_js %}
+{% endblock %}
 
 {% block content %}
 <div class="breadcrumb-container">
