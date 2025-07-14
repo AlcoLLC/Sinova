@@ -112,30 +112,6 @@
   margin-bottom: 50px;
 }
 
-.news-button {
-  width: 40%;
-  background-color: #141D43;
-  border: none;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.5s ease;
-}
-
-.news-button:hover {
-  background-color: #FF3333;
-}
-
-.news-button a {
-  width: 100%;
-  color: #fff;
-  padding: 20px 50px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .news-header-image {
   width: 100%;
