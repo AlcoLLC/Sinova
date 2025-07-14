@@ -1,5 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
+
+{% block title %}{{ _("meta_title_home")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_home")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "home_keywords" %}{% endblock %}
+
+
+
 {% block content %}
 
 <div class="home-header">
@@ -19,7 +26,7 @@
     <div class="swiper-wrapper">
       {% for image in gallery_images %}
       <div class="swiper-slide">
-        <img src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
+        <img loading="lazy" src="{{ image.image.url }}" alt="{{ image.gallery.iframe_video_text }}" />
       </div>
       {% empty %} {% endfor %}
     </div>
@@ -42,7 +49,8 @@
   <div class="news-grid">
     {% if large_card_news %}
     <div class="news-card card-large">
-      <img src="{{ large_card_news.main_image.url }}" alt="{{ large_card_news.title }}" class="card-image" />
+      <img loading="lazy" src="{{ large_card_news.main_image.url }}" alt="{{ large_card_news.title }}"
+        class="card-image" />
       <div class="card-content">
         <div class="card-meta">
           <div class="card-date">
@@ -53,7 +61,7 @@
         <h3 class="card-title">{{ large_card_news.title }}</h3>
         <p class="card-description"> {{ large_card_news.content|truncatewords:20 }}
         </p>
-        <a href="{{ news.get_absolute_url }}" class="read-more">
+        <a href="{{ news.get_absolute_url }}" class="read-more" aria-label="Read more about {{ large_card_news.title }}">
           {% trans "Read More" %}
           <i class="fas fa-arrow-right-long read-more-icon"></i>
         </a>
@@ -64,7 +72,7 @@
 
     <div class="news-card card-small">
       <div class="card-image-container">
-        <img src="{{ news.main_image.url }}" alt="{{ news.title }}" class="card-image" />
+        <img loading="lazy" src="{{ news.main_image.url }}" alt="{{ news.title }}" class="card-image" />
       </div>
       <div class="card-content">
         <div class="card-meta">
@@ -75,7 +83,7 @@
         <h3 class="card-title"> {{news.title}} </h3>
         <p class="card-description"> {{ news.content|truncatewords:15 }}
         </p>
-        <a href="{{ news.get_absolute_url }}" class="read-more">
+        <a href="{{ news.get_absolute_url }}" class="read-more" aria-label="Read more about {{ news.title }}">
           {% trans "Read More" %}
           <i class="fas fa-arrow-right-long read-more-icon"></i>
         </a>
@@ -104,7 +112,7 @@
         <h2 class="section-title">{{ content.title }}</h2>
         <p class="section-description">{{ content.description }}</p>
         {% if content.url %}
-        <a href="{{ content.url }}" class="section-link">
+        <a href="{{ content.url }}" class="section-link" aria-label="Learn more about {{ content.title }}">
           {% trans "Learn more" %}
           <i class="fas fa-arrow-right-long"></i>
         </a>
@@ -117,7 +125,7 @@
         <h2 class="section-title">{{ content.subtitle }}</h2>
         <p class="section-description">{{ content.subdescription }}</p>
         {% if content.url %}
-        <a href="{{ content.url }}" class="section-link">
+        <a href="{{ content.url }}" class="section-link" aria-label="Learn more about {{ content.subtitle }}">
           {% trans "Learn more" %}
           <i class="fas fa-arrow-right-long"></i>
         </a>
@@ -142,7 +150,7 @@
   <div class="pick-up-components container">
     {% for pickup in pickup_items %}
     <a href="{% if pickup.url %}{{ pickup.url }}{% else %}#{% endif %}" class="pick-up-content">
-      <img src="{{ pickup.image.url }}" alt="{{ pickup.title }}" />
+      <img loading="lazy" src="{{ pickup.image.url }}" alt="{{ pickup.title }}" />
       <p class="pick-up-description">{{ pickup.title }}</p>
     </a>
     {% empty %} {% endfor %}

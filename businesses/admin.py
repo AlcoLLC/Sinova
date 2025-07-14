@@ -47,7 +47,7 @@ class CategoryAdmin(TranslationAdmin):
     def image_preview(self, obj):
         if obj.main_image:
             return format_html(
-                '<img src="{}" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px;" />',
+                '<img loading="lazy"  src="{}" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px;" />',
                 obj.main_image.url
             )
         return "No image"
@@ -56,7 +56,7 @@ class CategoryAdmin(TranslationAdmin):
     def secondary_image_preview(self, obj):
         if obj.secondary_image:
             return format_html(
-                '<img src="{}" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px;" />',
+                '<img loading="lazy"  src="{}" style="width: 100px; height: 60px; object-fit: cover; border-radius: 4px;" />',
                 obj.secondary_image.url
             )
         return "No image"

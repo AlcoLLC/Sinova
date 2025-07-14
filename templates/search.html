@@ -1,9 +1,31 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load i18n %}
+{% extends 'base.html' %} {% load static %}{% load i18n %}
+
+{% block title %}{{ _("meta_title_search")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_search")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "search_keywords" %}{% endblock %}
 
 
-{% block title %}{% trans "Search" %}{% endblock %}
+{% block page_css %}
+{% endblock %}
+
+{% block page_js %}
+<script  type="text/javascript" defer>
+  const django_translations = {
+    'An error occurred during search. Please try again.': '{% trans "An error occurred during search. Please try again." %}',
+    'No results found for': '{% trans "No results found for" %}',
+    'You can try different keywords or use more general terms.': '{% trans "You can try different keywords or use more general terms." %}',
+    'results found for': '{% trans "results found for" %}',
+    'Showing': '{% trans "Showing" %}',
+    'of': '{% trans "of" %}',
+    'total results': '{% trans "total results" %}'
+  };
+
+  function gettext(msgid) {
+    return django_translations[msgid] || msgid;
+  }
+</script>
+<script src="{% static 'assets/js/search.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 
@@ -47,20 +69,5 @@
   </div>
 </section>
 
-<script type="text/javascript">
-  const django_translations = {
-    'An error occurred during search. Please try again.': '{% trans "An error occurred during search. Please try again." %}',
-    'No results found for': '{% trans "No results found for" %}',
-    'You can try different keywords or use more general terms.': '{% trans "You can try different keywords or use more general terms." %}',
-    'results found for': '{% trans "results found for" %}',
-    'Showing': '{% trans "Showing" %}',
-    'of': '{% trans "of" %}',
-    'total results': '{% trans "total results" %}'
-  };
-
-  function gettext(msgid) {
-    return django_translations[msgid] || msgid;
-  }
-</script>
 
 {% endblock %}

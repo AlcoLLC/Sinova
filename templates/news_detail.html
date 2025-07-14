@@ -1,5 +1,45 @@
-{% extends 'base.html' %}{% load static %} {% load i18n %} {% block title %}{{
-news.title }}{% endblock %} {% block content %}
+{% extends 'base.html' %}{% load static %} {% load i18n %}
+
+{% block title %}{{ news.title|truncatechars:60 }}{% endblock %}
+{% block description %}{{ news.content|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "news_keywords" %}{% endblock %}
+
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ news.title|escapejs }}",
+  "datePublished": "{{ news.date|date:'c' }}",
+  "dateModified": "{{ news.updated_at|default:news.date|date:'c' }}",
+  "url": "https://sinovagroup.ch{{ request.path }}",
+  "inLanguage": "{{ LANGUAGE_CODE }}",
+  "image": [
+    {% if news.main_image %}"https://sinovagroup.ch{{ news.main_image.url }}"{% if news.secondary_image %}, {% endif %}{% endif %}
+    {% if news.secondary_image %}"https://sinovagroup.ch{{ news.secondary_image.url }}"{% endif %}
+  ],
+  "author": {
+    "@type": "Organization",
+    "name": "Sinova Group",
+    "url": "https://sinovagroup.ch"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sinova Group",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://sinovagroup.ch/static/images/sinova-logo.webp"
+    }
+  },
+  "description": "{{ news.subtitle|default:news.title|escapejs }}"
+}
+</script>
+{% endblock %}
+
+
+
+{% block content %}
 
 <div class="breadcrumb-container">
   <div class="container">
@@ -19,9 +59,9 @@ news.title }}{% endblock %} {% block content %}
   {% if news.main_image or news.secondary_image %}
   <div class="two-images">
     {% if news.main_image %}
-    <img src="{{ news.main_image.url }}" alt="History Image 1" />
+    <img loading="lazy" src="{{ news.main_image.url }}" alt="History Image 1" />
     {% endif %} {% if news.secondary_image %}
-    <img src="{{ news.secondary_image.url }}" alt="History Image 2" />
+    <img loading="lazy" src="{{ news.secondary_image.url }}" alt="History Image 2" />
     {% endif %}
   </div>
   {% endif %} {% if news.subtitle %}

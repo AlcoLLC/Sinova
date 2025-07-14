@@ -1,6 +1,50 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %}
 
-{% block title %}{% trans "Businesses" %}{% endblock %}
+{% block title %}{{ _("meta_title_businesses")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_businesses")|truncatechars:160 }}{% endblock %}
+{% block keywords %}{% trans "businesses_keywords" %}{% endblock %}
+
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Businesses – Sinova Group",
+  "url": "https://sinovagroup.ch{{ request.path }}",
+  "inLanguage": ["en", "de", "es", "fr", "it", "pt", "zh-hans"],
+  "mainEntity": [
+    {% for category in categories %}
+    {
+      "@type": "Organization",
+      "name": "{{ category.title|escapejs }}",
+      "description": "{{ category.description|striptags|escapejs }}",
+      "image": [
+        {% if category.main_image %}"https://sinovagroup.ch{{ category.main_image.url }}"{% if category.secondary_image %}, {% endif %}{% endif %}
+        {% if category.secondary_image %}"https://sinovagroup.ch{{ category.secondary_image.url }}"{% endif %}
+      ],
+      "url": "https://sinovagroup.ch/businesses/#{{ category.slug }}",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "{{ category.title|escapejs }} Features",
+        "itemListElement": [
+          {% for feature in category.features.all %}
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "{{ feature.title|escapejs }}"
+            }
+          }{% if not forloop.last %},{% endif %}
+          {% endfor %}
+        ]
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
 
 
 {% block content %}
@@ -26,9 +70,9 @@
 <section class="businesses container" id="{{ category.slug }}">
   <div class="two-images {% cycle '' 'reverse' %}">
     {% if category.main_image %}
-    <img src="{{ category.main_image.url }}" alt="{{ category.title }}" />
+    <img loading="lazy" src="{{ category.main_image.url }}" alt="{{ category.title }}" />
     {% endif %} {% if category.secondary_image %}
-    <img src="{{ category.secondary_image.url }}" alt="{{ category.title }}" />
+    <img loading="lazy" src="{{ category.secondary_image.url }}" alt="{{ category.title }}" />
     {% endif %}
   </div>
 

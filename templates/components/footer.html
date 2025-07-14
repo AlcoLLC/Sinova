@@ -4,31 +4,19 @@
   <div class="footer-top">
     <h3>Related pages</h3>
     <div class="pages container">
-      <a href="/about"
-        >{% trans "About us" %} <i class="fa-solid fa-arrow-right-long"></i
-      ></a>
-      <a href="{% url 'news:news_list' %}"
-        >{% trans "News" %} <i class="fa-solid fa-arrow-right-long"></i
-      ></a>
-      <a href="/businesses"
-        >{% trans "Businesses" %} <i class="fa-solid fa-arrow-right-long"></i
-      ></a>
-      <a href="/sustainability"
-        >{% trans "Sustainability" %}
-        <i class="fa-solid fa-arrow-right-long"></i
-      ></a>
-      <a href="/investorRelation"
-        >{% trans "Investor relations" %}
-        <i class="fa-solid fa-arrow-right-long"></i
-      ></a>
-      <a href="/contact"
-        >{% trans "Contact us" %} <i class="fa-solid fa-arrow-right-long"></i
-      ></a>
+      <a href="/about">{% trans "About us" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="{% url 'news:news_list' %}">{% trans "News" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="/businesses">{% trans "Businesses" %} <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="/sustainability">{% trans "Sustainability" %}
+        <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="/investorRelation">{% trans "Investor relations" %}
+        <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="/contact">{% trans "Contact us" %} <i class="fa-solid fa-arrow-right-long"></i></a>
     </div>
   </div>
   <div class="footer-center container">
     <a href="/" class="sinova-logo">
-      <img src="{% static 'images/sinova-logo.webp' %}" alt="Sinova Logo" />
+      <img loading="lazy" src="{% static 'images/sinova-logo.webp' %}" alt="Sinova Logo" />
     </a>
     <div class="footer-main">
       <div class="follow-us">
@@ -38,23 +26,18 @@
           news regarding the Sinova Group. {% endblocktrans %}
         </p>
         <div class="sosial">
-          <a
-            href="https://api.whatsapp.com/send?phone=41764944394"
-            target="_blank"
-          >
-            <img src="{% static 'images/whatsapp2.svg' %}" alt="" />
+          <a href="https://api.whatsapp.com/send?phone=41764944394" target="_blank">
+            <img loading="lazy" src="{% static 'images/whatsapp2.svg' %}" alt="" />
           </a>
-          <a href=""
-            ><img src="{% static 'images/facebook1.svg' %}" alt=""
-          /></a>
-          <a
-            href="https://www.linkedin.com/company/sinova-group/"
-            target="_blank"
-            ><img src="{% static 'images/linkedin1.svg' %}" alt=""
-          /></a>
-          <a href=""
-            ><img src="{% static 'images/instagram1.svg' %}" alt=""
-          /></a>
+          <a href="https://www.facebook.com/profile.php?id=61578239306541">
+            <img loading="lazy" src="{% static 'images/facebook1.svg' %}" alt="" />
+          </a>
+          <a href="https://www.linkedin.com/company/sinova-group/" target="_blank">
+            <img loading="lazy" src="{% static 'images/linkedin1.svg' %}" alt="" />
+          </a>
+          <a href="https://www.instagram.com/sinova.group">
+            <img loading="lazy" src="{% static 'images/instagram1.svg' %}" alt="" />
+          </a>
         </div>
       </div>
 
@@ -66,16 +49,9 @@
             Switzerland {% endblocktrans %}
           </p>
           <div class="contacts">
-            <a
-              href="https://wa.me/41764944394"
-              target="_blank"
-              rel="noopener noreferrer"
-              >+41 76 494 43 94</a
-            >
-            <a href="mailto:info@sinovagroup.ch">info@sinovagroup.ch</a>
-            <!-- <a href="">{{ contact_info.phone_number }}</a>
-                        <a href="">{{ contact_info.email }}</a> -->
-          </div>
+            <span>{% trans "+41 21 643 10 28" %}</span>
+            <a href="mailto:info&#64;sinovagroup&#46;ch">info&#64;sinovagroup&#46;ch</a>
+          </div> 
         </div>
         <button class="scroll-top-btn">
           <i class="fa-solid fa-caret-up"></i>

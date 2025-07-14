@@ -8,13 +8,13 @@
       <ul>
         <li>
           <a href="https://maps.app.goo.gl/64bE4wMhMcFG99kc8" target="_blank">
-            <img src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
+            <img loading="lazy" src="{% static 'images/pin-icon.svg' %}" alt="Sinova Logo" />
             <span>{% trans 'Head office' %}</span>
           </a>
         </li>
         <li>
           <a href="{% url 'search:search' %}">
-            <img src="{% static 'images/search-icon.svg' %}" alt="Sinova Logo" />
+            <img loading="lazy" src="{% static 'images/search-icon.svg' %}" alt="Sinova Logo" />
             <span>{% trans 'Search' %}</span>
           </a>
         </li>
@@ -30,10 +30,10 @@
             </button>
             <div class="dropdown-content" id="languageDropdown">
               <button class="lang-option {% if LANGUAGE_CODE == 'en' %}active{% endif %}" data-lang="en">
-                EN  
+                EN
               </button>
               <button class="lang-option {% if LANGUAGE_CODE == 'de' %}active{% endif %}" data-lang="de">
-                DE  
+                DE
               </button>
               <button class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">
                 FR
@@ -41,7 +41,7 @@
               <button class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">
                 IT
               </button>
-               <button class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">
+              <button class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">
                 ES
               </button>
               <button class="lang-option {% if LANGUAGE_CODE == 'pt' %}active{% endif %}" data-lang="pt">
@@ -59,7 +59,7 @@
         </button>
       </ul>
       <a href="{% url 'home:home' %}" class="sinova-logo">
-        <img src="{% static 'images/sinova-logo.webp' %}" alt="Sinova Logo" />
+        <img loading="lazy" src="{% static 'images/sinova-logo.webp' %}" alt="Sinova Logo" />
       </a>
     </div>
 
@@ -157,8 +157,8 @@
 </div>
 
 
- <a href="https://api.whatsapp.com/send?phone=41764944394" class="fixed-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+<a href="https://api.whatsapp.com/send?phone=41764944394" class="fixed-whatsapp" target="_blank">
+  <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
