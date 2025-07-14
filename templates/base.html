@@ -30,7 +30,7 @@
   <meta property="og:description"
     content="{% trans 'Sinova Group is a Swiss-based holding active in finance, logistics, technology, and production. Driving innovation, sustainability, and global growth.' %}">
   <meta property="og:image" content="https://sinovagroup.ch/static/images/sinova-logo.webp">
-  <meta property="og:url" content="https://sinovagroup.ch{{ request.path }}/">
+  <meta property="og:url" content="https://sinovagroup.ch{{ request.path }}">
   <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
   <meta name="google-site-verification" content="9g-xrNt3jcp_P1xbfbLZ26O9-MWBSoUxwvze7FQRasI" />
   <meta name="msvalidate.01" content="91C3B398DE92AC84DB8733389F9B025C" />
@@ -42,13 +42,7 @@
     crossorigin="anonymous">
 
 
-  <link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/about.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/gallery.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/news.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/contact.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/search.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
 
   {% block page_css %}{% endblock %}
 
@@ -128,13 +122,8 @@
     gtag('config', 'G-7QTK593BWX');
   </script>
 
-  <script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
   <script src="{% static 'assets/js/navbar.js' %}" defer></script>
-  <script src="{% static 'assets/js/home.js' %}" defer></script>
   <script src="{% static 'assets/js/about.js' %}" defer></script>
-  <script src="{% static 'assets/js/news.js' %}" defer></script>
-  <script src="{% static 'assets/js/gallery.js' %}" defer></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   {% block page_js %}{% endblock %}
 

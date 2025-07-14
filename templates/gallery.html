@@ -5,14 +5,20 @@
 {% block description %}{{ _("meta_description_media_center")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "media_center_keywords" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/gallery.css' %}" />
+{% endblock %}
 
+{% block page_js %}
+  <script src="{% static 'assets/js/gallery.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 <div class="breadcrumb-container">
   <div class="container">
     <div class="breadcrumb">
       <a href="{% url 'home:home' %}">{% trans "Home page" %} </a>
-      <h1> | {% trans "Media center" %} </h1>
+      <h1> | {% trans "Media center" %}</h1>
     </div>
   </div>
 </div>

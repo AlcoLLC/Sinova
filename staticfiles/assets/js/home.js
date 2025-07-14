@@ -1,21 +1,4 @@
-// Scroll to top functionality
-document.addEventListener("DOMContentLoaded", function () {
-  const scrollToTopButton = document.querySelector("footer .contact-us button");
-
-  if (scrollToTopButton) {
-    scrollToTopButton.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  }
-});
-
 // SECTION Container
-
 document.addEventListener("DOMContentLoaded", function () {
   const centerIcons = document.querySelectorAll(".center-icon");
 
@@ -118,19 +101,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// TABS SECTION
-document.addEventListener("DOMContentLoaded", function () {
-  const tabs = document.querySelectorAll(".tab");
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", function () {
-      tabs.forEach((t) => t.classList.remove("active"));
-      this.classList.add("active");
-      document.querySelectorAll(".tab-content").forEach((content) => {
-        content.classList.remove("active");
-      });
-      const tabId = this.getAttribute("data-tab");
-      document.getElementById(tabId).classList.add("active");
-    });
-  });
-});
