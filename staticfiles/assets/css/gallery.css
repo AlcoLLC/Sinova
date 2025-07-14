@@ -28,7 +28,8 @@
   opacity: 1;
 }
 
-.breadcrumb span {
+.breadcrumb span,
+.breadcrumb h1 {
   font-size: 14px;
   line-height: 24.03px;
   color: #141d43;
