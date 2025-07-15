@@ -76,7 +76,6 @@ INSTALLED_APPS = [
     'rosetta',
     'django.contrib.sitemaps',
 
-
     # apps
 
     'home',

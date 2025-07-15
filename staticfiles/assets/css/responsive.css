@@ -18,10 +18,6 @@
 
 @media (max-width: 1000px) {
 
-    .home-news-section .read-more {
-        margin-top: 15px;
-    }
-
     .home-news-section .card-description {
         font-size: 12px;
     }

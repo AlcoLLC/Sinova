@@ -246,9 +246,9 @@
   color: #141D43;
   font-size: 12px;
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .home-news-section i {
@@ -339,12 +339,14 @@
 
 
 .sections-container .section-link {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
   color: white;
   font-weight: 500;
   transition: color 0.3s ease;
   margin-top: 20px;
+  gap: 14px;
+
 }
 
 .sections-container .section-link:hover {
