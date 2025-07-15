@@ -33,7 +33,7 @@ class Gallery(models.Model):
         return self.iframe_video_text
 
     def get_absolute_url(self):
-        return reverse('corporate:profile_detail', kwargs={'pk': self.pk})
+        return reverse('gallery:gallery_view')
 
     def clean(self):
         if not self.pk and Gallery.objects.exists():
