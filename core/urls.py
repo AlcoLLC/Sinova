@@ -56,7 +56,7 @@ urlpatterns += i18n_patterns(
     path('', include('sustainability.urls')),
     path('', include('contact.urls')),
     path('', include('search.urls')),
-    
+
     prefix_default_language=False 
 
 )
