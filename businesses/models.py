@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 class Category(models.Model):
     title = models.CharField(
@@ -71,3 +72,7 @@ class CategoryFeature(models.Model):
 
     def __str__(self):
         return f"{self.category.title} - {self.title}"
+
+
+    def get_absolute_url(self):
+        return reverse('businesses:category_detail', kwargs={'category_slug': self.slug})

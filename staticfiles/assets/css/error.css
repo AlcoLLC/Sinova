@@ -19,18 +19,24 @@
 
 .error-page .error-content {
   width: 38%;
+  margin-top: 8%;
   margin-left: 20%;
 }
 
 .error-page .title {
-  color: #e22131;
+  color: #fff;
   font-weight: 450px;
   font-size: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
 .error-page .description {
   color: #fff;
+  font-size: 20px;
 }
 
 .error-page::after {
@@ -41,8 +47,8 @@
   top: 0;
   left: 0;
   z-index: -3;
-  background-color: #22316086;
-  
+  background-color: #141d4362;
+
 }
 
 
@@ -54,7 +60,7 @@
   top: 0;
   left: 0;
   z-index: -1;
-  background-color: #ffffff54;
+  background-color: #141d4362;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 }
 
@@ -76,7 +82,7 @@
 }
 
 .error-btn:hover {
-background-color: #22316086;
+  background-color: #22316086;
 }
 
 @media (max-width: 850px) {
@@ -87,7 +93,7 @@ background-color: #22316086;
   }
 
   .error-page .title {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .error-page .description {
