@@ -31,12 +31,10 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
 
 # Development
 
-DEBUG = os.getenv('DEBUG', 'true').lower() == 'true'
-
-ALLOWED_HOSTS = ['*']
+DEBUG = os.getenv('DEBUG', 'true').lower() in ('true', '1', 'yes')
+ALLOWED_HOSTS = ['tomoil.de', 'www.tomoil.de','127.0.0.1', 'localhost']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
-
 
 DATABASES = {
     'default': {
@@ -50,14 +48,18 @@ CORS_ALLOWED_ORIGINS = [
     'http://65.108.93.160',
     "https://65.108.93.160",
     'http://65.108.93.160:200',
-    "https://65.108.93.160:200"
+    "https://65.108.93.160:200",
+    "http://sinovagroup.ch/",
+    "https://sinovagroup.ch/"
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'http://65.108.93.160',
     "https://65.108.93.160",
     'http://65.108.93.160:200',
-    "https://65.108.93.160:200"
+    "https://65.108.93.160:200",
+    "http://sinovagroup.ch/",
+    "https://sinovagroup.ch/"
 ]
 
 
