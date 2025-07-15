@@ -61,7 +61,7 @@
     <div class="tab-content active" id="news-sinova">
       {% for news in news_new %}
       <div class="news-sinova-content">
-        <a href="{{ news.get_absolute_url }}">
+        <a href="{{ news.get_absolute_url }}" aria-label="{{ news.title }}">
           <p class="news-date">
             {{ news.date|date:"F d, Y" }} {% if news.new %}
             <span>{% trans "New" %}</span>
@@ -79,7 +79,7 @@
     <div class="tab-content" id="news-releases">
       {% for news in news_releases %}
       <div class="news-sinova-content">
-        <a href="{{ news.get_absolute_url }}">
+        <a href="{{ news.get_absolute_url }}" aria-label="{{ news.title }}">
           <p class="news-date">
             {{ news.date|date:"F d, Y" }} {% if news.new %}
             <span>{% trans "New" %}</span>
@@ -97,7 +97,7 @@
     <div class="tab-content" id="announcements">
       {% for news in news_announcements %}
       <div class="news-sinova-content">
-        <a href="{{ news.get_absolute_url }}">
+        <a href="{{ news.get_absolute_url }}" aria-label="{{ news.title }}">
           <p class="news-date">
             {{ news.date|date:"F d, Y" }} {% if news.new %}
             <span>{% trans "New" %}</span>

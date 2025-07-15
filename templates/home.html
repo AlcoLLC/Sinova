@@ -7,13 +7,13 @@
 
 
 {% block page_css %}
-  <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
 {% endblock %}
 
 {% block page_js %}
-  <script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
-  <script src="{% static 'assets/js/home.js' %}" defer></script>
+<script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
+<script src="{% static 'assets/js/home.js' %}" defer></script>
 
 {% endblock %}
 
@@ -69,12 +69,14 @@
             {{ large_card_news.date|date:"F j, Y" }}
           </div>
         </div>
-        <h3 class="card-title">{{ large_card_news.title }}</h3>
-        <p class="card-description"> {{ large_card_news.content|truncatewords:20 }}
-        </p>
-        <a href="{{ news.get_absolute_url }}" class="read-more" aria-label="Read more about {{ large_card_news.title }}">
-          {% trans "Read More" %}
-          <i class="fas fa-arrow-right-long read-more-icon"></i>
+        <a href="{{ news.get_absolute_url }}" class="read-more"
+          aria-label="Read more about {{ large_card_news.title }}">
+          <h3 class="card-title">{{ large_card_news.title }}</h3>
+          <p class="card-description"> {{ large_card_news.content|truncatewords:20 }}
+          </p>
+          <span>{% trans "Read More" %}
+            <i class="fas fa-arrow-right-long read-more-icon"></i>
+          </span>
         </a>
       </div>
     </div>
@@ -91,12 +93,13 @@
             <i class="far fa-calendar-alt date-icon"></i> {{ news.created_at|date:"F j, Y" }}
           </div>
         </div>
-        <h3 class="card-title"> {{news.title}} </h3>
-        <p class="card-description"> {{ news.content|truncatewords:15 }}
-        </p>
         <a href="{{ news.get_absolute_url }}" class="read-more" aria-label="Read more about {{ news.title }}">
-          {% trans "Read More" %}
-          <i class="fas fa-arrow-right-long read-more-icon"></i>
+          <h3 class="card-title"> {{news.title}} </h3>
+          <p class="card-description"> {{ news.content|truncatewords:15 }}
+          </p>
+          <span>{% trans "Read More" %}
+            <i class="fas fa-arrow-right-long read-more-icon"></i>
+          </span>
         </a>
       </div>
     </div>
@@ -120,12 +123,13 @@
 
     <div class="before-content">
       <div class="before-text">
-        <h2 class="section-title">{{ content.title }}</h2>
-        <p class="section-description">{{ content.description }}</p>
         {% if content.url %}
         <a href="{{ content.url }}" class="section-link" aria-label="Learn more about {{ content.title }}">
-          {% trans "Learn more" %}
-          <i class="fas fa-arrow-right-long"></i>
+          <h2 class="section-title">{{ content.title }}</h2>
+          <p class="section-description">{{ content.description }}</p>
+          <span>{% trans "Learn more" %}
+            <i class="fas fa-arrow-right-long"></i>
+          </span>
         </a>
         {% endif %}
       </div>
@@ -133,17 +137,17 @@
 
     <div class="after-content">
       <div class="after-text">
-        <h2 class="section-title">{{ content.subtitle }}</h2>
-        <p class="section-description">{{ content.subdescription }}</p>
         {% if content.url %}
         <a href="{{ content.url }}" class="section-link" aria-label="Learn more about {{ content.subtitle }}">
-          {% trans "Learn more" %}
-          <i class="fas fa-arrow-right-long"></i>
+          <h2 class="section-title">{{ content.subtitle }}</h2>
+          <p class="section-description">{{ content.subdescription }}</p>
+          <span>{% trans "Learn more" %}
+            <i class="fas fa-arrow-right-long"></i>
+          </span>
         </a>
         {% endif %}
       </div>
     </div>
-
     <div class="center-icon">
       <i class="fas fa-caret-right"></i>
     </div>
