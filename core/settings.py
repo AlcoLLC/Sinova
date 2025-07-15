@@ -14,7 +14,8 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-load_dotenv() 
+load_dotenv()
+ 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,7 +30,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
 
 # PRODUCTION
 
-DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
+
+DEBUG = os.getenv('DEBUG', 'true').strip().lower() in ['true', '1', 'yes']
 
 ALLOWED_HOSTS = ['sinovagroup.ch', 'www.sinovagroup.ch','127.0.0.1', 'localhost']
 
@@ -200,6 +202,8 @@ if DEBUG == False:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 else:
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
+
+
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
