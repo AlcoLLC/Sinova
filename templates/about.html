@@ -72,13 +72,13 @@
   </div>
 </div>
 
-{% comment %} <section class="sinova-production">
+<section class="sinova-production">
   <div class="container">
     {% if about.iframe_video_image %}
 
-    <div class="production-section" style="background-image: url('{{ about.iframe_video_image.url }}');">
+    <div class="production-section">
+      <img loading="lazy" class="bg-image" src="{{ about.iframe_video_image.url }}" alt="Production background image">
       <div class="section-background"></div>
-
       <div class="play-button" id="playButton">
         <i>►</i>
       </div>
@@ -97,7 +97,7 @@
       {% else %} {% endif %}
     </div>
   </div>
-</section> {% endcomment %}
+</section> 
 
 <section class="section-our-history container" id="our-history">
   <div class="section-header">

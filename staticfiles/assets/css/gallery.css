@@ -88,3 +88,8 @@
 .sinova-media-center .show-more.hidden {
   display: none;
 }
+
+
+.gallery-hidden{
+  display: none;
+}

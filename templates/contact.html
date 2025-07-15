@@ -137,7 +137,7 @@
         <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="onRecaptchaSuccess"
           data-expired-callback="onRecaptchaExpired" data-error-callback="onRecaptchaError"></div>
         {% else %}
-        <div style="color: red; padding: 10px; border: 1px solid red;">
+        <div class="recaptcha">
           reCAPTCHA Site Key not configured
         </div>
         {% endif %}

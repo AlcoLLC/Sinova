@@ -27,7 +27,7 @@
   <div class="media-center-images" id="galleryImagesContainer">
     {% for image in gallery_images %}
       {% if forloop.counter0|divisibleby:2 %}
-        <div class="image-row gallery-image-row" {% if forloop.counter0 >= 6 %}style="display: none;"{% endif %}>
+        <div class="image-row gallery-image-row" {% if forloop.counter0 >= 6 %}class="gallery-hidden"{% endif %}>
       {% endif %}
       
       <div class="image-item gallery-image-item">

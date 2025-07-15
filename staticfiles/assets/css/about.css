@@ -9,11 +9,17 @@
   position: relative;
   width: 100%;
   height: 440px;
-  overflow: hidden;
-  background-image: url("../../images/video-background.jpg");
-  background-position: center;
-  background-size: cover;
+  overflow: hidden; 
   border-radius: 6px 6px 0 0;
+}
+
+.production-section .bg-image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
 }
 
 .production-subtitle {

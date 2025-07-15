@@ -21,8 +21,10 @@
 {% block content %}
 
 <div class="home-header">
-  <header class="page-header" {%if header_bg_image %}style="background-image: url('{{ header_bg_image.url }}')"
-    {%endif%}>
+  <header class="page-header">
+    {%if header_bg_image %}
+    <img class="bg-image" loading="lazy" src="{{ header_bg_image.url }}" alt="Page Header Image">
+    {%endif%}
     <h1 class="section-title">{{ page_title }}</h1>
     <div class="header-content">
       {% if page_description %}
@@ -119,8 +121,8 @@
   {% for content in home_contents %}
   <!-- Section {{ forloop.counter }} -->
   <div class="section-item section-{{ forloop.counter }}">
-    <div class="section-background" style="background-image: url('{{ content.image.url }}');"></div>
-
+    <div class="section-background"></div>
+    <img loading="lazy" class="bg-image" src="{{ content.image.url }}" alt="Section background image">
     <div class="before-content">
       <div class="before-text">
         {% if content.url %}

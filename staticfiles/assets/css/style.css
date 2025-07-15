@@ -529,6 +529,14 @@ nav:hover.dropdown-active .nav-dropdown.active {
   z-index: -5;
 }
 
+.page-header .bg-image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
 
 .home-header .page-header {
   height: 70vh;
@@ -627,9 +635,6 @@ nav:hover.dropdown-active .nav-dropdown.active {
   transition: background-color 0.3s ease;
 }
 
-.subscribe-section .btn-hidden {
-  display: none;
-}
 
 .subscribe-section .send-btn:hover {
   background-color: #e02e2e;
@@ -648,8 +653,11 @@ nav:hover.dropdown-active .nav-dropdown.active {
 }
 
 .subscribe-section .section-description {
-  text-align: justify;
   width: 90%;
+}
+
+.subscribe-section .section-description.second {
+  text-align: justify;
 }
 
 .subscribe-section input[type="checkbox"] {
