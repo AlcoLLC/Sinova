@@ -30,7 +30,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
 
 # PRODUCTION
 
-
 DEBUG = os.getenv('DEBUG', 'true').strip().lower() in ['true', '1', 'yes']
 
 ALLOWED_HOSTS = ['sinovagroup.ch', 'www.sinovagroup.ch','127.0.0.1', 'localhost']
@@ -43,7 +42,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 CORS_ALLOWED_ORIGINS = [
     'http://65.108.93.160',
