@@ -1,5 +1,8 @@
 {% load static %} {% load i18n %}
-<header class="page-header" {% if header_bg_image %}style="background-image: url('{{ header_bg_image.url }}')"{% endif %}>
+<header class="page-header">
+    {% if header_bg_image %}
+    <img loading="lazy" class="bg-image" src="{{ header_bg_image.url }}" alt="Page header Image">
+    {% endif %}
     <div class="header-content">
         <h1 class="section-title">{{ page_title }}</h1>
         {% if page_description %}

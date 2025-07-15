@@ -426,18 +426,9 @@
         margin-top: 5px;
     }
 
-    .subscribe-section .btn-hidden {
-        display: block !important;
-        margin: 10px auto;
-        margin-top: 20px;
-    }
 
     .subscribe-section input[type="email"] {
         width: 100%;
-    }
-
-    .subscribe-section .btn-visible {
-        display: none !important;
     }
 
     .pick-up-section {

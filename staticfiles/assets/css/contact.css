@@ -1,4 +1,3 @@
-
 .contact-section {
   margin: 70px auto;
 }
@@ -306,6 +305,12 @@
 
 .sinova-contact-form .hidden {
   display: none;
+}
+
+.recaptcha {
+  color: red;
+  padding: 10px;
+  border: 1px solid red;
 }
 
 /* Mobile responsive */
