@@ -15,7 +15,7 @@ class StaticViewSitemap(Sitemap):
             'home:home',
             'about:about',
             'businesses:businesses',
-            'gallery:gallery',
+            'gallery:gallery_view',
             'investorRelation:investorRelation',            
             'contact:contact',
             'sustainability:sustainability',

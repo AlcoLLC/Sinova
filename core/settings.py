@@ -74,6 +74,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rosetta',
+    'django.contrib.sitemaps',
+
 
     # apps
 

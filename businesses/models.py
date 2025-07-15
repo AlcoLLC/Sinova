@@ -47,6 +47,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+    
+       
+    def get_absolute_url(self):
+        return reverse('businesses:category_detail', kwargs={'category_slug': self.slug})
+    
 
 
 class CategoryFeature(models.Model):
@@ -70,9 +75,6 @@ class CategoryFeature(models.Model):
         verbose_name_plural = _("Category Features")
         ordering = ['order', 'title']
 
+
     def __str__(self):
         return f"{self.category.title} - {self.title}"
-
-
-    def get_absolute_url(self):
-        return reverse('businesses:category_detail', kwargs={'category_slug': self.slug})
