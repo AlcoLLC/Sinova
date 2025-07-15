@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
 # Development
 
 DEBUG = os.getenv('DEBUG', 'true').lower() in ('true', '1', 'yes')
-ALLOWED_HOSTS = ['tomoil.de', 'www.tomoil.de','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['sinovagroup.ch', 'www.sinovagroup.ch','127.0.0.1', 'localhost']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
 
