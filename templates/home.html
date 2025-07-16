@@ -8,7 +8,6 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" media="print" onload="this.media='all'" />
-<link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
 {% endblock %}
 
 {% block page_js %}
@@ -28,7 +27,7 @@
     <h1 class="section-title">{{ page_title }}</h1>
     <div class="header-content">
       {% if page_description %}
-      <p class="section-description">{{ page_description }}</p>
+      <h2 class="section-description">{{ page_description }}</h2>
       {% endif %}
     </div>
   </header>
@@ -55,9 +54,6 @@
   <div class="section-header">
     <h2 class="section-title">{% trans "News" %}</h2>
   </div>
-
-
-
 
   <div class="news-grid">
     {% if large_card_news %}
