@@ -6,7 +6,7 @@
 
 
 {% block page_css %}
-  <link rel="stylesheet" href="{% static 'assets/css/search.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" />
 {% endblock %}
 
 {% block page_js %}
@@ -25,7 +25,7 @@
     return django_translations[msgid] || msgid;
   }
 </script>
-<script src="{% static 'assets/js/search.js' %}" defer></script>
+<script src="{% static 'assets/js/search.min.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}

@@ -8,12 +8,12 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
-<link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
 {% endblock %}
 
 {% block page_js %}
 <script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
-<script src="{% static 'assets/js/home.js' %}" defer></script>
+<script src="{% static 'assets/js/home.min.js' %}" defer></script>
 
 {% endblock %}
 
@@ -23,7 +23,7 @@
 <div class="home-header">
   <header class="page-header">
     {%if header_bg_image %}
-    <img class="bg-image" loading="lazy" src="{{ header_bg_image.url }}" alt="Page Header Image">
+    <img class="bg-image" fetchpriority="high" src="{{ header_bg_image.url }}" alt="Page Header Image">
     {%endif%}
     <h1 class="section-title">{{ page_title }}</h1>
     <div class="header-content">

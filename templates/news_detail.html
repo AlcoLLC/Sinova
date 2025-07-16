@@ -5,6 +5,11 @@
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
 
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
+{% endblock %}
+
+
 {% block extra_schema %}
 <script type="application/ld+json">
 {
