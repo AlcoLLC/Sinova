@@ -107,7 +107,7 @@
     }
 
 
-     .news-button a {
+    .news-button a {
         padding: 15px 30px;
     }
 
@@ -445,6 +445,9 @@
         line-height: 18px;
     }
 
+    .subscribe-section{
+        margin-bottom: 180px;
+    }
 
     .subscribe-section .subscribe-components {
         flex-direction: column;
@@ -646,6 +649,10 @@
         padding-bottom: 0px;
     }
 
+    .subscribe-section {
+        margin-bottom: 200px;
+    }
+
 }
 
 @media (max-width: 650px) {
@@ -792,7 +799,7 @@
     }
 
 
-   .news-button {
+    .news-button {
         width: 100%;
     }
 
@@ -934,7 +941,7 @@
     }
 
     .subscribe-section .right-content {
-        height: 60vh;
+        height: 70vh;
     }
 
     .news-section .tab {
@@ -1013,6 +1020,11 @@
 }
 
 @media (max-width: 400px) {
+
+    
+    .subscribe-section .right-content {
+        height: 55vh;
+    }
 
     .section-title {
         font-size: 24px;
