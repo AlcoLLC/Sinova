@@ -558,7 +558,8 @@ nav:hover.dropdown-active .nav-dropdown.active {
 
 }
 
-.page-header .header-content p {
+.page-header .header-content p,
+.page-header .header-content h2 {
   position: relative;
   z-index: 6;
   color: #fff !important;

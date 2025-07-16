@@ -10,7 +10,6 @@
   <title>{% block title %}{% trans "Sinova Group – Strategic Investments in Finance & Tech" %}{% endblock %}</title>
 
   <link rel="icon" type="image/webp" href="https://sinovagroup.ch/static/images/icon.webp">
-  <link rel="canonical" href="https://sinovagroup.ch{{ request.path }}" />
   <link rel="alternate" hreflang="x-default" href="https://sinovagroup.ch/" />
   <link rel="alternate" hreflang="en" href="https://sinovagroup.ch/">
   <link rel="alternate" hreflang="de" href="https://sinovagroup.ch/de/">
@@ -42,10 +41,11 @@
 
 
   <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
 
   {% block page_css %}{% endblock %}
 
-  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" media="print" onload="this.media='all'" />
 
   <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}" media="print" onload="this.media='all'" />
 
@@ -90,7 +90,6 @@
   ]
 }
   </script>
-
 
   {% block extra_schema %}{% endblock %}
 
