@@ -21,7 +21,8 @@
   <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
   <meta name="google-site-verification" content="9g-xrNt3jcp_P1xbfbLZ26O9-MWBSoUxwvze7FQRasI" />
   <meta name="msvalidate.01" content="91C3B398DE92AC84DB8733389F9B025C" />
-
+  
+  <link rel="canonical" href="https://sinovagroup.ch{{ request.path }}">
   <link rel="icon" type="image/webp" href="https://sinovagroup.ch/static/images/icon.webp">
   <link rel="alternate" hreflang="x-default" href="https://sinovagroup.ch/" />
   <link rel="alternate" hreflang="en" href="https://sinovagroup.ch/">
@@ -39,12 +40,9 @@
   <link rel="preload" as="font" href="{% static 'assets/fonts/fa-solid-900.woff2' %}" type="font/woff2"
     crossorigin="anonymous">
 
-  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
-
   {% block page_css %}{% endblock %}
+  <link rel="stylesheet" href="{% static 'assets/css/all.min.css' %}" />
 
-  <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" />
-  
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="h5P70Z03LS8YAmS70Olm9g" async></script>
   <script type="application/ld+json">
 {
