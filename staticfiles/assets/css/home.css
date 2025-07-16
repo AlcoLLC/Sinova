@@ -338,7 +338,7 @@
 }
 
 .sections-container .before-text {
-  max-width: 60%;
+  max-width: 70%;
 }
 
 .sections-container .section-title,
@@ -356,7 +356,7 @@
   font-weight: 500;
   transition: color 0.3s ease;
   margin-top: 20px;
-  gap: 14px;
+  gap: 5px;
 
 }
 
@@ -365,8 +365,8 @@
 }
 
 .sections-container .section-link i {
-  margin-left: 20px;
-  font-size: 1.2rem;
+  margin-left: 15px;
+  font-size: 13px;
 }
 
 
@@ -395,7 +395,7 @@
 }
 
 .sections-container .after-text {
-  max-width: 60%;
+  max-width: 70%;
 }
 
 .sections-container .center-icon {

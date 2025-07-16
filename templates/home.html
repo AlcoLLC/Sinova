@@ -7,8 +7,8 @@
 
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
-<link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="{% static 'assets/css/home.css' %}" />
 {% endblock %}
 
 {% block page_js %}
