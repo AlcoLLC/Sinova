@@ -18,6 +18,11 @@
 
 @media (max-width: 1000px) {
 
+    .sections-container .after-text,
+    .sections-container .before-text{
+        max-width: 95%;
+    }
+
     .home-news-section .card-description {
         font-size: 12px;
     }
@@ -383,7 +388,7 @@
         height: 50%;
         padding: 30px;
         justify-content: start;
-        padding-left: 25%;
+        padding-left: 15%;
     }
 
     .sections-container .after-content {
@@ -394,7 +399,7 @@
         padding: 30px;
         transform: translateY(-100%);
         justify-content: start;
-        padding-left: 25%;
+        padding-left: 15%;
     }
 
     .sections-container .center-icon {
@@ -680,10 +685,6 @@
         line-height: 17px;
     }
 
-    .subscribe-section .right-content {
-        height: 80vh;
-    }
-
     .pick-up-section .pick-up-components {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -941,7 +942,7 @@
     }
 
     .subscribe-section .right-content {
-        height: 70vh;
+        height: 55vh;
     }
 
     .news-section .tab {
@@ -1023,7 +1024,7 @@
 
     
     .subscribe-section .right-content {
-        height: 55vh;
+        height: 50vh;
     }
 
     .section-title {
