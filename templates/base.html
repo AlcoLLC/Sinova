@@ -40,8 +40,10 @@
   <link rel="preload" as="font" href="{% static 'assets/fonts/fa-solid-900.woff2' %}" type="font/woff2"
     crossorigin="anonymous">
 
-  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
-
+  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+  </noscript>
   {% block page_css %}{% endblock %}
 
   <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" media="print" onload="this.media='all'" />
