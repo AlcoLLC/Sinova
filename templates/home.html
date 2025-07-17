@@ -12,7 +12,6 @@
 {% endblock %}
 
 {% block page_js %}
-<script src="{% static 'assets/js/home.min.js' %}" defer></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector(".labSwiper")) {
@@ -61,6 +60,8 @@
     }
   });
 </script>
+<script src="{% static 'assets/js/home.min.js' %}" defer></script>
+
 {% endblock %}
 
 {% block content %}
