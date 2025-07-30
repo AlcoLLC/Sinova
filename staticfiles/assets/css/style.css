@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "TT Norms Pro Normal";
-  src: url("/static/assets/fonts/TTNormsProCompact-Normal.otf") format("opentype");
+  font-family: 'TT Norms Pro Normal';
+  src: url('/static/assets/fonts/TTNormsProCompact-Normal.otf') format('opentype');
   font-display: swap;
 }
 
@@ -11,7 +11,7 @@
   text-decoration: none;
   list-style: none;
   font-size: 16px;
-  font-family: "TT Norms Pro Normal", sans-serif;
+  font-family: 'TT Norms Pro Normal', sans-serif;
 }
 
 .container {
@@ -25,17 +25,14 @@
   font-size: 44px;
   line-height: 50px;
   letter-spacing: 1px;
-  color: #141D43;
+  color: #141d43;
   transition: all 0.5s ease;
-
 }
 
 .section-header .section-title {
   text-align: center;
   margin-bottom: 45px;
 }
-
-
 
 .section-subtitle {
   font-weight: 600;
@@ -63,13 +60,12 @@
   color: #ff3333;
 }
 
-
 .section-description {
   font-weight: 450;
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0px;
-  color: #141D43;
+  color: #141d43;
 }
 
 .section-description p {
@@ -80,12 +76,10 @@
   color: #141d43;
 }
 
-
 /* NAV  */
 nav {
   width: 100%;
   position: relative;
-
 }
 
 .navbar {
@@ -96,7 +90,6 @@ nav {
   padding: 15px;
   z-index: 10000000;
 }
-
 
 .nav-top {
   display: flex;
@@ -131,9 +124,8 @@ nav {
   gap: 5px;
 }
 
-
 .nav-top ul a span {
-  color: #141D43;
+  color: #141d43;
   font-size: 14px;
   font-weight: 500;
   padding-top: 2px;
@@ -147,12 +139,12 @@ nav ul i {
 
 nav ul a:hover span,
 nav ul a:hover i {
-  color: #FF3333;
+  color: #ff3333;
 }
 
 nav ul a.active span,
 nav ul a.active i {
-  color: #FF3333;
+  color: #ff3333;
 }
 
 .nav-dropdown ul a:hover span,
@@ -183,19 +175,18 @@ nav ul a.active i {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  color: #141D43;
+  color: #141d43;
 }
 
 .language-dropdown {
   position: relative;
-
 }
 
 .language-dropdown button {
   background-color: transparent;
   padding: 4px 8px;
   border-radius: 12px;
-  color: #141D43;
+  color: #141d43;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,7 +199,7 @@ nav ul a.active i {
 
 .language-dropdown button i {
   font-size: 16px;
-  color: #FF3333;
+  color: #ff3333;
   padding-bottom: 3px;
 }
 
@@ -228,9 +219,8 @@ nav ul a.active i {
   opacity: 0;
 }
 
-
 .language-dropdown::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 15px;
@@ -239,7 +229,7 @@ nav ul a.active i {
 }
 
 .language-dropdown .dropdown-content button {
-  color: #141D43 !important;
+  color: #141d43 !important;
   padding: 8px;
   background: none;
   border: none;
@@ -258,7 +248,7 @@ nav ul a.active i {
 }
 
 .language-dropdown .dropdown-content button:hover {
-  color: #FF3333 !important;
+  color: #ff3333 !important;
 }
 
 .language-dropdown:hover .dropdown-content,
@@ -270,19 +260,18 @@ nav ul a.active i {
 }
 
 nav::after {
-  content: "";
+  content: '';
   position: absolute;
   position: fixed;
   width: 100%;
   height: 370px;
   top: 150px;
   left: 0;
-  background-color: #060E33E5;
+  background-color: #060e33e5;
   display: none;
   transition: all 0.3s ease;
   z-index: 999;
 }
-
 
 nav.dropdown-active::after {
   display: block;
@@ -326,7 +315,7 @@ nav.dropdown-active::after {
 }
 
 .nav-dropdown ul a span::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 1px;
@@ -361,10 +350,9 @@ nav:hover.dropdown-active .nav-dropdown.active {
 }
 
 .hamburger i {
-  color: #141D43;
+  color: #141d43;
   font-size: 26px;
 }
-
 
 .mobile-menu {
   width: 100%;
@@ -376,7 +364,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   z-index: 10000;
   color: #fff;
   flex-direction: column;
-  background-color: #141D43;
+  background-color: #141d43;
   align-items: start;
   justify-content: center;
   transition: right 0.5s ease-in-out;
@@ -393,7 +381,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
 }
 
 .mobile-menu .mobile-navbar ul li:not(:last-child)::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -414,7 +402,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
 }
 
 .mobile-menu ul li a.active {
-  color: #FF3333 !important;
+  color: #ff3333 !important;
 }
 
 .mobile-menu .mobile-navbar {
@@ -448,8 +436,6 @@ nav:hover.dropdown-active .nav-dropdown.active {
   opacity: 1;
 }
 
-
-
 /* HEADER */
 
 .fixed-whatsapp {
@@ -470,9 +456,9 @@ nav:hover.dropdown-active .nav-dropdown.active {
   transition: all 0.3s ease;
 }
 
-.fixed-whatsapp i {
-  font-size: 30px;
-  color: white;
+.fixed-whatsapp .whatsapp-icon {
+  width: 35px;
+  height: 35px;
 }
 
 .fixed-whatsapp:hover {
@@ -485,8 +471,9 @@ nav:hover.dropdown-active .nav-dropdown.active {
     height: 55px;
   }
 
-  .fixed-whatsapp i {
-    font-size: 28px;
+  .fixed-whatsapp .whatsapp-icon {
+    width: 30px;
+    height: 30px;
   }
 }
 
@@ -496,11 +483,11 @@ nav:hover.dropdown-active .nav-dropdown.active {
     height: 50px;
   }
 
-  .fixed-whatsapp i {
-    font-size: 24px;
+  .fixed-whatsapp .whatsapp-icon {
+    width: 25px;
+    height: 25px;
   }
 }
-
 
 .page-header {
   width: 100%;
@@ -517,7 +504,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   z-index: -5;
 }
 
-.page-header .bg-image{
+.page-header .bg-image {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -538,7 +525,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
 .page-header .header-content {
   width: 500px;
   text-align: center;
-  background-color: #060E33C7;
+  background-color: #060e33c7;
   color: #fff;
   padding: 15px;
   position: relative;
@@ -555,7 +542,6 @@ nav:hover.dropdown-active .nav-dropdown.active {
 .page-header .header-content .section-title {
   color: #fff !important;
   margin-bottom: 10px;
-
 }
 
 .page-header .header-content p,
@@ -582,13 +568,11 @@ nav:hover.dropdown-active .nav-dropdown.active {
   margin-bottom: 30px;
 }
 
-
 .subscribe-section .subscribe-components .left-content {
   width: 45%;
-
 }
 
-.subscribe-section .subscribe-components .left-content>p {
+.subscribe-section .subscribe-components .left-content > p {
   font-weight: 600;
   width: 90%;
 }
@@ -599,7 +583,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   margin-bottom: 40px;
 }
 
-.subscribe-section input[type="email"] {
+.subscribe-section input[type='email'] {
   width: 75%;
   padding: 12px 16px;
   border: 2px solid #afafaf71;
@@ -607,9 +591,9 @@ nav:hover.dropdown-active .nav-dropdown.active {
   transition: border-color 0.3s ease;
 }
 
-.subscribe-section input[type="email"]:focus {
+.subscribe-section input[type='email']:focus {
   outline: none;
-  border-color: #AFAFAF;
+  border-color: #afafaf;
 }
 
 .subscribe-section .send-btn {
@@ -623,7 +607,6 @@ nav:hover.dropdown-active .nav-dropdown.active {
   font-weight: 450;
   transition: background-color 0.3s ease;
 }
-
 
 .subscribe-section .send-btn:hover {
   background-color: #ff3333;
@@ -649,11 +632,11 @@ nav:hover.dropdown-active .nav-dropdown.active {
   text-align: justify;
 }
 
-.subscribe-section input[type="checkbox"] {
+.subscribe-section input[type='checkbox'] {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #AFAFAF;
+  border: 2px solid #afafaf;
   border-radius: 4px;
   background: white;
   cursor: pointer;
@@ -661,13 +644,13 @@ nav:hover.dropdown-active .nav-dropdown.active {
   position: relative;
 }
 
-.subscribe-section input[type="checkbox"]:checked {
-  background: #FF3333;
-  border-color: #FF3333;
+.subscribe-section input[type='checkbox']:checked {
+  background: #ff3333;
+  border-color: #ff3333;
 }
 
-.subscribe-section input[type="checkbox"]:checked::after {
-  content: "✓";
+.subscribe-section input[type='checkbox']:checked::after {
+  content: '✓';
   position: absolute;
   top: 50%;
   left: 50%;
@@ -720,11 +703,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   height: 12%;
 }
 
-
-
 /* FOOOTER */
-
-
 
 .footer-top {
   width: 100%;
@@ -734,7 +713,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background-color: #FF3333;
+  background-color: #ff3333;
 }
 
 .footer-top h3 {
@@ -760,17 +739,16 @@ nav:hover.dropdown-active .nav-dropdown.active {
   padding: 14px;
   font-size: 14px;
   background-color: #fff;
-  color: #141D43;
+  color: #141d43;
   font-weight: 600;
   border-radius: 4px;
   transition: all 0.5s ease;
 }
 
 .footer-top .pages a:hover {
-  background-color: #141D43;
+  background-color: #141d43;
   color: #fff;
   font-weight: 400;
-
 }
 
 .footer-top .pages a:hover i {
@@ -781,7 +759,7 @@ nav:hover.dropdown-active .nav-dropdown.active {
 .footer-top .pages a i {
   font-size: 14px;
   margin-bottom: 3px;
-  color: #FF3333;
+  color: #ff3333;
   transition: all 0.5s ease;
 }
 
@@ -799,16 +777,15 @@ footer .sinova-logo {
   font-size: 20px;
   line-height: 30px;
   letter-spacing: 0px;
-  color: #FF3333;
+  color: #ff3333;
   margin-bottom: 20px;
 }
-
 
 .footer-desc {
   font-weight: 450;
   font-size: 14px;
   line-height: 20px;
-  color: #141D43;
+  color: #141d43;
 }
 
 .follow-us .footer-desc {
@@ -849,7 +826,7 @@ footer .sinova-logo {
   justify-content: space-between;
 }
 
-.footer-main .contact-us>div {
+.footer-main .contact-us > div {
   width: 70%;
 }
 
@@ -857,7 +834,7 @@ footer .sinova-logo {
   border: none;
   width: 70px;
   height: 70px;
-  background-color: #FF3333;
+  background-color: #ff3333;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -877,17 +854,15 @@ footer .sinova-logo {
 
 .footer-main .contact-us .contacts {
   margin-top: 20px;
-
 }
 
 .footer-main .contact-us .contacts a,
-.footer-main .contact-us .contacts span{
+.footer-main .contact-us .contacts span {
   margin-right: 20px;
-  color: #141D43;
+  color: #141d43;
   font-weight: 450;
   font-size: 14px;
   line-height: 20px;
-
 }
 
 .footer-bottom {
@@ -902,8 +877,6 @@ footer .sinova-logo {
   display: flex;
   gap: 20px;
 }
-
-
 
 .breadcrumb-container {
   width: 100%;
@@ -987,7 +960,6 @@ footer .sinova-logo {
   font-size: 18px;
 }
 
-
 .image-container {
   width: 100%;
   height: 380px;
@@ -999,7 +971,6 @@ footer .sinova-logo {
   height: 100%;
   object-fit: cover;
 }
-
 
 .sustainability-section {
   margin: 70px auto;
@@ -1023,7 +994,6 @@ footer .sinova-logo {
   letter-spacing: 0px;
   color: #141d43;
 }
-
 
 .two-images {
   width: 100%;
@@ -1052,7 +1022,6 @@ footer .sinova-logo {
   height: 100%;
   object-fit: cover;
 }
-
 
 .image-text-content {
   width: 100%;
