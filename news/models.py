@@ -1,11 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class News(models.Model):
     title = models.CharField(max_length=200, verbose_name="Title")
     subtitle = models.TextField(verbose_name="SubTitle", blank=True, null=True)
-    content = models.TextField(verbose_name="Content")
+    content = RichTextUploadingField(verbose_name="Content")
     main_image = models.ImageField(upload_to='news_images/', verbose_name="Image", blank=True, null=True)
     secondary_image = models.ImageField(upload_to='news_images/', verbose_name="Secondary Image", blank=True, null=True)
     date = models.DateField(verbose_name="Date", help_text="Date of the news article")

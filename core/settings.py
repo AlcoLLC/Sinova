@@ -67,6 +67,8 @@ CSRF_TRUSTED_ORIGINS = [
 INSTALLED_APPS = [
     'jazzmin',
     'modeltranslation', 
+    'ckeditor',
+    'ckeditor_uploader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -90,6 +92,24 @@ INSTALLED_APPS = [
     'pageHeader', 
     'search'
 ]
+
+SITE_ID = 1
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '400px',
+        'removePlugins': 'stylesheetparser',
+        'allowedContent': True,
+        'extraAllowedContent': '*(*);*{*}',
+    },
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
