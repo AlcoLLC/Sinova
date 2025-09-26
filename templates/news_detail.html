@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %}
 
 {% block title %}{{ news.title|truncatechars:60 }}{% endblock %}
-{% block description %}{{ news.content|truncatechars:160 }}{% endblock %}
+{% block description %}{{ news.content|safe|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
 
@@ -73,7 +73,7 @@
   <div class="section-description bold">{{ news.subtitle|linebreaks }}</div>
   {% endif %}
 
-  <div class="section-description">{{ news.content|linebreaks }}</div>
+  <div class="section-description">{{ news.content|safe|linebreaks }}</div>
 </section>
 
 {% endblock %}
