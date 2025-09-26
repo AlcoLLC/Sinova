@@ -118,7 +118,7 @@
         <a href="{{ news.get_absolute_url }}" class="read-more"
           aria-label="Read more about {{ large_card_news.title }}">
           <h3 class="card-title">{{ large_card_news.title }}</h3>
-          <p class="card-description"> {{ large_card_news.content|truncatewords:20 }}
+          <p class="card-description"> {{ large_card_news.content|safe|truncatewords:20 }}
           </p>
           <span>{% trans "Read More" %}
             <i class="fas fa-arrow-right-long read-more-icon"></i>
@@ -141,7 +141,7 @@
         </div>
         <a href="{{ news.get_absolute_url }}" class="read-more" aria-label="Read more about {{ news.title }}">
           <h3 class="card-title"> {{news.title}} </h3>
-          <p class="card-description"> {{ news.content|truncatewords:15 }}
+          <p class="card-description"> {{ news.content|safe|truncatewords:15 }}
           </p>
           <span>{% trans "Read More" %}
             <i class="fas fa-arrow-right-long read-more-icon"></i>
