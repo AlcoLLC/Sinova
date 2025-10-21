@@ -1,8 +1,28 @@
 {% extends 'base.html' %}{% load static %} {% load i18n %}
 
-{% block title %}{{ news.title|truncatechars:60 }}{% endblock %}
-{% block description %}{{ news.content|safe|truncatechars:160 }}{% endblock %}
-{% block keywords %}{% trans "news_keywords" %}{% endblock %}
+{% block title %}
+    {% if news.meta_title %}
+        {{ news.meta_title|safe }}
+    {% else %}
+        {{ news.title|truncatechars:60 }}
+    {% endif %}
+{% endblock %}
+
+{% block description %}
+    {% if news.meta_description %}
+        {{ news.meta_description|safe }}
+    {% else %}
+        {{ news.content|striptags|truncatechars:160 }}
+    {% endif %}
+{% endblock %}
+
+{% block keywords %}
+    {% if news.meta_keywords %}
+        {{ news.meta_keywords|safe }}
+    {% else %}
+        {% trans "news_keywords" %}
+    {% endif %}
+{% endblock %}
 
 
 {% block page_css %}

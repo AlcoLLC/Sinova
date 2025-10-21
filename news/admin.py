@@ -24,4 +24,8 @@ class NewsAdmin(TranslationAdmin):
         ('Settings', {
             'fields': ('date', 'new', 'announcement','release', 'is_active', 'in_home','order')
         }),
+        ('SEO Metadata', {
+            'fields': ('meta_title', 'meta_description', 'meta_keywords'),
+            'classes': ('collapse',)
+        }),
     )

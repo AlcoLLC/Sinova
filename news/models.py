@@ -20,6 +20,9 @@ class News(models.Model):
     order = models.PositiveIntegerField(default=0, verbose_name="Order", help_text="Display order (lower numbers appear first)")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Updated At")
+    meta_title = models.CharField(max_length=255, verbose_name="Meta Title", blank=True, null=True)
+    meta_description = models.TextField(verbose_name="Meta Description", blank=True, null=True)
+    meta_keywords = models.CharField(max_length=255, verbose_name="Meta Keywords", blank=True, null=True)
 
     class Meta:
         verbose_name = "News"
