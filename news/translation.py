@@ -3,4 +3,4 @@ from .models import News
 
 @register(News)
 class NewsTranslationOptions(TranslationOptions):
-    fields = ('title', 'content', 'subtitle')
+    fields = ('title', 'content', 'subtitle', 'meta_title', 'meta_description', 'meta_keywords')
