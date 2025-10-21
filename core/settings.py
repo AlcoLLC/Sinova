@@ -82,9 +82,9 @@ INSTALLED_APPS = [
 
     'home',
     'about',
-    'businesses',
-    'investorRelations',
-    'news',
+    'news.apps.NewsConfig',
+    'businesses.apps.BusinessesConfig',
+    'investorRelations.apps.InvestorrelationsConfig',
     'gallery',
     'subscribtion',
     'sustainability',
@@ -92,6 +92,9 @@ INSTALLED_APPS = [
     'pageHeader', 
     'search'
 ]
+
+GOOGLE_INDEXING_KEY_FILE = BASE_DIR / 'sinova.json'
+SITE_DOMAIN = 'https://sinovagroup.ch'
 
 SITE_ID = 1
 
