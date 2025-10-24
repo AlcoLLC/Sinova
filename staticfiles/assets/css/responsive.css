@@ -769,7 +769,7 @@
 
     .two-images img:nth-child(1),
     .two-images img:nth-child(2) {
-        width: 100%;
+        width: 100% !important;
         height: 50%;
     }
 
