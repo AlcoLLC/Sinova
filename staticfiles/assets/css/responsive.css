@@ -767,10 +767,16 @@
         flex-direction: column;
     }
 
-    .two-images img:nth-child(1),
-    .two-images img:nth-child(2) {
-        width: 100% !important;
+    .two-images img {
+        width: 100%;
+     }
+
+    .two-images img:not(:only-child) {
         height: 50%;
+    }
+
+    .two-images img:only-child {
+        height: 100%;
     }
 
 
