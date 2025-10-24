@@ -1013,14 +1013,16 @@ footer .sinova-logo {
   border-radius: 6px;
 }
 
-.two-images img:nth-child(1) {
+.two-images img:nth-child(1):not(:only-child) {
   width: 65%;
 }
 
 .two-images img:nth-child(2) {
   width: 35%;
-  height: 100%;
-  object-fit: cover;
+}
+
+.two-images img:only-child {
+  width: 100%;
 }
 
 .image-text-content {
