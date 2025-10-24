@@ -233,9 +233,6 @@
 
 @media (max-width: 900px) {
 
-    .news-details-section .section-title {
-        width: 80%;
-    }
 
     .section-policies {
         padding-top: 30px;
@@ -713,10 +710,6 @@
 }
 
 @media (max-width: 600px) {
-
-    .news-details-section .section-title {
-        width: 100%;
-    }
 
     .businesses {
         margin: 20px auto;
