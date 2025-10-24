@@ -768,7 +768,7 @@
     }
 
     .two-images img {
-        width: 100%;
+        width: 100% !important;
      }
 
     .two-images img:not(:only-child) {
