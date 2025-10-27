@@ -25,14 +25,17 @@ from core.sitemaps import sitemaps
 
 
 def robots_txt(request):
+    sitemap_url = "https://sinovagroup.ch/sitemap.xml"
+
     lines = [
         "User-agent: *",
         "Disallow: /admin/",
         "Disallow: /api/",
         "Disallow: /media/private/",
         "Disallow: /i18n/setlang/",
+        "Allow: /",
         "",
-        "Sitemap: https://sinovagroup.ch/sitemap.xml"       
+        f"Sitemap: {sitemap_url}"      
     ]
     return HttpResponse('\n'.join(lines), content_type="text/plain")
 
