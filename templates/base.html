@@ -11,7 +11,6 @@
     content="{% block description %}{% trans 'Sinova Group is a Swiss holding active in finance, logistics, technology, and manufacturing. We drive innovation, sustainability, ESG principles, and global growth through strategic investments.' %}{% endblock %}">
   <meta name="keywords"
     content="{% block keywords %}{% trans 'Sinova Group, strategic investments, finance, logistics, technology, manufacturing, ESG, sustainability, Swiss holding, global growth' %}{% endblock %}">
-  <meta name="robots" content="index, follow">
   <meta property="og:title" content="{% trans 'Sinova Group – Strategic Investments in Finance & Tech' %}">
   <meta property="og:type" content="website">
   <meta property="og:description"
@@ -20,7 +19,14 @@
   <meta property="og:url" content="https://sinovagroup.ch{{ request.path }}">
   <meta name="google-site-verification" content="9g-xrNt3jcp_P1xbfbLZ26O9-MWBSoUxwvze7FQRasI" />
   <meta name="msvalidate.01" content="91C3B398DE92AC84DB8733389F9B025C" />
-  <link rel="canonical" href="https://sinovagroup.ch{{ request.path }}">
+  <meta name="robots" content="index, follow" />
+
+    {% with request.path as clean_path %}
+  <link rel="canonical" href="https://sinovagroup.ch{{ clean_path }}" />
+  {% endwith %}
+          
+  {% block canonical %}
+  {% endblock %}
   <link rel="icon" type="image/webp" href="https://sinovagroup.ch/static/images/icon.webp">
   <link rel="alternate" hreflang="x-default" href="https://sinovagroup.ch/" />
   <link rel="alternate" hreflang="en" href="https://sinovagroup.ch/">
@@ -30,9 +36,6 @@
   <link rel="alternate" hreflang="it" href="https://sinovagroup.ch/it/">
   <link rel="alternate" hreflang="pt" href="https://sinovagroup.ch/pt/">
   <link rel="alternate" hreflang="zh-hans" href="https://sinovagroup.ch/zh-hans/">
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://analytics.ahrefs.com" crossorigin>
-
   <link rel="preload" as="font" href="{% static 'assets/fonts/TTNormsProCompact-Normal.otf' %}" type="font/otf"
     crossorigin="anonymous">
   <link rel="preload" as="font" href="{% static 'assets/fonts/fa-solid-900.woff2' %}" type="font/woff2"
@@ -109,14 +112,6 @@ src="https://www.facebook.com/tr?id=761388379578296&ev=PageView&noscript=1"
 <body>
   {% include 'components/navbar.html' %} {% block content %} {% endblock %}
   {%include 'components/footer.html' %}
-
-  <script>
-    var ahrefs_analytics_script = document.createElement('script');
-    ahrefs_analytics_script.async = true;
-    ahrefs_analytics_script.src = 'https://analytics.ahrefs.com/analytics.js';
-    ahrefs_analytics_script.setAttribute('data-key', 'h5P70Z03LS8YAmS70Olm9g');
-    document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
-  </script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QTK593BWX"></script>
   <script>
