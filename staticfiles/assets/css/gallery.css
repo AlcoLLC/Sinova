@@ -19,6 +19,7 @@
 
 .media-center-images .image-row:nth-of-type(odd) .image-item:first-child {
   width: 65%;
+
   object-fit: cover;
   overflow: hidden;
 }
