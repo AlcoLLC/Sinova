@@ -8,18 +8,22 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
-<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" />
 {% endblock %}
 
 {% block page_js %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector(".labSwiper")) {
+      
+      const swiperCssLink = document.createElement("link");
+      swiperCssLink.rel = "stylesheet";
+      swiperCssLink.href = "{% static 'assets/css/swiper-bundle.min.css' %}";
+      document.head.appendChild(swiperCssLink);
+
       const swiperScript = document.createElement("script");
       swiperScript.src = "{% static 'assets/js/swiper-bundle.min.js' %}";
       swiperScript.defer = true;
       swiperScript.onload = function () {
-        // Swiper hazır olduqda qalereya başlasın
         const swiperGallery = new Swiper(".gallery-section .labSwiper", {
           slidesPerView: 2.5,
           centeredSlides: true,
@@ -61,7 +65,6 @@
   });
 </script>
 <script src="{% static 'assets/js/home.min.js' %}" defer></script>
-
 {% endblock %}
 
 {% block content %}
