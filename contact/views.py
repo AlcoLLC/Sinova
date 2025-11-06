@@ -198,3 +198,6 @@ def custom_403_view(request, exception):
 
 def custom_503_view(request):
     return render(request, '503.html', status=503)
+
+def custom_405_view(request, exception=None):
+    return render(request, "405.html", status=405)

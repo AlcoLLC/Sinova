@@ -22,6 +22,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.http import HttpResponse
 from django.contrib.sitemaps.views import sitemap
 from core.sitemaps import sitemaps
+from django.shortcuts import redirect
 
 
 def robots_txt(request):
@@ -68,6 +69,10 @@ urlpatterns += [
     re_path(r'^rosetta/', include('rosetta.urls'))
 ]
 
+urlpatterns += [
+    re_path(r'^en/(?P<path>.*)$', lambda request, path: redirect(f'/{path}', permanent=True)),
+]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0] if settings.STATICFILES_DIRS else settings.STATIC_ROOT)
@@ -79,4 +84,4 @@ handler404 = 'contact.views.custom_404_view'
 handler500 = 'contact.views.custom_500_view'
 handler403 = 'contact.views.custom_403_view'
 handler503 = 'contact.views.custom_503_view'
-
+handler405 = 'contact.views.custom_405_view'
