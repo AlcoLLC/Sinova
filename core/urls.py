@@ -34,6 +34,9 @@ def robots_txt(request):
         "Disallow: /api/",
         "Disallow: /media/private/",
         "Disallow: /i18n/setlang/",
+        "Disallow: /subscribe/",
+        "Disallow: /unsubscribe/",
+        "Disallow: /stats/",
         "Allow: /",
         "",
         f"Sitemap: {sitemap_url}"      
