@@ -20,7 +20,7 @@
 </div>
 
 {% for category in categories %}
-<section class="investor-relations container" id="category-{{ category.id }}">
+<section class="investor-relations container" id="{{ category.slug }}">
   <div class="image-container">
     {% if category.main_image %}
     <img loading="lazy" src="{{ category.main_image.url }}" alt="{{ category.title }}" />
